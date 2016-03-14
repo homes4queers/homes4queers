@@ -85,7 +85,6 @@ Rails.application.config.sorcery.configure do |config|
   #
   # config.ca_file =
 
-
   # For information about LinkedIn API:
   # - user info fields go to https://developer.linkedin.com/documents/profile-fields
   # - access permissions go to https://developer.linkedin.com/documents/authentication#granting
@@ -118,9 +117,9 @@ Rails.application.config.sorcery.configure do |config|
   config.facebook.key = ENV['facebook_app_id']
   config.facebook.secret = ENV['facebook_api_secret']
   config.facebook.callback_url = "http://0.0.0.0:3000/oauth/callback?provider=facebook"
-  config.facebook.user_info_mapping = { :email => "name"}
-  config.facebook.user_info_path = "me?fields=email, name"
-  config.facebook.scope = "email,public_profile"
+  config.facebook.user_info_mapping = { :email => "email", :name => "name"}
+  config.facebook.user_info_path = "me?fields=id, email"
+  config.facebook.scope = "email"
   config.facebook.display = "page"
   config.facebook.access_permissions = ["email", "user_friends", "public_profile"]
   config.facebook.api_version = "v2.5"
@@ -180,7 +179,7 @@ Rails.application.config.sorcery.configure do |config|
     # specify username attributes, for example: [:username, :email].
     # Default: `[:email]`
     #
-    # user.username_attribute_names =
+    user.username_attribute_names = [:email]
 
 
     # change *virtual* password attribute, the one which is used until an encrypted one is generated.
@@ -462,5 +461,5 @@ Rails.application.config.sorcery.configure do |config|
 
   # This line must come after the 'user config' block.
   # Define which model authenticates with sorcery.
-  config.user_class = "User"
+  _class = "User"
 end

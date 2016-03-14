@@ -14,6 +14,7 @@ class Ability
         can :manage, Conversation, {:recipient_id => user.id}
       else
         can :create, User
+        can :read, Listing
       end
 
   end

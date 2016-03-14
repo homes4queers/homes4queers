@@ -118,12 +118,13 @@ Rails.application.config.sorcery.configure do |config|
   config.facebook.key = ENV['facebook_app_id']
   config.facebook.secret = ENV['facebook_api_secret']
   config.facebook.callback_url = "http://0.0.0.0:3000/oauth/callback?provider=facebook"
-  config.facebook.user_info_mapping = { :email => "email", :name=> "name"}
-  config.facebook.user_info_path = "me?fields=id, email, name"
-  config.facebook.scope = "email" #etc
-  config.facebook.display = "popup"
+  config.facebook.user_info_mapping = { :email => "name"}
+  config.facebook.user_info_path = "me?fields=email, name"
+  config.facebook.scope = "email,public_profile"
+  config.facebook.display = "page"
   config.facebook.access_permissions = ["email", "user_friends", "public_profile"]
   config.facebook.api_version = "v2.5"
+
   #
   # config.github.key = ""
   # config.github.secret = ""

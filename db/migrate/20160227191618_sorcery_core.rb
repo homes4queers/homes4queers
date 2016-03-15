@@ -3,7 +3,7 @@ class SorceryCore < ActiveRecord::Migration
     create_table :users do |t|
       t.string :name
       t.text   :about_me
-      t.string :email,            :null => false
+      t.string :email
       t.string :crypted_password
       t.string :salt
 

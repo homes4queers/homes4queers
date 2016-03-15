@@ -44,7 +44,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     if @user.update_attributes(user_params)
-      redirect_back_or_to user_path(@user)
+      redirect_to user_path(@user)
     else
       render :edit
     end

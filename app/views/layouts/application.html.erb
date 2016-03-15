@@ -2,47 +2,34 @@
 <html>
 <head>
   <title>H4q</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 
 </head>
 <body>
 
-  <div class="navcontainer">
-    <% if current_user %>
-    <ul class="top-left-menu">
-      <li>Logged in as</li>
-      <li><%= link_to current_user.name, user_path(current_user) %></li>
-      <li><%= link_to 'Logout', :logout, method: :post %></li>
-    </ul>
-    <ul class="top-right-menu">
-        <li><%= link_to 'Users', users_path %></li>
-        <li><%= link_to 'Listings', listings_path %></li>
-        <li><%= link_to 'Add a listing', new_listing_path  %></li>
-        <li><%= link_to 'My Favourites', user_favourites_path(current_user) %></li>
-        <li><%= link_to 'Inbox', conversations_path %>
-      </ul>
-      <% else %>
-      <ul class="top-right-menu">
-
-        <li><%= link_to 'Register', new_user_path %></li>
-        <li><%= link_to 'Login', :login %></li>
-      </ul>
-      <% end %>
-    </div>
-
-<div class="logo">
-  <header class="site-header">
-    <%= image_tag("/H4qlogo_long.png") %>
-  </header>
+<div class="user_nav">
+  <% if current_user %>
+    Logged in as <%= link_to current_user.name, user_path(current_user) %>
+    <%= link_to 'Logout', :logout, method: :post %><br>
+    <%= link_to 'Add a listing', new_listing_path  %>
+    <%= link_to 'My Favourites', user_favourites_path(current_user) %>
+    <%= link_to 'Inbox', conversations_path %>
+  <% else %>
+    <%= link_to 'Register', new_user_path %>
+    <%= link_to 'Login', :login %>
+  <% end %>
 </div>
+ <div class="nav">
+   <%= link_to 'Listings', listings_path , data: { no_turbolink: true}%>
+   <%= link_to 'People', users_path  %>
+ </div>
 
-<div>
+ <div>
    <p id="notice"><%= flash[:notice] %></p>
    <p id="alert"><%= flash[:alert] %></p>
  </div>
-
 <%= yield %>
 
 <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=AIzaSyC49SZwfsHvdzEkLGZJClMzXunKm4kZ5YQ" %>

@@ -1,5 +1,5 @@
 <% if @user.errors.any? %>
-  <div id="error_explanation">
+  <div class="error_explanation">
     <h2>
       <%= pluralize(@user.errors.count, "error") %>
       prohibited this user from being saved:
@@ -14,11 +14,6 @@
 
 <div id="user-form">
   <%= form_for @user do |f| %>
-
-    <div class="field">
-      <%= f.label :invite_code, "Please enter your invite code" if @user.new_record?%><br>
-      <%= f.text_field :invite_code if @user.new_record?%><br>
-    </div>
 
     <div class="field">
       <%= f.label :email %><br>

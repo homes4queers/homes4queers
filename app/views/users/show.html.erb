@@ -7,6 +7,7 @@
 <% end %>
 
 <% unless can? :manage, @user %>
+<% if current_user %>
   <% unless current_user.favourite_users.exists?(id: @user.id) %>
     <%= link_to 'Add to favorites', favourite_user_path(user_id: @user), method: :post %>
   <% else %>
@@ -15,7 +16,7 @@
 
   <%= link_to "Send me a message", conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: 'post'%><br>
 <% end %>
-
+<% end %>
 <div class="info">
   <%= link_to image_url @user.avatar do %>
   <%= image_tag @user.avatar.thumb, class:"profile_pic", alt:"Profile picture thumbnail" %><br>

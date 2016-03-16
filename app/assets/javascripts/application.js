@@ -16,3 +16,4 @@
 //= require cocoon
 //= require_tree
 //= stub 'conversations'
+//= stub 'map'

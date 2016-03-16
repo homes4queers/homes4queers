@@ -34,6 +34,7 @@ class UsersController < ApplicationController
       @user = User.new(user_params)
 
       if @user.save
+        auto_login(@user)
         redirect_back_or_to user_path(@user)
       else
         render :new

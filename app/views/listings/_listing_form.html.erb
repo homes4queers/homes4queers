@@ -30,6 +30,15 @@
     <br>
 
     <div class="field">
+      <% f.fields_for :images do |photo| %>
+      <%= render 'image_fields', f: photo %>
+      <% end %>
+      <%= link_to_add_association "Add a Photo", f, :images %>
+    </div>
+
+    <br>
+
+    <div class="field">
       <%= f.label :name, "Title" %><br>
       <%= f.text_field :name %><br>
     </div>
@@ -41,7 +50,7 @@
 
     <div class="field">
       <%= f.check_box :utilities_included %>
-      <%= f.label :utilities_included, "This price includes utilities" %>
+      <%= f.label :utilities_included, "includes utilities" %>
     </div>
 
     <div class="field">
@@ -65,21 +74,20 @@
     </div>
 
     <div class="field">
+      <%= f.check_box :basement %>
       <%= f.label :basement, 'Is this a basement apartment?' %><br>
-      <%= f.check_box :basement %><br>
     </div>
 
     <div class="field">
+      <%= f.check_box :sublet %>
       <%= f.label :sublet, "Are you subletting?" %><br>
-      <%= f.check_box :sublet %><br>
     </div>
 
-    <div class="field">
-      <% f.fields_for :images do |photo| %>
-      <%= render 'image_fields', f: photo %>
-      <% end %>
-      <%= link_to_add_association "Add a Photo", f, :images %>
-    </div>
+
+    <p>
+      Features and Amenities (check all that apply):
+    </p>
+
 <div class="checkboxes">
   <div class="field">
     <%= f.check_box :wheelchair_accessible %>
@@ -129,7 +137,7 @@
   <br>
   <div class="field">
     <%= f.check_box :ac %>
-    <%= f.label "Central AC" %>
+    <%= f.label "Central A/C" %>
   </div>
   <div class="field">
     <%= f.check_box :electric_heat %>

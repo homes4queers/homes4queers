@@ -1,6 +1,19 @@
 <div class='single-card'>
     <ul>
       <%= link_to user_path(user) do %>
+      <% if user.site_use == "looking_for_home" %>
+        <p class=home_seeker>
+          Looking for a home!
+        </p>
+      <% elsif user.site_use == "looking_for_roommate" %>
+      <p class=roommate_seeker>
+        Looking for a roommate!
+      </p>
+      <% elsif user.site_use == "looking_for_tenant" %>
+      <p class=tenant_seeker>
+        Looking for a tenant!
+      </p>
+      <% end %>
      <li><%= image_tag user.avatar.thumb %></li>
       <li><%=user.name%></li>
        <% end %>

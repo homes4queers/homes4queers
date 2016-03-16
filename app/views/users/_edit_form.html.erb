@@ -14,11 +14,19 @@
 
 <div id="user-form">
   <%= form_for @user do |f| %>
-
     <div class="field">
-      <%= f.label :invite_code, "Please enter your invite code" if @user.new_record?%><br>
-      <%= f.text_field :invite_code if @user.new_record?%><br>
-    </div>
+      <p>
+        How are you currently using Homes 4 Queers?
+      </p>
+      <%= f.radio_button :site_use, "looking_for_home" %>
+      <%= f.label :site_use, "I am actively looking for a new home", :value => "looking_for_home" %><br>
+      <%= f.radio_button :site_use, "looking_for_roommate" %>
+      <%= f.label :site_use, "I am actively looking for (a) roommate(s) for my current home", :value => "looking_for_roommate" %><br>
+      <%= f.radio_button :site_use, "looking_for_tenant" %>
+      <%= f.label :site_use, "I am actively looking for (a) tenant(s) for my unoccupied space", :value => "looking_for_tenant" %><br>
+      <%= f.radio_button :site_use, "just_looking" %>
+      <%= f.label :site_use, "I'm not currently searching, just want to hang out", :value => "just_looking" %>
+    </div><br>
 
     <div class="field">
       <%= f.label :email %><br>

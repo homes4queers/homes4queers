@@ -15,7 +15,7 @@
   <% end %><br>
 
   <%= link_to "Send me a message", conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: 'post'%><br>
-<% end %>
+  <% end %>
 <% end %>
 <div class="info">
   <%= link_to image_url @user.avatar do %>

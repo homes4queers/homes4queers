@@ -25,18 +25,10 @@ class MessagesController < ApplicationController
    @message = @conversation.messages.new
   end
 
-  def notification_mailer
-    if @message.user_id == @conversation.sender_id
-      @user = User.find(@conversation.recipient_id)
-    else
-      @user = User.find(@conversation.sender_id)
-    end
-  end
-
   def create
    @message = @conversation.messages.new(message_params)
      if @message.save
-       MessageMailer.message_notification(notification_mailer).deliver_later
+       MessageMailer.message_notification(notification_mailer_user,).deliver_later
       redirect_to conversation_messages_path(@conversation)
     else
       redirect_back_or_to conversation_messages_path(@conversation), alert: "Say something to send something"

@@ -1,9 +1,9 @@
 class MessageMailer < ApplicationMailer
 
-  def message_notification(user)
+  def message_notification(user, message)
     #@user = User.find(@conversation.recipient_id), set in messages_controller
     @user= user
-    # @url = 'homes4queers'
+    @message = message
     mail(to: @user.email, subject: "You have a new message")
   end
 end

@@ -1,5 +1,5 @@
 <% if @listing.errors.any? %>
-  <div id="error_explanation">
+  <div class="error_explanation">
     <h2>
       <%= pluralize(@listing.errors.count, "error")  %>
       prohibited this listing from being saved:
@@ -15,6 +15,20 @@
 <div id="listing-form">
   <%= form_for @listing do |f| %>
 
+    <div class="radio_buttons">
+      <p>
+        This listing is for:
+      </p>
+      <div class="field">
+        <%= f.radio_button :space_type, "shared_space" %>
+        <%= f.label :space_type, "A room in a shared space", :value => "shared_space" %>
+        <%= f.radio_button :space_type, "full_space" %>
+        <%= f.label :space_type, "A full private space", :value => "full_space" %>
+      </div>
+    </div>
+
+    <br>
+
     <div class="field">
       <%= f.label :name, "Title" %><br>
       <%= f.text_field :name %><br>
@@ -23,6 +37,11 @@
     <div class="field">
       <%= f.label :price, "Price per month" %><br>
       <%= f.number_field :price %><br>
+    </div>
+
+    <div class="field">
+      <%= f.check_box :utilities_included %>
+      <%= f.label :utilities_included, "This price includes utilities" %>
     </div>
 
     <div class="field">
@@ -46,11 +65,6 @@
     </div>
 
     <div class="field">
-      <%= f.label :roomates, 'Are you looking for a roomate?' %><br>
-      <%= f.check_box :roomates %><br>
-    </div>
-
-    <div class="field">
       <%= f.label :basement, 'Is this a basement apartment?' %><br>
       <%= f.check_box :basement %><br>
     </div>
@@ -66,49 +80,147 @@
       <% end %>
       <%= link_to_add_association "Add a Photo", f, :images %>
     </div>
-
-<div class="field">
-  <%= f.check_box :utilities_included "Are utilities included in thelisted price?" %>
+<div class="checkboxes">
+  <div class="field">
+    <%= f.check_box :wheelchair_accessible %>
+    <%= f.label "Wheelchair Accessible" %>
+  </div>
+  <div class="field">
+    <%= f.check_box :visually_accessible %>
+    <%= f.label "Accessible for the visually impaired" %>
+  </div>
+  <div class="field">
+    <%= f.check_box :hearing_accessible %>
+    <%= f.label "Accessible for the hearing impaired" %>
+  </div>
+  <div class="field">
+    <%= f.check_box :assistance_animal %>
+    <%= f.label "Assistance Animal Friendly" %>
+  </div>
+  <br>
+  <div class="field">
+    <%= f.check_box :furnished %>
+    <%= f.label "Furnished" %>
+  </div>
+  <div class="field">
+    <%= f.check_box :fridge %>
+    <%= f.label "Fridge" %>
+  </div>
+  <div class="field">
+    <%= f.check_box :stove %>
+    <%= f.label "Stove" %>
+  </div>
+  <div class="field">
+    <%= f.check_box :dishwasher %>
+    <%= f.label "Dishwasher" %>
+  </div>
+  <div class="field">
+    <%= f.check_box :microwave %>
+    <%= f.label "Microwave" %>
+  </div>
+  <div class="field">
+    <%= f.check_box :bathtub %>
+    <%= f.label "Bathtub" %>
+  </div>
+  <div class="field">
+    <%= f.check_box :fireplace %>
+    <%= f.label "Fireplace" %>
+  </div>
+  <br>
+  <div class="field">
+    <%= f.check_box :ac %>
+    <%= f.label "Central AC" %>
+  </div>
+  <div class="field">
+    <%= f.check_box :electric_heat %>
+    <%= f.label "Electric heating" %>
+  </div>
+  <div class="field">
+    <%= f.check_box :forced_air_heat %>
+    <%= f.label "Forced Air heating" %>
+  </div>
+  <div class="field">
+    <%= f.check_box :boiler_system %>
+    <%= f.label "Boiler System heating" %>
+  </div>
+  <br>
+  <div class="field">
+    <%= f.check_box :cats %>
+    <%= f.label "Cats OK" %>
+  </div>
+  <div class="field">
+    <%= f.check_box :dogs %>
+    <%= f.label "Dogs OK" %>
+  </div>
+  <div class="field">
+    <%= f.check_box :small_pets %>
+    <%= f.label "Small pets OK" %>
+  </div>
+  <br>
+  <div class="field">
+    <%= f.check_box :ensuite_laundry %>
+    <%= f.label "Ensuite laundry" %>
+  </div>
+  <div class="field">
+    <%= f.check_box :shared_laundry %>
+    <%= f.label "Shared laundry" %>
+  </div>
+  <div class="field">
+    <%= f.check_box :coinop_laundry %>
+    <%= f.label "Coin-operated laundry" %>
+  </div>
+  <br>
+  <div class="field">
+    <%= f.check_box :balcony %>
+    <%= f.label "Balcony" %>
+  </div>
+  <div class="field">
+    <%= f.check_box :deck %>
+    <%= f.label "Deck" %>
+  </div>
+  <div class="field">
+    <%= f.check_box :yard_shared %>
+    <%= f.label "Shared yard" %>
+  </div>
+  <div class="field">
+    <%= f.check_box :yard_private %>
+    <%= f.label "Private yard" %>
+  </div>
+  <br>
+  <div class="field">
+    <%= f.check_box :pool %>
+    <%= f.label "Pool" %>
+  </div>
+  <div class="field">
+    <%= f.check_box :exercise_room %>
+    <%= f.label "Exercise room" %>
+  </div>
+  <div class="field">
+    <%= f.check_box :party_room %>
+    <%= f.label "Party room" %>
+  </div>
+  <br>
+  <div class="field">
+    <%= f.check_box :parking %>
+    <%= f.label "Parking avaialble" %>
+  </div>
+  <div class="field">
+    <%= f.check_box :on_street_parking %>
+    <%= f.label "On-street Parking available" %>
+  </div>
+  <br>
+  <div class="radio_buttons">
+    <div class="field">
+      <%= f.radio_button :smoking, "smoking" %>
+      <%= f.label :smoking, "Smoking OK", :value => "smoking" %>
+      <%= f.radio_button :smoking, "nonsmoking" %>
+      <%= f.label :smoking, "Non-Smoking", :value => "nonsmoking" %>
+    </div>
+  </div>
 </div>
-    <!-- add_column :listings, :utilities_included, :boolean
-    add_column :listings, :space_type, :string
-    add_column :listings, :current_roommates, :integer
-    add_column :listings, :wheelchair_accessible, :boolean
-    add_column :listings, :visually_accessible, :boolean
-    add_column :listings, :hearing_accessible, :boolean
-    add_column :listings, :assistance_animal, :boolean
-    add_column :listings, :fridge, :boolean
-    add_column :listings, :stove, :boolean
-    add_column :listings, :dishwasher, :boolean
-    add_column :listings, :microwave, :boolean
-    add_column :listings, :bathtub, :boolean
-    add_column :listings, :fireplace, :boolean
-    add_column :listings, :ac, :boolean
-    add_column :listings, :electric_heat, :boolean
-    add_column :listings, :forced_air_heat, :boolean
-    add_column :listings, :boiler_system, :boolean
-    add_column :listings, :cats, :boolean
-    add_column :listings, :dogs, :boolean
-    add_column :listings, :small_pets, :boolean
-    add_column :listings, :ensuite_laundry, :boolean
-    add_column :listings, :shared_laundry, :boolean
-    add_column :listings, :coinop_laundry, :boolean
-    add_column :listings, :balcony, :boolean
-    add_column :listings, :deck, :boolean
-    add_column :listings, :yard_shared, :boolean
-    add_column :listings, :yard_private, :boolean
-    add_column :listings, :pool, :boolean
-    add_column :listings, :exercise_room, :boolean
-    add_column :listings, :party_room, :boolean
-    add_column :listings, :furnished, :boolean
-    add_column :listings, :parking, :boolean
-    add_column :listings, :on_street_parking, :boolean
-    add_column :listings, :smoking, :boolean
-    add_column :listings, :nonsmoking, :boolean
-    add_column :listings, :flagged, :boolean -->
 
     <div class="action">
       <%= f.submit "Submit Listing" %>
     </div>
-  <% end %>
+.  <% end %>
 </div>

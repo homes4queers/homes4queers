@@ -1,6 +1,4 @@
 class MessageMailer < ApplicationMailer
-  default from: 'homes4queers@gmail.com'
-  layout 'mailer'
 
   def message_notification(user)
     #@user = User.find(@conversation.recipient_id), set in messages_controller

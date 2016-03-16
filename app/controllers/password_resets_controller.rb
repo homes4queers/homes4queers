@@ -5,7 +5,7 @@ class PasswordResetsController < ApplicationController
     @user = User.find_by_email(params[:email])
 
     @user.deliver_reset_password_instructions! if @user
-
+    # binding.pry
     redirect_to root_path, notice: "We sent you some instructions on how to reset your password. Check your email!"
   end
 

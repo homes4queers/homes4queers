@@ -1,6 +1,6 @@
 class MessageMailer < ApplicationMailer
 
-  def message_notification(user, message)
+  def message_notification(user)
     #@user = User.find(@conversation.recipient_id), set in messages_controller
     @user= user
     @message = message

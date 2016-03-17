@@ -12,6 +12,7 @@ class Ability
         can :manage, Comment, {:user_id => user.id}
         can :manage, Conversation, {:sender_id => user.id}
         can :manage, Conversation, {:recipient_id => user.id}
+        cannot :manage, UserDashboard
       else
         can :create, User
         can :read, Listing

@@ -18,7 +18,6 @@ Rails.application.routes.draw do
       end
   end
 
-
   resources :listings do
     member do
       post 'favourite'
@@ -29,6 +28,7 @@ Rails.application.routes.draw do
       match 'search' => 'listings#search', via: [:get, :post], as: :search
     end
   end
+
 
   resources :user_sessions, only: [:new, :create, :destroy]
 

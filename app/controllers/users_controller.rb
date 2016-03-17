@@ -2,10 +2,10 @@ class UsersController < ApplicationController
   before_action :require_login, only: [:index, :edit, :update, :destroy]
 
   def index
-    @q = User.ransack(params[:q])
+    @search = User.ransack(params[:q])
 
     if params[:q]
-      @users = @q.result.distinct
+      @users = @search.result.distinct
       # results
     else
      @users = User.all

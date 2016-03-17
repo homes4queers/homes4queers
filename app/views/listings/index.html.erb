@@ -6,16 +6,66 @@
 
     <%= button_tag 'Listings Near Me', id: 'search-nearby' %>
 
-<%= link_to "Search Listings", search_listings_path, :remote => true %>
-<div id="listing_search_fields"></div>
+    <%= search_form_for @q, url: search_listings_path,
+                            html: { method: :post } do |f| %>
+
+    <%# setup_search_form f %>
 
 
+    <%#= f.submit %>
+  <%# end %>
+
+    <%= f.label :name_cont, "Name contains" %>
+    <%= f.text_field :name_cont, placeholder:"e.g. price, name, location" %>
+    <%= f.label :price_gteq, "Minimum Price" %>
+    <%= f.number_field :price_gteq, placeholder: "0" %>
+
+    <%= f.label :price_lteq, "Maximum Price" %>
+    <%= f.number_field :price_lteq, placeholder: "0" %>
+  <br>
+    <%= f.label :location_cont, "Address, Neighbourhood or City" %>
+    <%= f.text_field :location_cont, placeholder: "742 Evergreen Terrace" %>
+
+    <%= f.label :bedrooms_gteq, "Minimum Number of bedrooms" %>
+    <%= f.number_field :bedrooms_gteq, placeholder: "0"%>
+
+    <%= f.label :bedrooms_gteq, "Minimum Number of bedrooms" %>
+    <%= f.number_field :bedrooms_gteq, placeholder: "0"%>
+
+    <%= f.label :bedrooms_gteq, "Minimum Number of bedrooms" %>
+    <%= f.number_field :bedrooms_gteq, placeholder: "0"%>
+
+    <%#= f.check_box :space_type_eq: "full_space" %>
+    <%#= f.label :space_type_eq, "Full Spaces Only" %>
+    <%= f.check_box :basement_false %>
+    <%= f.label :basement_false, "No Basements" %>
+    <%= f.check_box :sublet_false %>
+    <%= f.label :sublet_false, "No sublets" %>
+    Listing must have:
+    <%= f.check_box :wheelchair_accessible_true %>
+    <%= f.label :wheelchair_accessible_true, "Wheelchair Accessible" %>
+    <%= f.check_box :visually_accessible_true %>
+    <%= f.label :visually_accessible_true, "Accessibility for the Visually Imapaired" %>
+    <%= f.check_box :hearing_accessible_true %>
+    <%= f.label :hearing_accessible_true, "Accessibility for the Hearing Impaired" %>
+    <%= f.check_box :assistance_animal_true %>
+    <%= f.label :assistance_animal_true, "Assistance Animal Friendly" %>
+    <%= f.check_box :ac_true %>
+    <%= f.label :ac_true, "Central AC" %>
+
+
+    <%=  f.hidden_field :location_cont, value: "Toronto"  %>
+
+    <%= f.submit %>
+  <% end %>
 </div>
 
 <div id="map-index" data-latitude='43.7' data-longitude='-79.4' ></div>
 
   <div class="index-cards">
-
+    Sort listings by: <%= sort_link(@search, :name) %>
+    <%= sort_link(@search, :price) %>
+    <%= sort_link(@search, :rent_date) %>
     <small><%= page_entries_info @listings %></small>
   <%= render @listings %>
 
@@ -23,6 +73,8 @@
 <%= javascript_tag do %>
 window.nearby = <%=raw @listings.map {|n| {lat: n.latitude, lng: n.longitude, name: n.name, desc: n.description, price: n.price, bedrooms: n.bedrooms, photo: n.images.first.photo.thumb.url, date: n.rent_date, id: n.id}}.to_json %>;
 <% end %>
+
+
 
 <%= paginate @listings %>
 </div>

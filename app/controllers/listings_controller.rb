@@ -85,12 +85,6 @@ class ListingsController < ApplicationController
     end
   end
 
-  def search_listings
-    respond_to do |format|
-      format.js
-    end
-  end
-
   private
 
   def listing_params

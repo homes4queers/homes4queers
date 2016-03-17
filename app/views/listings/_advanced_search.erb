@@ -1,17 +1,20 @@
 
-<%= search_form_for @q, url: search_listings_path,
-                        html: { method: :post } do |f| %>
-  <%= f.label :name_or_location_cont, "Search Listings" %>
-  <%= f.text_field :name_or_location_cont, placeholder:"e.g. price, name, location" %>
-
-  <%= f.submit %>
-  <% end %>
   <%#= button_tag 'advanced_search' %>
   <%# link_to "Advanced Search", render 'advanced_search' %>
   <h4>Advanced Search</h4>
+  <%= link_to "Simple mode", users_path %>
 
-  <%= search_form_for @q, url: search_listings_path,
+  <%= search_form_for @search, url: listings_path,
                           html: { method: :post } do |f| %>
+
+  <%# setup_search_form f %>
+
+
+  <%#= f.submit %>
+<%# end %>
+
+  <%= f.label :name_cont, "Name contains" %>
+  <%= f.text_field :name_cont, placeholder:"e.g. price, name, location" %>
   <%= f.label :price_gteq, "Minimum Price" %>
   <%= f.number_field :price_gteq, placeholder: "0" %>
 
@@ -23,6 +26,15 @@
 
   <%= f.label :bedrooms_gteq, "Minimum Number of bedrooms" %>
   <%= f.number_field :bedrooms_gteq, placeholder: "0"%>
+
+  <%= f.label :bedrooms_gteq, "Minimum Number of bedrooms" %>
+  <%= f.number_field :bedrooms_gteq, placeholder: "0"%>
+
+  <%= f.label :bedrooms_gteq, "Minimum Number of bedrooms" %>
+  <%= f.number_field :bedrooms_gteq, placeholder: "0"%>
+
+ <%= f.label :
+
 
   <%=  f.hidden_field :location_cont, value: "Toronto"  %>
 

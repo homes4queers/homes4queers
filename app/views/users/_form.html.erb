@@ -54,6 +54,11 @@
       <%= f.file_field :avatar %><br>
     </div>
 
+    <div class="field">
+      <%= f.label :message_notifications, "Receive email notifications?" %>
+      <%= f.check_box :message_notifications %>
+    </div>
+
     <div class="action">
      <%= f.submit %><br>
     </div>

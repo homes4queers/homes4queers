@@ -1,3 +1,4 @@
+<%= javascript_include_tag 'conversations.js' %>
 
 <% user = User.find(@conversation.recipient_id) %>
 <h3>Conversation with <%= link_to user.name, user_path(user.id)%></h3>
@@ -41,4 +42,3 @@
   </div>
   <% end %>
 </div>
-<%= javascript_include_tag 'conversations' %>

@@ -1,22 +1,30 @@
 
+<%= search_form_for @q, url: search_listings_path,
+                        html: { method: :post } do |f| %>
+  <%= f.label :name_or_location_cont, "Search Listings" %>
+  <%= f.text_field :name_or_location_cont, placeholder:"e.g. price, name, location" %>
+
+  <%= f.submit %>
+  <% end %>
+  <%#= button_tag 'advanced_search' %>
+  <%# link_to "Advanced Search", render 'advanced_search' %>
   <h4>Advanced Search</h4>
 
   <%= search_form_for @q, url: search_listings_path,
                           html: { method: :post } do |f| %>
-  <%= f.label :price_gteq, "Minimum Price" %><br>
-  <%= f.text_field :price_gteq %><br>
+  <%= f.label :price_gteq, "Minimum Price" %>
+  <%= f.number_field :price_gteq, placeholder: "0" %>
 
-  <%= f.label :price_lteq, "Maximum Price" %><br>
-  <%= f.text_field :price_lteq %><br>
+  <%= f.label :price_lteq, "Maximum Price" %>
+  <%= f.number_field :price_lteq, placeholder: "0" %>
 <br>
-  <%= f.label :location_cont, "Address, Neighbourhood or City" %><br>
-  <%= f.text_field :location_cont %><br>
-<br>
-  <%= f.label :bedrooms_gteq, "Minimum Number of bedrooms" %><br>
-  <%= f.text_field :bedrooms_gteq %><br><br>
+  <%= f.label :location_cont, "Address, Neighbourhood or City" %>
+  <%= f.text_field :location_cont, placeholder: "742 Evergreen Terrace" %>
 
-  <div class="index-cards">
-    <%= sort_link @q, :name, 'Name' %>
-    <%= sort_link @q, :price, 'Price' %>
+  <%= f.label :bedrooms_gteq, "Minimum Number of bedrooms" %>
+  <%= f.number_field :bedrooms_gteq, placeholder: "0"%>
 
+  <%=  f.hidden_field :location_cont, value: "Toronto"  %>
+
+  <%= f.submit %>
 <% end %>

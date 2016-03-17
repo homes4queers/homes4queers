@@ -26,3 +26,4 @@ window.nearby = <%=raw @listings.map {|n| {lat: n.latitude, lng: n.longitude, na
 
 <%= paginate @listings %>
 </div>
+<%= javascript_include_tag 'map' %>

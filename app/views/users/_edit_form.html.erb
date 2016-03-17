@@ -1,5 +1,5 @@
 <% if @user.errors.any? %>
-  <div id="error_explanation">
+  <div class="error_explanation">
     <h2>
       <%= pluralize(@user.errors.count, "error") %>
       prohibited this user from being saved:
@@ -15,6 +15,7 @@
 <div id="user-form">
   <%= form_for @user do |f| %>
     <div class="field">
+
       <p>
         How are you currently using Homes 4 Queers?
       </p>
@@ -29,6 +30,7 @@
     </div><br>
 
     <div class="field">
+
       <%= f.label :email %><br>
       <%= f.email_field :email %><br>
     </div>
@@ -50,6 +52,10 @@
 
     <div class="field"><br>
       <%= f.file_field :avatar %><br>
+    </div>
+    <div class="field">
+      <%= f.label :message_notifications, "Receive email notifications?" %>
+      <%= f.check_box :message_notifications %>
     </div>
 
     <div class="action">

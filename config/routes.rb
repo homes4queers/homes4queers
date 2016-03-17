@@ -1,8 +1,16 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    resources :authentications
+resources :comments
+resources :conversations
+resources :favourites
+resources :images
+resources :listings
+resources :messages
+resources :users
 
-  post "oauth/callback" => "oauths#callback"
-  get "oauth/callback" => "oauths#callback" # for use with Github, Facebook
-  get "oauth/:provider" => "oauths#oauth", :as => :auth_at_provider
+    root to: "authentications#index"
+  end
 
   root 'listings#index'
 
@@ -31,9 +39,15 @@ Rails.application.routes.draw do
   end
 
   resources :user_sessions, only: [:new, :create, :destroy]
-
+  resources :password_resets
+  
   get 'login' => 'user_sessions#new', as: :login
   post 'logout' => 'user_sessions#destroy', as: :logout
+
+  post "oauth/callback" => "oauths#callback"
+  get "oauth/callback" => "oauths#callback" # for use with Github, Facebook
+  get "oauth/:provider" => "oauths#oauth", :as => :auth_at_provider
+
 
   resources :conversations do
     resources :messages

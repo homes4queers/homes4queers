@@ -16,6 +16,6 @@
    }(document, 'script', 'facebook-jssdk'));
 </script>
 
-<%= link_to 'Login with Facebook', auth_at_provider_path(:provider => :facebook) %>
-
+<%= link_to 'Login with Facebook', auth_at_provider_path(:provider => :facebook) %><br>
+<%= link_to 'Forgot Password?', new_password_reset_path %>
 <%= render 'form' %>

@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+  class UsersController < ApplicationController
   before_action :require_login, only: [:index, :edit, :update, :destroy]
 
   def index
@@ -34,6 +34,7 @@ class UsersController < ApplicationController
       @user = User.new(user_params)
 
       if @user.save
+        auto_login(@user)
         redirect_back_or_to user_path(@user)
       else
         render :new
@@ -76,8 +77,9 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    #image is nested in a hash
-    params.require(:user).permit(:name, :email, :password, :password_confirmation, :about_me, :avatar, :tag_list, :invite_code, :site_use, authentication_attributes: [:user_id, :provider, :uid])
+
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :about_me, :avatar, :tag_list, :invite_code, :message_notifications, :site_use, authentication_attributes: [:user_id, :provider, :uid])
+
   end
 
 

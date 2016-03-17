@@ -37,6 +37,7 @@ class User < ActiveRecord::Base
   validates :password, confirmation: true, on: :create
   validates :password_confirmation, presence: true, on: :create
   validates :email, uniqueness: true
+  validates_presence_of :message_notifications, :if => 'message_notifications.nil?'
 
   # validates_with CheckForInvite
 

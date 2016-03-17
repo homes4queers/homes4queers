@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+  class UsersController < ApplicationController
   before_action :require_login, only: [:index, :edit, :update, :destroy]
 
   def index
@@ -78,7 +78,7 @@ class UsersController < ApplicationController
 
   def user_params
     #image is nested in a hash
-    params.require(:user).permit(:name, :email, :password, :password_confirmation, :about_me, :avatar, :tag_list, :invite_code, authentication_attributes: [:user_id, :provider, :uid])
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :about_me, :avatar, :tag_list, :invite_code, :message_notifications, authentication_attributes: [:user_id, :provider, :uid])
   end
 
 

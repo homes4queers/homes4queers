@@ -77,8 +77,9 @@
   private
 
   def user_params
-    #image is nested in a hash
-    params.require(:user).permit(:name, :email, :password, :password_confirmation, :about_me, :avatar, :tag_list, :invite_code, :message_notifications, authentication_attributes: [:user_id, :provider, :uid])
+
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :about_me, :avatar, :tag_list, :invite_code, :message_notifications, :site_use, authentication_attributes: [:user_id, :provider, :uid])
+
   end
 
 

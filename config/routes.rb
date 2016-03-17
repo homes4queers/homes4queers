@@ -19,14 +19,14 @@ Rails.application.routes.draw do
   end
 
   resources :listings do
+    collection do
+      match 'search' => 'listings#search', via: [:get, :post], as: :search
+    end
     member do
       post 'favourite'
       delete 'unfavourite'
     end
     resources :comments
-    collection do
-      match 'search' => 'listings#search', via: [:get, :post], as: :search
-    end
   end
 
 

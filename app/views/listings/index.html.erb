@@ -2,44 +2,44 @@
 
 <h1>Listings</h1>
 
-    <%= button_tag 'Listings Near Me', id: 'search-nearby' %>
-  <br>
-  <br>
-<div class="row">
-  <div class="small-4 columns">
-    <%= search_form_for @q, url: search_listings_path,
-                            html: { method: :post } do |f| %>
-      <%= f.label :name_or_location_cont, "Search Listings" %>
-      <%= f.text_field :name_or_location_cont, placeholder:"e.g. price, name, location" %>
+<div class="map and search">
 
-      <%= f.submit %>
-      <% end %>
-      <%#= button_tag 'advanced_search' %>
-      <%# link_to "Advanced Search", render 'advanced_search' %>
-      <h4>Advanced Search</h4>
-
+  <div class="row">
+    <div class="large-4 columns">
       <%= search_form_for @q, url: search_listings_path,
                               html: { method: :post } do |f| %>
-      <%= f.label :price_gteq, "Minimum Price" %>
-      <%= f.number_field :price_gteq, placeholder: "0" %>
+        <%= f.label :name_or_location_cont, "Search Listings" %>
+        <%= f.text_field :name_or_location_cont, placeholder:"e.g. price, name, location" %>
 
-      <%= f.label :price_lteq, "Maximum Price" %>
-      <%= f.number_field :price_lteq, placeholder: "0" %>
+        <%= f.submit %>
+        <% end %>
+        <%#= button_tag 'advanced_search' %>
+        <%# link_to "Advanced Search", render 'advanced_search' %>
+        <h4>Advanced Search</h4>
 
-      <%= f.label :location_cont, "Address, Neighbourhood or City" %>
-      <%= f.text_field :location_cont, placeholder: "742 Evergreen Terrace" %>
+        <%= search_form_for @q, url: search_listings_path,
+                                html: { method: :post } do |f| %>
+        <%= f.label :price_gteq, "Minimum Price" %>
+        <%= f.number_field :price_gteq, placeholder: "0" %>
 
-      <%= f.label :bedrooms_gteq, "Minimum Number of bedrooms" %>
-      <%= f.number_field :bedrooms_gteq, placeholder: "0"%>
+        <%= f.label :price_lteq, "Maximum Price" %>
+        <%= f.number_field :price_lteq, placeholder: "0" %>
 
-      <%=  f.hidden_field :location_cont, value: "Toronto"  %>
+        <%= f.label :location_cont, "Address, Neighbourhood or City" %>
+        <%= f.text_field :location_cont, placeholder: "742 Evergreen Terrace" %>
 
-      <%= f.submit %>
-    <% end %>
-  </div>
+        <%= f.label :bedrooms_gteq, "Minimum Number of bedrooms" %>
+        <%= f.number_field :bedrooms_gteq, placeholder: "0"%>
 
-  <div class="small-8 columns">
-    <div id="map-index" data-latitude='43.7' data-longitude='-79.4' ></div>
+        <%=  f.hidden_field :location_cont, value: "Toronto"  %>
+
+        <%= f.submit %>
+      <% end %>
+    </div>
+
+    <div class="large-8 columns">
+      <div id="map-index" data-latitude='43.7' data-longitude='-79.4' ></div>
+    </div>
   </div>
 </div>
 

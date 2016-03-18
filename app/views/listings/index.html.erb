@@ -1,12 +1,12 @@
-<%= link_to 'Login with Facebook', auth_at_provider_path(:provider => :facebook) %>
 
 
-  <div class="search-listings">
-    <h1>Listings</h1>
+<h1>Listings</h1>
 
     <%= button_tag 'Listings Near Me', id: 'search-nearby' %>
   <br>
   <br>
+<div class="row">
+  <div class="small-4 columns">
     <%= search_form_for @q, url: search_listings_path,
                             html: { method: :post } do |f| %>
       <%= f.label :name_or_location_cont, "Search Listings" %>
@@ -25,7 +25,7 @@
 
       <%= f.label :price_lteq, "Maximum Price" %>
       <%= f.number_field :price_lteq, placeholder: "0" %>
-    <br>
+
       <%= f.label :location_cont, "Address, Neighbourhood or City" %>
       <%= f.text_field :location_cont, placeholder: "742 Evergreen Terrace" %>
 
@@ -36,10 +36,14 @@
 
       <%= f.submit %>
     <% end %>
-  </div><br>
+  </div>
+
+  <div class="small-8 columns">
+    <div id="map-index" data-latitude='43.7' data-longitude='-79.4' ></div>
+  </div>
+</div>
 
 
-<div id="map-index" data-latitude='43.7' data-longitude='-79.4' ></div>
 
   <div class="index-cards">
 

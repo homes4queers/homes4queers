@@ -1,41 +1,49 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>H4q</title>
-  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-</head>
-<body>
+    <title>Homes4Queers</title>
 
-<div class="user_nav">
-  <% if current_user %>
-    Logged in as <%= link_to current_user.name, user_path(current_user) %>
-    <%= link_to 'Logout', :logout, method: :post %>
-    <% if current_user.admin? %>
-      <%= link_to 'Admin Panel', admin_root_path %>
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= csrf_meta_tags %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+
+<div class="top-bar">
+  <nav class="top-bar" data-topbar role="navigation" data-options="sticky_on: large">
+
+    <% if current_user %>
+      Logged in as <%= link_to current_user.name, user_path(current_user) %>
+      <%= link_to 'Logout', :logout, method: :post %>
+      <% if current_user.admin? %>
+        <%= link_to 'Admin Panel', admin_root_path %>
+      <% end %>
+      <%= link_to 'Add a listing', new_listing_path  %>
+      <%= link_to 'My Favourites', user_favourites_path(current_user) %>
+      <%= link_to 'Inbox', conversations_path %>
+    <% else %>
+      <%= link_to 'Register', new_user_path %>
+      <%= link_to 'Login', :login %>
+      <%= link_to 'Login with Facebook', auth_at_provider_path(:provider => :facebook) %>
     <% end %>
-    <br><br>
-    <%= link_to 'Add a listing', new_listing_path  %>
-    <%= link_to 'My Favourites', user_favourites_path(current_user) %>
-    <%= link_to 'Inbox', conversations_path %>
-  <% else %>
-    <%= link_to 'Register', new_user_path %>
-    <%= link_to 'Login', :login %>
-  <% end %>
-</div>
- <div class="nav">
-   <%= link_to 'Listings', listings_path , data: { no_turbolink: true}%>
-   <%= link_to 'People', users_path  %>
+     <%= link_to 'Listings', listings_path , data: { no_turbolink: true}%>
+     <%= link_to 'People', users_path  %>
+   </nav>
  </div>
+ <header class="small-4 small-centered columns">
+   <%= image_tag '/H4qlogo_long.png', alt: "Homes 4 Queers welcome logo"%>
+ </header>
 
- <div>
-   <p id="notice"><%= flash[:notice] %></p>
-   <p id="alert"><%= flash[:alert] %></p>
- </div>
-<%= yield %>
+   <div>
+     <p id="notice"><%= flash[:notice] %></p>
+     <p id="alert"><%= flash[:alert] %></p>
+   </div>
+  <%= yield %>
 
-<%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=AIzaSyC49SZwfsHvdzEkLGZJClMzXunKm4kZ5YQ" %>
-</body>
+  <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=AIzaSyC49SZwfsHvdzEkLGZJClMzXunKm4kZ5YQ" %>
+  </body>
 </html>

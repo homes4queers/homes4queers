@@ -13,8 +13,8 @@
   Subject: <%= @conversation.subject %>
 <% end %>
 
-
-<div id="message-box">
+<div class="row">
+<div class="small-8 column">
 
   <div id="messages-all">
     <% @messages.each do |message| %>
@@ -41,4 +41,6 @@
     <%= f.submit "Send" %>
   </div>
   <% end %>
+</div>
+</div>
 </div>

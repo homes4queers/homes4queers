@@ -15,19 +15,20 @@
 //= require foundation_and_overrides
 
  */
-
- #map-index {
-   height: 25em;
-   width: 90%;
-   margin: 0 5%;
+ body{
+   background-color: rgb(255, 239, 173);
+ }
+ .content  {
+   background-color:rgb(255, 252, 240) ;
+ }
+ h1 {
+   text-align: center;
  }
 
- #map-show {
-   height: 250px;
-   width: 90%;
-   margin: 0 5%;
- }
-
- .map-seach-box{
-   max-height: 50em
+ .header{
+   //bg colour=yellow
+   background-color: rgb(255, 233, 88);
+   height: 15rem;
+   border-bottom-left-radius: 8rem;
+   border-bottom-right-radius: 8rem;
  }

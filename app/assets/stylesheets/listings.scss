@@ -1,3 +1,47 @@
 // Place all the styles related to the Listings controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+div.single-card :hover {
+  z-index: 4;
+  -webkit-transition: all 0.1s ease-in-out;
+  -moz-transition: all 0.1s ease-in-out;
+  -o-transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;
+  margin-top: -1%;
+  // margin-bottom: 2.5%;
+}
+.single-card ul {
+  font-size: 12px;
+  background-color:  rgb(255, 233, 88);
+  border-radius: 10px;
+  margin: .5rem .5rem;
+  padding: .5rem;
+  height: 20rem;
+  width: 13rem;
+  float: left;
+  list-style-type: none;
+  text-align: center;
+  overflow-y: auto;
+}
+.map{
+  // box-sizing: border-box;
+
+}
+
+ #map-index {
+   height: 25em;
+   width: 90%;
+   margin: 0 5%;
+ }
+
+ #map-show {
+   height: 250px;
+   width: 90%;
+   margin: 0 5%;
+ }
+
+ #pagination {
+   text-align: center;
+ }

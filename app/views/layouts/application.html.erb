@@ -15,23 +15,17 @@
 
 <div class="top-bar">
   <nav class="top-bar" data-topbar role="navigation" data-options="sticky_on: large">
-
     <% if current_user %>
       Logged in as <%= link_to current_user.name, user_path(current_user) %>
-      <%= link_to 'Logout', :logout, method: :post %><br>
+      <%= link_to 'Logout', :logout, method: :post %>
       <% if current_user.admin? %>
-        <%= link_to 'Admin Panel', admin_root_path %>
+        <%= link_to 'Admin Panel', admin_root_path%>
       <% end %>
-      <%= link_to 'Add a listing', new_listing_path  %>
-      <%= link_to 'My Favourites', user_favourites_path(current_user) %>
-      <%= link_to 'Inbox', conversations_path %>
     <% else %>
       <%= link_to 'Register', new_user_path %>
       <%= link_to 'Login', :login %>
       <%= link_to 'Login with Facebook', auth_at_provider_path(:provider => :facebook) %>
     <% end %>
-     <%= link_to 'Listings', listings_path , data: { no_turbolink: true}%>
-     <%= link_to 'People', users_path  %>
    </nav>
  </div>
 
@@ -40,14 +34,27 @@
    <header class="large-6 large-centered medium-8 medium-centered columns small-9 small-centered columns">
      <%= image_tag '/H4qlogo_long.png', alt: "Homes 4 Queers welcome logo"%>
    </header>
-  </div>
+
+     <div class="large-10 large-centered text-center">
+       <%= link_to 'Listings', listings_path , data: { no_turbolink: true}, class:'button purple' %>
+     <% if current_user %>
+       <%= link_to 'People', users_path, class:'button orange' %>
+       <%= link_to 'My Favourites', user_favourites_path(current_user), class:'button pink'%>
+       <%= link_to 'Inbox', conversations_path, class:'button green' %>
+       <%= link_to 'Add a listing', new_listing_path, class:'button' %>
+       <% end %>
+     </div>
+   </div>
+
 
    <div>
      <p id="notice"><%= flash[:notice] %></p>
      <p id="alert"><%= flash[:alert] %></p>
    </div>
+
   <%= yield %>
 </div>
+
 
 
   <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=AIzaSyC49SZwfsHvdzEkLGZJClMzXunKm4kZ5YQ" %>

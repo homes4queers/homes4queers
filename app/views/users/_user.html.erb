@@ -1,8 +1,8 @@
 <div class='single-card'>
     <ul>
       <%= link_to user_path(user) do %>
-     <li><%= image_tag user.avatar.thumb %></li>
-      <li><%=user.name%></li>
+     <li><%= image_tag user.avatar.thumb, class:'thumbnail' %></li>
+      <li><h4><%=user.name%></h4></li>
        <% end %>
        <div class="tag-list">
          <%= user.tag_list %>

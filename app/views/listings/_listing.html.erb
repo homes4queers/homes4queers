@@ -4,7 +4,7 @@
     <div class="single-card">
         <ul>
         <%= link_to listing_path(listing), data: { no_turbolink: true } do %>
-           <li><%= image_tag listing.thumbnail %></li>
+           <li><%= image_tag listing.thumbnail, class:'thumbnail' %></li>
            <li><h4> <%= listing.name %></h4></li>
            <% end %>
           <li>$<%= listing.price %>/month</li>

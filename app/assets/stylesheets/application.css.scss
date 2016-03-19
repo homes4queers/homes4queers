@@ -23,11 +23,11 @@
    background-color: rgb(255, 239, 173);
   // background-color: rgb(120, 71, 103);
    font-family: 'Cabin', sans-serif;
-   color: rgb(56, 48, 57);
+   color: rgb(56, 48, 57);//dark dark purple
  }
 
 
- h1 {
+ h1,h2,h3 {
    text-align: center;
    color: rgb(120, 71, 103);//title purple
    font-family: 'Lobster Two', cursive, serif;
@@ -40,12 +40,17 @@
  }
 
  header { //holds logo
-  background-color: rgb(255, 233, 88);//goldenrod
+  background-color: rgb(254, 244, 117);//goldenrod
   border-bottom-left-radius: 5rem;
   border-bottom-right-radius: 5rem;
 }
+
+label {
+  color: rgb(56, 48, 57);//dark dark purple
+}
+
 .top-bar {
-  background-color: rgb(74, 61, 50);//goldenrod
+  background-color: rgb(74, 61, 50);//brownish
   color: white;
   max-height:3rem;
 }
@@ -59,7 +64,17 @@ a.nav-bar:hover {
 
 //buttons
 .button {
- border-radius: 20rem;
+   border-radius: 20rem;
+ }
+
+.b.button:hover {
+   border-radius: 20rem;
+   z-index: 15;
+  -webkit-transition: all 0.1s ease-in-out;
+  -moz-transition: all 0.1s ease-in-out;
+  -o-transition: all 0.1s ease-in-out;
+   transition: all 0.1s ease-in-out;
+   margin-top: -1px;
 }
 
 .button.pink {
@@ -85,26 +100,40 @@ a.nav-bar:hover {
 
 .button.orange {
    background-color: rgb(239,106,50);//orange
-
 }
 .button.orange:hover, .button.orange:focus{
  background-color: rgb(180, 84, 44);//orange
 }
 
 .content {
-   background-color:rgb(255, 252, 240) ;
+  background-color:rgb(255, 252, 240) ;
+  border-left: solid 2px rgb(74, 61, 50);//brownish
+  border-right: solid 2px rgb(74, 61, 50);//brownish
 }
 
 .header {
-   background-image: url('/toronto3.png');
-   background-size: cover;
-   background-repeat: no-repeat;
-   background-position: center center;
-   height: 17rem;
-   border-bottom-left-radius: 8rem;
-   border-bottom-right-radius: 8rem;
-   box-shadow: 0px 5px 10px 0px rgb(120, 71, 103);
-}
-.thumbnail:hover {
+  background-image: url('/toronto3.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  height: 17rem;
+  border-bottom-left-radius: 8rem;
+  border-bottom-right-radius: 8rem;
   box-shadow: 0px 5px 10px 0px rgb(120, 71, 103);
+}
+.checkboxes ul{
+  list-style-type: none;
+}
+.single-card ul {
+  font-size: 12px;
+  background-color: rgb(254, 244, 117);//goldenrod
+  border-radius: 2rem;
+  margin: .5rem .5rem;
+  padding: .5rem;
+  height: 20rem;
+  width: 13rem;
+  float: left;
+  list-style-type: none;
+  text-align: center;
+  overflow-y: auto;
 }

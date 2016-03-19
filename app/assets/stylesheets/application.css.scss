@@ -15,12 +15,34 @@
 //= require foundation_and_overrides
 
  */
+@import url(https://fonts.googleapis.com/css?family=Lobster+Two:700);
+@import url(https://fonts.googleapis.com/css?family=Cabin);
+
+
  body{
    background-color: rgb(255, 239, 173);
+  // background-color: rgb(120, 71, 103);
+   font-family: 'Cabin', sans-serif;
+   color: rgb(56, 48, 57);
  }
  h1 {
    text-align: center;
+   color: rgb(120, 71, 103);//title purple
+   font-family: 'Lobster Two', cursive, serif;
+   text-shadow: 2px 2px rgb(232, 223, 238);
  }
+ h4 {
+   text-align: center;
+   color: rgb(120,71,103);
+   font-family: 'Lobster Two'
+ }
+
+ header{
+   background-color: rgb(255, 233, 88);
+   border-bottom-left-radius: 6rem;
+   border-bottom-right-radius: 6rem;
+}
+
  .button{
    border-radius: 20rem;
  }
@@ -53,16 +75,17 @@
    background-color: rgb(180, 84, 44);//orange
  }
 
-
-
  .content  {
    background-color:rgb(255, 252, 240) ;
  }
 
  .header{
-   //bg colour=yellow
-   background-color: rgb(255, 233, 88);
-   height: 15rem;
+   background-image: url('/toronto3.png');
+   background-size: cover;
+   background-repeat: no-repeat;
+   background-position: center center;
+   height: 17rem;
    border-bottom-left-radius: 8rem;
    border-bottom-right-radius: 8rem;
+   box-shadow: 0px 3px 10px 2px rgb(120, 71, 103);
  }

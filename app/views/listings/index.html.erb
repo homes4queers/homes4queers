@@ -9,7 +9,7 @@
       <%= f.label :name_or_location_cont, "Search Listings" %>
       <%= f.text_field :name_or_location_cont, placeholder:"any keywords" %>
 
-      <%= f.submit %>
+      <%= f.submit "Search", class: "button green" %>
       <% end %>
       <%#= button_tag 'advanced_search' %>
       <%# link_to "Advanced Search", render 'advanced_search' %>
@@ -31,7 +31,7 @@
 
       <%=  f.hidden_field :location_cont, value: "Toronto"  %>
 
-      <%= f.submit %>
+      <%= f.submit "Search", class: 'button' %>
     <% end %>
   </div>
 

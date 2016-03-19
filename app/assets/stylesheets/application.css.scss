@@ -39,10 +39,10 @@
    font-family: 'Lobster Two'
  }
 
- header {
+ header { //holds logo
   background-color: rgb(255, 233, 88);//goldenrod
-  border-bottom-left-radius: 6rem;
-  border-bottom-right-radius: 6rem;
+  border-bottom-left-radius: 5rem;
+  border-bottom-right-radius: 5rem;
 }
 .top-bar {
   background-color: rgb(74, 61, 50);//goldenrod
@@ -57,43 +57,44 @@ a.nav-bar:hover {
   color: rgb(154, 120, 142);//title purple
 }
 
- .button {
-   border-radius: 20rem;
+//buttons
+.button {
+ border-radius: 20rem;
+}
+
+.button.pink {
+ background-color: rgb(237,3,69); //pink
+}
+.button.pink:hover, .button.pink:focus{
+ background-color: rgb(184, 18, 41); //pink
+}
+
+.button.green {
+ background-color: rgb(3,195,131);//green
+}
+.button.green:hover, .button.green:focus{
+ background-color: rgb(12, 138, 96);//green
  }
 
- .button.pink {
-   background-color: rgb(237,3,69); //pink
- }
- .button.pink:hover, .button.pink:focus{
-   background-color: rgb(184, 18, 41); //pink
- }
+.button.purple {
+   background-color: rgb(113,1,98);//purple
+}
+.button.purple:hover, .button.purple:focus{
+ background-color: rgb(73, 7, 64);//purple
+}
 
- .button.green {
-   background-color: rgb(3,195,131);//green
- }
- .button.green:hover, .button.green:focus{
-   background-color: rgb(12, 138, 96);//green
- }
+.button.orange {
+   background-color: rgb(239,106,50);//orange
+}
+.button.orange:hover, .button.orange:focus{
+ background-color: rgb(180, 84, 44);//orange
+}
 
- .button.purple {
-     background-color: rgb(113,1,98);//purple
- }
- .button.purple:hover, .button.purple:focus{
-   background-color: rgb(73, 7, 64);//purple
- }
-
- .button.orange {
-     background-color: rgb(239,106,50);//orange
- }
- .button.orange:hover, .button.orange:focus{
-   background-color: rgb(180, 84, 44);//orange
- }
-
- .content {
+.content {
    background-color:rgb(255, 252, 240) ;
- }
+}
 
- .header {
+.header {
    background-image: url('/toronto3.png');
    background-size: cover;
    background-repeat: no-repeat;
@@ -102,5 +103,7 @@ a.nav-bar:hover {
    border-bottom-left-radius: 8rem;
    border-bottom-right-radius: 8rem;
    box-shadow: 0px 5px 10px 0px rgb(120, 71, 103);
-
- }
+}
+.thumbnail:hover {
+  box-shadow: 0px 5px 10px 0px rgb(120, 71, 103);
+}

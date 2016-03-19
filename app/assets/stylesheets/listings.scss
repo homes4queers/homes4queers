@@ -28,10 +28,12 @@
 }
 .nearby-card {
   background-color: rgb(254, 244, 117);//goldenrod
-  width: auto;
+  width: 13rem;
+  height: 15rem;
   border-radius: 2rem;
-  margin: 1rem;
-  padding: 1rem;
+  margin: .5rem .5rem;
+  padding: .5rem;
+  overflow-y:auto;
 }
 
 .thumbnail:hover, .thumbnail:focus {
@@ -62,7 +64,7 @@
     text-align: center;
   }
 
-  div.features_cloud ul li {
+  div.features_cloud li {
     background-color: white;
     padding: 0.25rem;
     margin: 0.25rem;
@@ -70,7 +72,7 @@
     display: inline-block;;
   }
 
-  div.features_cloud ul li.grey {
+  div.features_cloud li.grey {
     background-color: rgb(250, 240, 209);
     color: rgb(117, 117, 117);
   }

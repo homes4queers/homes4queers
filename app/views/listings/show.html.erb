@@ -1,4 +1,4 @@
-<div class="profile">
+<div class="listings">
 
   <% unless can? :manage, @listing %>
     <% unless current_user.favourite_listings.exists?(id: @listing.id) %>
@@ -116,22 +116,21 @@
 
 
   <hr>
+
+<h3>Nearby Listings</h3>
 <div class="row">
-
-    <h3>Nearby Listings</h3>
-
-    <div class="small-10 small-centered columns">
+  <div class="small-10 small-centered columns">
+    <ul class="small-block-grid-4">
       <% @nearby_listings.each do |list| %>
-    <div class="nearby-card large-3 medium-3 columns">
-      <div class="card">
-        <%= link_to listing_path(list) do %>
-          <br><strong><%= list.name %></strong>
-          <br><%= image_tag list.thumbnail, alt: 'listing thumbnail' %>
-        <% end %>
-        <br><%= list.display_distance_in_meters(@listing) %> meters away
-      </div>
-    </div>
-    <% end %>
+          <div class="nearby-card text-center">
+            <%= link_to listing_path(list) do %>
+              <h4><%= list.name %></h4>
+              <%= image_tag list.thumbnail, alt: 'listing thumbnail', class: "thumbnail" %>
+            <% end %>
+            <br><%= list.display_distance_in_meters(@listing) %> meters away
+          </div>
+      <% end %>
+    </ul>
   </div>
 </div>
 
@@ -141,9 +140,6 @@ window.nearby = <%=raw @nearby_listings.map {|n| {lat: n.latitude, lng: n.longit
 
 <hr>
 <h4>Testimonials</h4>
-<div class="">
-
-</div>
 <%= render 'comments' %>
 <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=AIzaSyC49SZwfsHvdzEkLGZJClMzXunKm4kZ5YQ" %>
 <%= javascript_include_tag 'map' %>

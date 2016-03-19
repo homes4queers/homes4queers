@@ -1,6 +1,6 @@
+<div class="large-11 large-centered">
 
-<div class="large-3 medium-4 small-6 columns single-card">
-
+<ul class="large-block-grid-4 ">
     <div class="single-card">
         <ul>
         <%= link_to listing_path(listing), data: { no_turbolink: true } do %>
@@ -9,7 +9,10 @@
            <% end %>
           <li>$<%= listing.price %>/month</li>
           <li><%= listing.location %></li>
-          <li>Available from:<br><%= listing.rent_date %></li>
+          <li>
+            Available from:<br>
+            <%= listing.rent_date %>
+          </li>
           <br>
           <% unless can? :manage, listing %>
             <% if current_user %>
@@ -22,4 +25,5 @@
           <% end %>
         </ul>
     </div>
+</ul>
 </div>

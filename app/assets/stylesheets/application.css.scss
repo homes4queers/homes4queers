@@ -25,7 +25,12 @@
    font-family: 'Cabin', sans-serif;
    color: rgb(56, 48, 57);//dark dark purple
  }
-
+a{
+  color: rgb(120, 71, 103);
+}
+a:hover{
+  color: rgb(255, 207, 0);
+}
 
  h1,h2,h3 {
    text-align: center;

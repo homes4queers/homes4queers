@@ -1,59 +1,68 @@
 <div class="profile">
-<h1><%= @user.name %></h1>
 
-<% if can? :manage, @user %>
-  <%= link_to "Edit My Profile", edit_user_path(@user) %>
-<% end %>
+  <h1><%= @user.name %></h1>
 
-<% unless can? :manage, @user %>
-<% if current_user %>
-  <% unless current_user.favourite_users.exists?(id: @user.id) %>
-    <%= link_to 'Add to favorites', favourite_user_path(user_id: @user), method: :post %>
-  <% else %>
-    <%= link_to 'Remove from favorites', unfavourite_user_path(@user), method: :delete %>
-  <% end %><br>
-
-  <%= link_to "Send me a message", conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: 'post'%><br>
+  <% if can? :manage, @user %>
+    <%= link_to "Edit My Profile", edit_user_path(@user) %>
+    <%= link_to "Delete Account", @user, method: :delete, data: {confirm: "Are you sure you want to delete your account? This cannot be undone!"} %><br>
+    <strong>My unique invite code:</strong> <%= @user.token %>
   <% end %>
-<% end %>
-<div class="info">
-  <%= link_to image_url @user.avatar do %>
-  <%= image_tag @user.avatar.thumb, class:"profile_pic", alt:"Profile picture thumbnail" %><br>
+
+  <% unless can? :manage, @user %>
+  <% if current_user %>
+      <% unless current_user.favourite_users.exists?(id: @user.id) %>
+        <%= link_to 'Add to favorites', favourite_user_path(user_id: @user), method: :post %>
+      <% else %>
+        <%= link_to 'Remove from favorites', unfavourite_user_path(@user), method: :delete %>
+      <% end %><br>
+      <%= link_to "Send me a message", conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: 'post'%><br>
+    <% end %>
   <% end %>
-</div>
 
-<div class="description">
-  <%= @user.about_me %><br>
-</div>
-<div class="tags">
-  <h4>Tags:</h4>
-  <%= @user.tag_list %>
-</div>
-</div>
+  <div class="info">
+    <%= link_to image_url @user.avatar do %>
+    <%= image_tag @user.avatar.thumb, class:"profile_pic", alt:"Profile picture thumbnail" %><br>
+    <% end %>
+  </div>
 
-<hr>
+  <div class="description">
+    <%= @user.about_me %><br>
+  </div>
+  <div class="tags">
+    <h4>Tags:</h4>
+    <%= @user.tag_list %>
+  </div>
 
-<div class="comments">
-<h4>User Comments</h4>
-<%= render 'comments' %>
 
-<% if can? :manage, @user %>
-<strong>My unique invite code:</strong> <%= @user.token %>
-<%= link_to "Delete Account", @user, method: :delete, data: {confirm: "Are you sure you want to delete your account? This cannot be undone!"} %><br>
-<% end %>
-</div>
-
-<%= @user.name %>'s Listings
-<div class="single-card">
-  <% @user.listings.each do |list| %>
-  <div class='single-listing'>
-    <ul>
-      <%= link_to listing_path(list) do %>
-      <li><br><%= list.name %></li>
-      <li><br><%= image_tag list.thumbnail %></li>
-      <li><br><%= list.location %></li>
+  <% if @user.listings.any? %>
+  <h3><%= @user.name %>'s Listings</h3>
+    <div class="row">
+      <% @user.listings.each do |list| %>
+        <div class="small-10 small-centered ">
+          <ul class=large-block-grid-4>
+            <div class="single-card">
+              <ul>
+                <%= link_to listing_path(list) do %>
+                <li><%= image_tag list.thumbnail, class:'thumbnail' %></li>
+                <li><h4><%= list.name %></h4></li>
+                <% end %>
+                <li><%= list.price %></li>
+                <li><%= list.location %></li>
+                <li>
+                  Available from:<br>
+                  <%= list.rent_date %>
+                </li>
+              </ul>
+            </div>
+          </ul>
+        </div>
       <% end %>
     </div>
-  </ul>
   <% end %>
+
+  <div class="comments">
+    <h4>User Comments</h4>
+    <%= render 'comments' %>
+  </div>
+
 </div>

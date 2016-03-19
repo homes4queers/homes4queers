@@ -15,8 +15,8 @@
 
 .single-card ul {
   font-size: 12px;
-  background-color:  rgb(255, 233, 88);
-  border-radius: 10px;
+  background-color: rgb(254, 244, 117);//goldenrod
+  border-radius: 2rem;
   margin: .5rem .5rem;
   padding: .5rem;
   height: 20rem;
@@ -26,11 +26,20 @@
   text-align: center;
   overflow-y: auto;
 }
+.nearby-card {
+  background-color: rgb(254, 244, 117);//goldenrod
+  width: auto;
+  border-radius: 2rem;
+  margin: 1rem;
+  padding: 1rem;
+}
 
+.thumbnail:hover, .thumbnail:focus {
+  box-shadow: 0px 5px 10px 0px rgb(120, 71, 103);
+}
 .thumbnail{
   border-radius: 10%;
 }
-
 
  #map-index {
    height: 25em;
@@ -39,7 +48,7 @@
  }
 
  #map-show {
-   height: 250px;
+   height: 15em;
    width: 90%;
    margin: 0 5%;
  }
@@ -47,3 +56,21 @@
  #pagination {
    text-align: center;
  }
+ div.features_cloud ul {
+    margin: 0 15% 0 10%;
+    list-style-type: none;
+    text-align: center;
+  }
+
+  div.features_cloud ul li {
+    background-color: white;
+    padding: 0.25rem;
+    margin: 0.25rem;
+    border-radius: 10%;
+    display: inline-block;;
+  }
+
+  div.features_cloud ul li.grey {
+    background-color: rgb(250, 240, 209);
+    color: rgb(117, 117, 117);
+  }

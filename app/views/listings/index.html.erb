@@ -54,7 +54,7 @@
   </div>
   </div>
 </div>
-<p id="pagination"<%= paginate @listings %></p>
+<p><%= paginate @listings %></p>
 
 
 
@@ -62,4 +62,5 @@
 <%= javascript_tag do %>
 window.nearby = <%=raw @listings.map {|n| {lat: n.latitude, lng: n.longitude, name: n.name, desc: n.description, price: n.price, bedrooms: n.bedrooms, photo: n.thumbnail.url, date: n.rent_date, id: n.id}}.to_json %>;
 <% end %>
+<%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=AIzaSyC49SZwfsHvdzEkLGZJClMzXunKm4kZ5YQ" %>
 <%= javascript_include_tag 'map' %>

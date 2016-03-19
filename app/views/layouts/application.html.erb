@@ -35,13 +35,13 @@
      <%= image_tag '/H4qlogo_long.png', alt: "Homes 4 Queers welcome logo"%>
    </header>
 
-     <div class="large-10 large-centered text-center">
-       <%= link_to 'Listings', listings_path , data: { no_turbolink: true}, class:'button purple' %>
+     <div class="large-10 large-centered text-center buttons">
+       <%= link_to 'Listings', listings_path , data: { no_turbolink: true}, class:'b button purple' %>
      <% if current_user %>
-       <%= link_to 'People', users_path, class:'button orange' %>
-       <%= link_to 'My Favourites', user_favourites_path(current_user), class:'button pink'%>
-       <%= link_to 'Inbox', conversations_path, class:'button green' %>
-       <%= link_to 'Add a listing', new_listing_path, class:'button' %>
+       <%= link_to 'People', users_path, class:'b button orange' %>
+       <%= link_to 'My Favourites', user_favourites_path(current_user), class:'b button pink'%>
+       <%= link_to 'Inbox', conversations_path, class:'b button green' %>
+       <%= link_to 'Add a listing', new_listing_path, class:'b button' %>
        <% end %>
      </div>
    </div>
@@ -53,10 +53,8 @@
    </div>
 
   <%= yield %>
+
 </div>
 
-
-
-  <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=AIzaSyC49SZwfsHvdzEkLGZJClMzXunKm4kZ5YQ" %>
   </body>
 </html>

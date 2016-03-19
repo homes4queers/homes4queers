@@ -52,4 +52,6 @@ resources :users
   resources :conversations do
     resources :messages
   end
+
+  resources :tags, only: [:index, :show]
 end

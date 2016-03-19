@@ -85,10 +85,18 @@ class ListingsController < ApplicationController
     end
   end
 
+  def search_listings
+    respond_to do |format|
+      format.js
+    end
+  end
+
   private
 
   def listing_params
-    params.require(:listing).permit(:name, :description, :location, :user_id, :roomates, :bedrooms, :price, :basement, :sublet, :rent_date, images_attributes: [:photo])
+    params.require(:listing).permit(:name, :description, :location, :user_id, :roomates, :bedrooms, :price, :basement, :sublet, :rent_date,
+    :utilities_included, :space_type, :current_roommates, :wheelchair_accessible, :visually_accessible, :hearing_accessible, :assistance_animal, :fridge, :stove, :dishwasher, :microwave, :bathtub, :fireplace, :ac, :electric_heat, :forced_air_heat, :boiler_system, :cats, :dogs, :small_pets, :ensuite_laundry, :shared_laundry, :coinop_laundry, :balcony, :deck, :yard_shared, :yard_private, :pool, :exercise_room, :party_room, :furnished, :parking, :on_street_parking, :smoking,
+     images_attributes: [:photo])
   end
 
 end

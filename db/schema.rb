@@ -45,6 +45,17 @@ ActiveRecord::Schema.define(version: 20160316220630) do
     t.string   "subject"
   end
 
+  create_table "extended_profile_attributes", force: :cascade do |t|
+    t.string   "email_link"
+    t.string   "facebook_url"
+    t.string   "twitter_url"
+    t.string   "instagram_url"
+    t.string   "website_url"
+    t.integer  "user_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
   create_table "favourites", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "favourited_id"
@@ -68,8 +79,8 @@ ActiveRecord::Schema.define(version: 20160316220630) do
     t.text     "description"
     t.string   "location"
     t.integer  "user_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
     t.float    "latitude"
     t.float    "longitude"
     t.integer  "bedrooms"
@@ -78,6 +89,42 @@ ActiveRecord::Schema.define(version: 20160316220630) do
     t.integer  "price"
     t.boolean  "basement"
     t.boolean  "sublet"
+    t.boolean  "utilities_included"
+    t.string   "space_type"
+    t.integer  "current_roommates"
+    t.boolean  "wheelchair_accessible"
+    t.boolean  "visually_accessible"
+    t.boolean  "hearing_accessible"
+    t.boolean  "assistance_animal"
+    t.boolean  "fridge"
+    t.boolean  "stove"
+    t.boolean  "dishwasher"
+    t.boolean  "microwave"
+    t.boolean  "bathtub"
+    t.boolean  "fireplace"
+    t.boolean  "ac"
+    t.boolean  "electric_heat"
+    t.boolean  "forced_air_heat"
+    t.boolean  "boiler_system"
+    t.boolean  "cats"
+    t.boolean  "dogs"
+    t.boolean  "small_pets"
+    t.boolean  "ensuite_laundry"
+    t.boolean  "shared_laundry"
+    t.boolean  "coinop_laundry"
+    t.boolean  "balcony"
+    t.boolean  "deck"
+    t.boolean  "yard_shared"
+    t.boolean  "yard_private"
+    t.boolean  "pool"
+    t.boolean  "exercise_room"
+    t.boolean  "party_room"
+    t.boolean  "furnished"
+    t.boolean  "parking"
+    t.boolean  "on_street_parking"
+    t.boolean  "smoking"
+    t.boolean  "nonsmoking"
+    t.boolean  "flagged"
   end
 
   add_index "listings", ["user_id"], name: "index_listings_on_user_id", using: :btree
@@ -117,7 +164,7 @@ ActiveRecord::Schema.define(version: 20160316220630) do
   create_table "users", force: :cascade do |t|
     t.string   "name"
     t.text     "about_me"
-    t.string   "email",                                               null: false
+    t.string   "email",                           default: "---\n:null: true\n", null: false
     t.string   "crypted_password"
     t.string   "salt"
     t.datetime "created_at"
@@ -131,6 +178,8 @@ ActiveRecord::Schema.define(version: 20160316220630) do
     t.string   "token"
     t.string   "invite_code"
     t.string   "role",                            default: "default"
+    t.string   "site_use"
+    t.boolean  "flagged"
     t.string   "reset_password_token"
     t.datetime "reset_password_token_expires_at"
     t.datetime "reset_password_email_sent_at"

@@ -28,19 +28,19 @@ resources :users
 
 
   resources :listings do
+    collection do
+      match 'search' => 'listings#search', via: [:get, :post], as: :search
+    end
     member do
       post 'favourite'
       delete 'unfavourite'
     end
     resources :comments
-    collection do
-      match 'search' => 'listings#search', via: [:get, :post], as: :search
-    end
   end
 
   resources :user_sessions, only: [:new, :create, :destroy]
   resources :password_resets
-  
+
   get 'login' => 'user_sessions#new', as: :login
   post 'logout' => 'user_sessions#destroy', as: :logout
 

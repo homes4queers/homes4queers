@@ -26,10 +26,11 @@
       <%= f.label :location_cont, "Address, Neighbourhood or City" %>
       <%= f.text_field :location_cont, placeholder: "742 Evergreen Terrace" %>
 
-      <%= f.label :bedrooms_gteq, "Minimum Number of bedrooms" %>
-      <%= f.number_field :bedrooms_gteq, placeholder: "0"%>
 
-      <%=  f.hidden_field :location_cont, value: "Toronto"  %>
+    <%= f.label :bedrooms_gteq, "Minimum Number of bedrooms" %>
+    <%= f.number_field :bedrooms_gteq, placeholder: "0"%>
+
+    <%=  f.hidden_field :location_cont, value: "Toronto"  %>
 
       <%= f.submit "Search", class: 'button' %>
     <% end %>
@@ -39,7 +40,6 @@
     <div id="map-index" data-latitude='43.7' data-longitude='-79.4' ></div>
   </div>
 </div>
-
 
 
 

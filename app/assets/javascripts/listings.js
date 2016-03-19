@@ -20,3 +20,5 @@ function works(position){
 function worksNot(error){
   console.log('AAAAAAAAAH' + error.message);
 }
+
+$('#listing_search_fields').html("<%= escape_javascript( render :partial => 'advanced_search' %>");

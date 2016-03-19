@@ -1,10 +1,23 @@
 <div class='single-card'>
     <ul>
-      <%= link_to user_path(user) do %>
-     <li><%= image_tag user.avatar.thumb, class:'thumbnail' %></li>
+    <%= link_to user_path(user) do %>
+      <li><%= image_tag user.avatar.thumb, class:'thumbnail' %></li>
       <li><h4><%=user.name%></h4></li>
-       <% end %>
-       <div class="tag-list">
+      <% if user.site_use == "looking_for_home" %>
+        <p class=home_seeker>
+          Looking for a home!
+        </p>
+      <% elsif user.site_use == "looking_for_roommate" %>
+      <p class=roommate_seeker>
+        Looking for a roommate!
+      </p>
+      <% elsif user.site_use == "looking_for_tenant" %>
+      <p class=tenant_seeker>
+        Looking for a tenant!
+      </p>
+      <% end %>
+    <% end %>
+        <div class="tag-list">
          <%= user.tag_list %>
        </div>
         <% if current_user %>
@@ -15,6 +28,6 @@
              <li><%= link_to 'Remove from favorites', unfavourite_user_path(user.id), method: :delete %></li>
            <% end %>
          <% end %>
-         <% end %>
+       <% end %>
       </ul>
   </div>

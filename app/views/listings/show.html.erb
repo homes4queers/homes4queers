@@ -27,6 +27,78 @@
     <%= @listing.description %>
   </div>
 
+<div class="features_cloud">
+<h3>Features and Amenities:</h3>
+
+<ul>
+<% if @listing.wheelchair_accessible? %><li>Wheelchair Accessible</li><% end %>
+<% if @listing.visually_accessible? %><li>Accessible for the Visually Impaired</li><% end %>
+<% if @listing.hearing_accessible? %><li>Accessible for the hearing impaired</li><% end %>
+<% if @listing.assistance_animal? %><li>Assistance Animal Friendly</li><% end %>
+
+<% unless @listing.wheelchair_accessible? || @listing.visually_accessible? || @listing.hearing_accessible? || @listing.assistance_animal? %>
+<li class=grey>No Accessibility</li><% end %>
+
+<% if @listing.furnished? %><li>Furnished</li>
+<% else %><li>Unfurnished</li><% end %>
+
+<% if @listing.fridge? %><li>Fridge</li><% end %>
+<% if @listing.stove? %><li>Stove</li><% end %>
+<% if @listing.dishwasher? %><li>Dishwasher</li><% end %>
+<% if @listing.microwave? %><li>Microwave</li><% end %>
+
+<% unless @listing.fridge? || @listing.stove? || @listing.dishwasher? || @listing.microwave? %>
+<li class=grey>No Appliances Included</li><% end %>
+
+<% if @listing.bathtub? %><li>Bathtub</li><% end %>
+<% if @listing.fireplace? %><li>Fireplace</li><% end %>
+
+<% if @listing.ac? %><li>Central AC</li>
+<% else %><li class=grey>No AC</li><% end %>
+
+<% if @listing.electric_heat? %><li>Electric heating</li><% end %>
+<% if @listing.forced_air_heat? %><li>Forced air heating</li><% end %>
+<% if @listing.boiler_system? %><li>Boiler system heating</li><% end %>
+
+<% unless @listing.electric_heat? || @listing.forced_air_heat? || @listing.boiler_system? %>
+<li class=grey>No Heating</li><% end %>
+
+<% if @listing.cats? %><li>Cats OK</li><% end %>
+<% if @listing.dogs? %><li>Dogs OK</li><% end %>
+<% if @listing.small_pets? %><li>Small pets OK</li><% end %>
+
+<% unless @listing.cats? || @listing.dogs? || @listing.small_pets? %>
+<li class=grey>No Pets</li><% end %>
+
+<% if @listing.ensuite_laundry? %><li>Ensuite laundry</li><% end %>
+<% if @listing.shared_laundry? %><li>Shared laundry</li><% end %>
+<% if @listing.coinop_laundry? %><li>Coin-operated laundry</li><% end %>
+
+<% unless @listing.ensuite_laundry? || @listing.shared_laundry? || @listing.coinop_laundry? %>
+<li class=grey>No Laundry Included</li><% end %>
+
+<% if @listing.balcony? %><li>Balcony</li><% end %>
+<% if @listing.deck? %><li>Deck</li><% end %>
+<% if @listing.yard_shared? %><li>Shared Yard</li><% end %>
+<% if @listing.yard_private? %><li>Private Yard</li><% end %>
+
+<% unless @listing.balcony? || @listing.deck? || @listing.yard_shared? || @listing.yard_private? %>
+<li class=grey>No Outdoor Space</li><% end %>
+
+<% if @listing.pool? %><li>Pool</li><% end %>
+<% if @listing.exercise_room? %><li>Exercise Room</li><% end %>
+<% if @listing.party_room? %><li>Party Room</li><% end %>
+
+<% if @listing.parking? %><li>Parking</li><% end %>
+<% if @listing.on_street_parking? %><li>On-street Parking</li><% end %>
+<% unless @listing.parking? || @listing.on_street_parking? %>
+<li class=grey>No Parking Available</li><% end %>
+
+<% if @listing.smoking == "smoking" %><li>Smoking OK</li>
+<% else %><li>Non-Smoking</li><% end %>
+</ul>
+</div>
+
   <div class="posted_by">
     This listing was made by <%= link_to @listing.user.name, @listing.user %>
   </div>

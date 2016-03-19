@@ -1,13 +1,11 @@
 <div class="new comment">
-  <% unless can? :manage, @listing %>
     <%= render :partial => 'comments/comment_form' %>
-  <% end %>
 </div>
 <hr>
 <% @listing.comments.each do |c| %>
   <div class="show comment">
     <b><%= link_to c.user.name, user_path(c.user_id) %> says: </b><br>
-    <%= c.body %><br>
+    <blockquote><%= c.body %><br></blockquote>
     <%= c.created_at.to_formatted_s(:long) %>
     <hr>
   </div>

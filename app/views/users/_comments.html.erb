@@ -4,7 +4,7 @@
 <hr>
 <% @user.user_comments.each do |p| %>
   <div class="show comment">
-    <b><%= p.user.name %> says:  </b><br>
+    <b><%= p.user.name %> says:</b><br>
     <%= p.body %><br>
     <%= p.created_at.to_formatted_s(:long) %>
     <hr>

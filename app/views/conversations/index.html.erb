@@ -7,7 +7,7 @@
    <% else %>
      <% recipient = User.find(conversation.sender_id) %>
    <% end %>
-   <%= link_to "#{recipient.name} : #{conversation.subject}", conversation_messages_path(conversation)%><br>
+   <%= link_to "#{recipient.name} : #{conversation.subject}", conversation_messages_path(conversation), target: 'message_frame'%><br>
   <% end %>
  <% end %>
  </div>
@@ -25,11 +25,11 @@
   <% @users.sort_by {|u| u.name.downcase}.each do |user| %>
    <% if user.id != current_user.id %>
     <div class=”item”>
-  <%= user.name %> <%= link_to "‘Message me!’", conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post'%>
+  <%= user.name %> <%= link_to "‘Message me!’", conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post', target: 'message_frame'%>
   <% end %>
 </div>
  <% end %>
 
 <div id="messages">
-
+  <iframe src="#{conversation_messages_path(@conversation)}" width="300px" height="300px" name="message_frame"></iframe>
 </div>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160316220630) do
+ActiveRecord::Schema.define(version: 20160317214317) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20160316220630) do
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
     t.integer  "user_id"
+    t.boolean  "flagged"
   end
 
   add_index "comments", ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id", using: :btree
@@ -43,6 +44,7 @@ ActiveRecord::Schema.define(version: 20160316220630) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "subject"
+    t.boolean  "flagged"
   end
 
   create_table "extended_profile_attributes", force: :cascade do |t|
@@ -84,7 +86,6 @@ ActiveRecord::Schema.define(version: 20160316220630) do
     t.float    "latitude"
     t.float    "longitude"
     t.integer  "bedrooms"
-    t.boolean  "roomates"
     t.date     "rent_date"
     t.integer  "price"
     t.boolean  "basement"
@@ -123,7 +124,6 @@ ActiveRecord::Schema.define(version: 20160316220630) do
     t.boolean  "parking"
     t.boolean  "on_street_parking"
     t.boolean  "smoking"
-    t.boolean  "nonsmoking"
     t.boolean  "flagged"
   end
 

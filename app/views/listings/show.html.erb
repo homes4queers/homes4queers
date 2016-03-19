@@ -94,7 +94,7 @@
 <% unless @listing.parking? || @listing.on_street_parking? %>
 <li class=grey>No Parking Available</li><% end %>
 
-<% if @listing.smoking == "smoking" %><li>Smoking OK</li>
+<% if @listing.smoking == true %><li>Smoking OK</li>
 <% else %><li>Non-Smoking</li><% end %>
 </ul>
 </div>

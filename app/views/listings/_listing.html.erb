@@ -2,11 +2,11 @@
 
 <ul class="large-block-grid-4 ">
     <div class="single-card">
-        <ul>
+      <ul>
         <%= link_to listing_path(listing), data: { no_turbolink: true } do %>
-           <li><%= image_tag listing.thumbnail, class:'thumbnail' %></li>
-           <li><h4> <%= listing.name %></h4></li>
-           <% end %>
+          <li><%= image_tag listing.thumbnail, class:'thumbnail' %></li>
+          <li><h4> <%= listing.name %></h4></li>
+        <% end %>
           <li>$<%= listing.price %>/month</li>
           <li><%= listing.location %></li>
           <li>
@@ -20,10 +20,10 @@
                 <li class="favourite-link"><%= link_to 'Add to favourites', favourite_listing_path(listing.id), method: :post %></li>
               <% else %>
                 <li class="unfavourite-link"><%= link_to 'Remove from favourites', unfavourite_listing_path(listing.id), method: :delete %></li>
-              <% end %>
-            <% end %>
-          <% end %>
+              <% end %><!--end unless current user.favourite-->
+            <% end %><!--end if current user-->
+          <% end %><!--end unless can? -->
         </ul>
-    </div>
-</ul>
+    </div><!--end single-card-->
+</ul><!-- end large-block grid -->
 </div>

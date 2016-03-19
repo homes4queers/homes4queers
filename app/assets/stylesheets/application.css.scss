@@ -79,7 +79,7 @@ a.nav-bar:hover {
   -moz-transition: all 0.1s ease-in-out;
   -o-transition: all 0.1s ease-in-out;
    transition: all 0.1s ease-in-out;
-   margin-top: -1px;
+   margin-top: -2px;
 }
 
 .button.pink {
@@ -129,6 +129,11 @@ a.nav-bar:hover {
 .checkboxes ul{
   list-style-type: none;
 }
+
+.comment-box{
+  height:7rem;
+}
+
 .single-card ul {
   font-size: 12px;
   background-color: rgb(254, 244, 117);//goldenrod

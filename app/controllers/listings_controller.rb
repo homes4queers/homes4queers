@@ -57,7 +57,7 @@ class ListingsController < ApplicationController
     @listing = Listing.find(params[:id])
 
     if @listing.update_attributes(listing_params)
-      redirect_back_or_to listing_path(@listing)
+      redirect_to listing_path(@listing)
     else
       render :edit
     end

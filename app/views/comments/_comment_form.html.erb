@@ -1,10 +1,13 @@
+<div class="large-6 large-centered ">
+
 <%= form_for [@commentable, Comment.new] do |f| %>
   <div class="field">
     <%= f.label :body, "Add a New Comment" %><br>
-    <%= f.text_area :body %><br>
+    <%= f.text_area :body, class:"comment-box" %><br>
     <%= f.hidden_field :commentable_type, value: @commentable.class.to_s %>
     <%= f.hidden_field :commentable_id, value: @commentable.id %>
   </div>
 
-  <%= f.submit "Add Comment" %><br>
+  <%= f.submit "Add Comment", class:"button pink" %><br>
   <% end %>
+</div>

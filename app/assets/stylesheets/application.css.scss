@@ -26,13 +26,6 @@
    color: rgb(56, 48, 57);
  }
 
- a {
-   color: rgb(255, 233, 88);//title purple
- }
-
- a:hover {
-   color: rgb(154, 120, 142);//title purple
- }
 
  h1 {
    text-align: center;
@@ -55,6 +48,13 @@
   background-color: rgb(74, 61, 50);//goldenrod
   color: white;
   max-height:3rem;
+}
+a.nav-bar {
+  color: rgb(255, 233, 88);//title purple
+}
+
+a.nav-bar:hover {
+  color: rgb(154, 120, 142);//title purple
 }
 
  .button {

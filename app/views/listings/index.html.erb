@@ -9,7 +9,7 @@
       <%= f.label :name_or_location_or_description_cont, "Search Listings" %>
       <%= f.text_field :name_or_location_or_description_cont, placeholder:"any keywords" %>
 
-  <%= f.hidden_field :created_at_gteq, :value => "2016-01-01"%>
+      <%= f.hidden_field :created_at_gteq, :value => "2016-01-01"%>
       <%= f.submit "Search", class: "button green" %>
       <% end %>
       <%#= button_tag 'advanced_search' %>
@@ -51,9 +51,10 @@
   <%= f.number_field :bedrooms_gteq, placeholder: "0"%>
 
 
-  <%#= f.check_box :space_type_eq: "full_space" %>
-  <%#= f.label :space_type_eq, "Full Spaces Only" %>
-
+  <%= f.radio_button :space_type_eq, "full_space" %>
+  <%= f.label :space_type_eq, "Full private space only", :value => "full_space" %>
+  <%= f.radio_button :space_type_eq, "shared_space" %>
+  <%= f.label :space_type_eq, "Room in shared space only", :value => "shared_space" %>
 
   <%= f.radio_button :basement_false, true %>
   <%= f.label :basement_false, "No Basements", :value => true %>
@@ -62,7 +63,7 @@
   <%= f.radio_button :utilities_included_true, true %>
   <%= f.label :utilities_included_true, "Utilities Included", :value => true %>
 
-  <%= f.radio_button :furnished_false, true %>
+  <br><%= f.radio_button :furnished_false, true %>
   <%= f.label :furnished_false, "Unfurnished", :value => true %>
   <%= f.radio_button :furnished_false, false %>
   <%= f.label :furnished_false, "Furnished", :value => false %>
@@ -109,6 +110,18 @@
 <p id="pagination"><small><%= page_entries_info @listings %></small></p>
 <div class="row">
   <div class="large-12 large-centered ">
+
+
+    <p id="demo">Sort By: </p>
+
+    <script>
+    document.getElementById("demo").onclick = function() {myFunction()};
+
+    function myFunction() {
+        document.getElementById("demo").innerHTML = "
+        <%= sort_link(@q, :rent_date, 'Rent Start Date') %>";
+    }
+    </script>
 
   <div class="index-cards">
 

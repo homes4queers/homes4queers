@@ -19,13 +19,27 @@
 
     <%= f.label :bedrooms_gteq, "Minimum Number of bedrooms" %>
     <%= f.number_field :bedrooms_gteq, placeholder: "0"%>
+    <%#= f.check_box :space_type_eq: "full_space" %>
+    <%#= f.label :space_type_eq, "Full Spaces Only" %>
 
-    <%=  f.hidden_field :location_cont, value: "Toronto"  %>
+    <%#=  f.hidden_field :location_cont, value: "Toronto"  %>
 
     <%= f.submit %>
   <% end %>
 
-</div>
+  <%= search_form_for @q, url: search_listings_path,
+                          html: { method: :post } do |f| %>
+  <%= f.check_box :basement_false %>
+  <%= f.label :basement_false, "No Basements" %>
+      <%= f.submit %>
+  <% end %>
+  <%= search_form_for @q, url: search_listings_path,
+                          html: { method: :post } do |f| %>
+  <%= f.check_box :sublet_false %>
+  <%= f.label :sublet_false, "No Basements" %>
+      <%= f.submit %>
+  <% end %>
+
 
 <div id="map-index" data-latitude='43.7' data-longitude='-79.4' ></div>
 

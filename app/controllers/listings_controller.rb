@@ -4,7 +4,7 @@ class ListingsController < ApplicationController
   def index
     @q = Listing.ransack(params[:q])
     if params[:q]
-      @listings = @q.result.distinct.page(params[:page]).per(10)
+      @listings = @q.result.distinct.page(params[:page]).per(8)
       @q.build_condition if @q.conditions.empty?
       @q.sorts = 'created_at desc' if @q.sorts.empty?
       # @listings = Listing.near(params[:q])

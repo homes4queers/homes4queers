@@ -27,9 +27,14 @@
 </div>
 <div class="tags">
   <h4>Tags:</h4>
-  <%= render @user.tags %>
+  <% @user.tags.each do |tag| %>
+  <div class="tags_each">
+    <%= link_to tag.name, tag_path(tag) %>
+  </div>
+  <% end %>
+
 </div>
-</div>
+
 
 <hr>
 
@@ -38,7 +43,7 @@
 <%= render 'comments' %>
 
 <% if can? :manage, @user %>
-<strong>My unique invite code:</strong> <%= @user.token %>
+<strong>My unique invite code:</strong> <%= @user.token %> |
 <%= link_to "Delete Account", @user, method: :delete, data: {confirm: "Are you sure you want to delete your account? This cannot be undone!"} %><br>
 <% end %>
 </div>

@@ -63,14 +63,16 @@
   }
 
   div.features_cloud ul li {
-    background-color: white;
-    padding: 0.25rem;
+    background-color: rgb(239,106,50);
+    color: white;
+    border: 1px;
+  border-radius: 10%;
     margin: 0.25rem;
-    border-radius: 10%;
+  padding: 0.2rem 0.4rem;
     display: inline-block;;
   }
 
   div.features_cloud ul li.grey {
-    background-color: rgb(250, 240, 209);
+    background: white;
     color: rgb(117, 117, 117);
   }

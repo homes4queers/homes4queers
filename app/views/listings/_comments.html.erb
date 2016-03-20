@@ -1,13 +1,13 @@
 <div class="new comment">
     <%= render :partial => 'comments/comment_form' %>
   </div>
-<div class="large-11 large centered columns">
+<div class="large-11 large-centered columns">
 
 <% @listing.comments.each do |c| %>
   <div class="show comment">
+    <%= c.created_at.to_formatted_s(:long) %>
     <b><%= link_to c.user.name, user_path(c.user_id) %> says: </b><br>
     <blockquote><%= c.body %><br></blockquote>
-    <%= c.created_at.to_formatted_s(:long) %>
     <hr>
   </div>
 <% end %>

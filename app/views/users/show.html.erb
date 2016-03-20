@@ -1,68 +1,79 @@
 <div class="profile">
 
-  <h1><%= @user.name %></h1>
-
   <% if can? :manage, @user %>
-    <%= link_to "Edit My Profile", edit_user_path(@user) %>
-    <%= link_to "Delete Account", @user, method: :delete, data: {confirm: "Are you sure you want to delete your account? This cannot be undone!"} %><br>
-    <strong>My unique invite code:</strong> <%= @user.token %>
+  <%= link_to "Edit Profile", edit_user_path(@user), class:'button orange' %>
+  <%= link_to "Delete Account", @user, method: :delete, data: {confirm: "Are you sure you want to delete your account? This cannot be undone!"}, class:"button" %><br>
+  <strong>My unique invite code:</strong> <%= @user.token %>
   <% end %>
 
-  <% unless can? :manage, @user %>
-  <% if current_user %>
-      <% unless current_user.favourite_users.exists?(id: @user.id) %>
-        <%= link_to 'Add to favorites', favourite_user_path(user_id: @user), method: :post %>
-      <% else %>
-        <%= link_to 'Remove from favorites', unfavourite_user_path(@user), method: :delete %>
-      <% end %><br>
-      <%= link_to "Send me a message", conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: 'post'%><br>
-    <% end %>
-  <% end %>
+<div class="row">
+  <div class="small-10 small-centered columns text-center">
 
-  <div class="info">
-    <%= link_to image_url @user.avatar do %>
-    <%= image_tag @user.avatar.thumb, class:"profile_pic", alt:"Profile picture thumbnail" %><br>
-    <% end %>
-  </div>
-
-  <div class="description">
-    <%= @user.about_me %><br>
-  </div>
-  <div class="tags">
-    <h4>Tags:</h4>
-    <%= @user.tag_list %>
-  </div>
-
-
-  <% if @user.listings.any? %>
-  <h3><%= @user.name %>'s Listings</h3>
-    <div class="row">
-      <% @user.listings.each do |list| %>
-        <div class="small-10 small-centered ">
-          <ul class=large-block-grid-4>
-            <div class="single-card">
-              <ul>
-                <%= link_to listing_path(list) do %>
-                <li><%= image_tag list.thumbnail, class:'thumbnail' %></li>
-                <li><h4><%= list.name %></h4></li>
-                <% end %>
-                <li><%= list.price %></li>
-                <li><%= list.location %></li>
-                <li>
-                  Available from:<br>
-                  <%= list.rent_date %>
-                </li>
-              </ul>
-            </div>
-          </ul>
-        </div>
+    <% unless can? :manage, @user %>
+    <% if current_user %>
+        <% unless current_user.favourite_users.exists?(id: @user.id) %>
+          <%= link_to 'Add to favorites', favourite_user_path(user_id: @user), method: :post %>
+        <% else %>
+          <%= link_to 'Remove from favorites', unfavourite_user_path(@user), method: :delete %>
+        <% end %><br>
+        <%= link_to "Send me a message", conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: 'post'%><br>
       <% end %>
-    </div>
-  <% end %>
+    <% end %>
 
-  <div class="comments">
-    <h4>User Comments</h4>
+    <div class="large-6 medium-6 columns">
+      <div class="info">
+        <%= link_to image_url @user.avatar do %>
+        <%= image_tag @user.avatar, class:"profile_pic", alt:"Profile picture thumbnail" %><br>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="large-6 medium-6 columns">
+
+      <h1><%= @user.name %></h1>
+      <div class="description">
+        <%= @user.about_me %><br>
+      </div>
+      <div class="tags">
+        <h4>Tags:</h4>
+        <%= @user.tag_list %>
+      </div>
+    </div>
+<hr>
+
+    <% if @user.listings.any? %>
+    <h3><%= @user.name %>'s Listings</h3>
+      <div class="row">
+        <% @user.listings.each do |list| %>
+          <div class="small-10 small-centered ">
+            <ul class=large-block-grid-4>
+              <div class="single-card">
+                <ul>
+                  <%= link_to listing_path(list) do %>
+                  <li><%= image_tag list.thumbnail, class:'thumbnail' %></li>
+                  <li><h4><%= list.name %></h4></li>
+                  <% end %>
+                  <li><%= list.price %></li>
+                  <li><%= list.location %></li>
+                  <li>
+                    Available from:<br>
+                    <%= list.rent_date %>
+                  </li>
+                </ul>
+              </div>
+            </ul>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+
+  </div><!--end column-->
+</div><!--end row-->
+
+  <div class="row">
+    <h4>Testimonials</h4>
     <%= render 'comments' %>
+
   </div>
 
 </div>

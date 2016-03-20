@@ -2,7 +2,7 @@
 
 <%= form_for [@commentable, Comment.new] do |f| %>
   <div class="field">
-    <%= f.label :body, "Add a New Comment" %><br>
+    <%= f.label :body, "Write a testimonial" %><br>
     <%= f.text_area :body, class:"comment-box" %><br>
     <%= f.hidden_field :commentable_type, value: @commentable.class.to_s %>
     <%= f.hidden_field :commentable_id, value: @commentable.id %>

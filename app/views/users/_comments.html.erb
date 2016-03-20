@@ -1,12 +1,14 @@
 <div class="new comment">
     <%= render :partial => 'comments/comment_form' %>
 </div>
-<hr>
+<div class="large-11 large-centered columns">
+
 <% @user.user_comments.each do |p| %>
   <div class="show comment">
-    <b><%= p.user.name %> says:</b><br>
-    <%= p.body %><br>
     <%= p.created_at.to_formatted_s(:long) %>
+    <b><%= p.user.name %> says:</b><br>
+    <blockquote><%= p.body %></blockquote><br>
     <hr>
   </div>
 <% end %>
+</div>

@@ -3,7 +3,7 @@
   <% if can? :manage, @user %>
   <%= link_to "Edit Profile", edit_user_path(@user), class:'button orange' %>
   <%= link_to "Delete Account", @user, method: :delete, data: {confirm: "Are you sure you want to delete your account? This cannot be undone!"}, class:"button" %><br>
-  <strong>My unique invite code:</strong> <%= @user.token %>
+
   <% end %>
 
 <div class="row">
@@ -83,8 +83,7 @@
   </div>
 
 <% if can? :manage, @user %>
-<strong>My unique invite code:</strong> <%= @user.token %> |
-<%= link_to "Delete Account", @user, method: :delete, data: {confirm: "Are you sure you want to delete your account? This cannot be undone!"} %><br>
+<strong>My unique invite code:</strong> <%= @user.token %>
 <% end %>
 
 </div>

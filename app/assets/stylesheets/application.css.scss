@@ -131,13 +131,27 @@ a.nav-bar:hover {
 .checkboxes ul{
   list-style-type: none;
 }
+.check-box{
+  display:none;
+}
 
+.check-label-colour {
+  color: white;
+  border-radius: .5em;
+  background-color:rgb(152, 131, 144) ;
+}
 .comment-box{
   height:7rem;
 }
 
 .radio-button{
   display:none;
+}
+
+.radio-label-colour {
+  color: white;
+  border-radius: .5em;
+  background-color:rgb(152, 131, 144) ;
 }
 
 .single-card ul {

@@ -1,16 +1,23 @@
+<div class="row">
+  <div class="large-12 columns">
 
-  <div class="search-listings">
     <h1>Everyone</h1>
 
     <%= render 'random' %><br>
-  <%= search_form_for @q do |f| %>
-    <%= f.label :name_or_tags_name_cont, "Search for people by name or tags" %><br>
-    <%= f.search_field :name_or_tags_name_cont %>
-
-    <%= f.submit %>
-  <% end %>
-</div>
-<br>
-  <div class="index-cards">
-    <%= render @users %>
+    <div class="large-7 large-centered medium-7 medium-centered small-10 small-centered columns">
+      <div class="row">
+        <%= search_form_for @q do |f| %>
+          <%= f.label :name_or_tags_name_cont, "Search for people by name or tags" %>
+          <%= f.search_field :name_or_tags_name_cont %>
+          <%= f.submit"Search", class:'button postfix' %>
+        <% end %>
+      </div>
+    </div>
+    <p id="pagination"><small><%= page_entries_info @users %></small></p>
+    <div class="row">
+      <div class="large-12 large-centered columns">
+        <%= render @users %>
+      </div>
+    </div>
   </div>
+</div>

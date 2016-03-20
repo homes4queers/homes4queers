@@ -158,13 +158,10 @@
 
 <p id="pagination"><small><%= page_entries_info @listings %></small></p>
 <div class="row">
-  <div class="large-12 large-centered ">
-
-  <div class="index-cards">
-
-      <%= render @listings %>
-
-  </div>
+  <div class="large-12 large-centered columns ">
+    <div class="index-cards">
+        <%= render @listings %>
+    </div>
   </div>
 </div>
 <p><%= paginate @listings %></p>

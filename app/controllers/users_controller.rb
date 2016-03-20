@@ -8,7 +8,7 @@
       @users = @q.result.distinct
       # results
     else
-     @users = User.all
+     @users = User.order("created_at DESC").page(params[:page]).per(8)
     end
   end
 

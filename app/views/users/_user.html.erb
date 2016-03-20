@@ -1,33 +1,31 @@
 <div class='single-card'>
-    <ul>
+  <ul>
     <%= link_to user_path(user) do %>
-      <li><%= image_tag user.avatar.thumb, class:'thumbnail' %></li>
-      <li><h4><%=user.name%></h4></li>
       <% if user.site_use == "looking_for_home" %>
         <p class=home_seeker>
           Looking for a home!
         </p>
       <% elsif user.site_use == "looking_for_roommate" %>
-      <p class=roommate_seeker>
-        Looking for a roommate!
-      </p>
+        <p class=roommate_seeker>
+          Looking for a roommate!
+        </p>
       <% elsif user.site_use == "looking_for_tenant" %>
-      <p class=tenant_seeker>
-        Looking for a tenant!
-      </p>
+        <p class=tenant_seeker>
+          Looking for a tenant!
+        </p>
       <% end %>
+      <li><%= image_tag user.avatar.thumb, class:'thumbnail' %></li>
+      <li><h4><%=user.name%></h4></li>
     <% end %>
-        <div class="tag-list">
-         <%= user.tag_list %>
-       </div>
-        <% if current_user %>
-         <% unless can? :manage, user %>
-           <% unless current_user.favourite_users.exists?(user.id) %>
-            <li><%= link_to 'Add to favorites', favourite_user_path(user.id), method: :post %></li>
-           <% else %>
-             <li><%= link_to 'Remove from favorites', unfavourite_user_path(user.id), method: :delete %></li>
-           <% end %>
+       <li><%= user.tag_list %></li>
+      <% if current_user %>
+       <% unless can? :manage, user %>
+         <% unless current_user.favourite_users.exists?(user.id) %>
+          <li><%= link_to 'Add to favorites', favourite_user_path(user.id), method: :post %></li>
+         <% else %>
+           <li><%= link_to 'Remove from favorites', unfavourite_user_path(user.id), method: :delete %></li>
          <% end %>
        <% end %>
-      </ul>
+     <% end %>
+    </ul>
   </div>

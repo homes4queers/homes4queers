@@ -8,5 +8,3 @@ $(document).on('ready page:load', function(){
 
   });
 });
-
-document.getElementById("message_body").focus();

@@ -1,29 +1,28 @@
 <div class="large-11 large-centered">
-
-<ul class="large-block-grid-4 ">
-    <div class="single-card">
-      <ul>
-        <%= link_to listing_path(listing), data: { no_turbolink: true } do %>
-          <li><%= image_tag listing.thumbnail, class:'thumbnail' %></li>
-          <li><h5> <%= listing.name %></h5></li>
-        <% end %>
-          <li>$<%= listing.price %>/month</li>
-          <li><%= listing.location %></li>
-          <li>
-            Available from:<br>
-            <%= listing.rent_date.to_formatted_s(:long) %>
-          </li>
-          <br>
-          <% unless can? :manage, listing %>
-            <% if current_user %>
-              <% unless current_user.favourite_listings.exists?(listing.id) %>
-                <li class="favourite-link"><%= link_to 'Add to favourites', favourite_listing_path(listing.id), method: :post %></li>
-              <% else %>
-                <li class="unfavourite-link"><%= link_to 'Remove from favourites', unfavourite_listing_path(listing.id), method: :delete %></li>
-              <% end %><!--end unless current user.favourite-->
-            <% end %><!--end if current user-->
-          <% end %><!--end unless can? -->
-        </ul>
-    </div><!--end single-card-->
-</ul><!-- end large-block grid -->
+  <ul class="large-block-grid-4 ">
+      <div class="single-card">
+        <ul>
+          <%= link_to listing_path(listing), data: { no_turbolink: true } do %>
+            <li><%= image_tag listing.thumbnail, class:'thumbnail' %></li>
+            <li><h5> <%= listing.name %></h5></li>
+          <% end %>
+            <li>$<%= listing.price %>/month</li>
+            <li><%= listing.location %></li>
+            <li>
+              Available from:<br>
+              <%= listing.rent_date.to_formatted_s(:long) %>
+            </li>
+            <br>
+            <% unless can? :manage, listing %>
+              <% if current_user %>
+                <% unless current_user.favourite_listings.exists?(listing.id) %>
+                  <li class="favourite-link"><%= link_to 'Add to favourites', favourite_listing_path(listing.id), method: :post %></li>
+                <% else %>
+                  <li class="unfavourite-link"><%= link_to 'Remove from favourites', unfavourite_listing_path(listing.id), method: :delete %></li>
+                <% end %><!--end unless current user.favourite-->
+              <% end %><!--end if current user-->
+            <% end %><!--end unless can? -->
+          </ul>
+      </div><!--end single-card-->
+  </ul><!-- end large-block grid -->
 </div>

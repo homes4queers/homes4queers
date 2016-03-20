@@ -4,20 +4,34 @@
     <h1>Everyone</h1>
 
     <%= render 'random' %><br>
+
     <div class="large-7 large-centered medium-7 medium-centered small-10 small-centered columns">
       <div class="row">
-        <%= search_form_for @q do |f| %>
-          <%= f.label :name_or_tags_name_cont, "Search for people by name or tags" %>
-          <%= f.search_field :name_or_tags_name_cont %>
-          <%= f.submit"Search", class:'button postfix' %>
+        <%= search_form_for @q, url: search_users_path,
+                                html: { method: :post } do |f| %>
+
+          <%= f.label :name_or_about_me_or_tags_name_cont, "Search for people by name or keyword" %><br>
+          <%= f.search_field :name_or_about_me_or_tags_name_cont %>
+
+          Show only people looking for a:
+          <%= f.radio_button :site_use_eq, "looking_for_home" %>
+          <%= f.label :site_use_eq, "home", :value => "looking_for_home" %>
+          <%= f.radio_button :site_use_eq, "looking_for_roommate" %>
+          <%= f.label :site_use_eq, "roommate", :value => "looking_for_roommate" %>
+          <%= f.radio_button :site_use_eq, "looking_for_tenant"  %>
+          <%= f.label :site_use_eq, "tenant", :value => "looking_for_tenant" %>
+
+          <%= f.submit %>
         <% end %>
       </div>
     </div>
     <p id="pagination"><small><%= page_entries_info @users %></small></p>
     <div class="row">
       <div class="large-12 large-centered columns">
+        <div class="tag_cloud">
+          <%= render @tags %>
+        </div>
+
         <%= render @users %>
       </div>
     </div>
-  </div>
-</div>

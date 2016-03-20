@@ -15,15 +15,15 @@ resources :users
   root 'listings#index'
 
   resources :users do
+    collection do
+      match 'search'=> 'users#search', via: [:get, :post], as: :search
+    end
     member do
       post 'favourite'
       delete 'unfavourite'
     end
     resources :comments
     resources :favourites, only: [:index]
-      collection do
-        match 'search'=> 'user#search', via: [:get, :post], as: :search
-      end
   end
 
 
@@ -52,4 +52,6 @@ resources :users
   resources :conversations do
     resources :messages
   end
+
+  resources :tags, only: [:index, :show]
 end

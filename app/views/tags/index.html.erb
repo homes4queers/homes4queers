@@ -1,2 +1,11 @@
 <h1>Tags</h1>
+<h4>by popularity</h4>
 <%= render @tags %>
+
+<%= search_form_for @q do |f| %>
+
+<%= f.label :tags_cont, "Minimum Price" %>
+<%= f.number_field :tags_cont, placeholder: "0" %>
+
+  <%= f.submit "Search", class: 'button' %>
+  <% end %>

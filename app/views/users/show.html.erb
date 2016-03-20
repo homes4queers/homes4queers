@@ -27,12 +27,7 @@
 </div>
 <div class="tags">
   <h4>Tags:</h4>
-  <% @user.tags.each do |tag| %>
-  <div class="tags_each">
-    <%= link_to tag.name, tag_path(tag) %>
-  </div>
-  <% end %>
-
+    <%= render @user.tags %>
 </div>
 
 

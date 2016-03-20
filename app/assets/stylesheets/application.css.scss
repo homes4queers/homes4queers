@@ -28,12 +28,10 @@
 a{
   color: rgb(120, 71, 103);
 }
-a:hover{
+a:hover, a:focus{
   color: rgb(255, 207, 0);
 }
-.radio-button{
-  display:none;
-}
+
  h1,h2,h3 {
    text-align: center;
    color: rgb(120, 71, 103);//title purple
@@ -55,6 +53,9 @@ a:hover{
 label {
   color: rgb(56, 48, 57);//dark dark purple
 }
+li{
+  list-style-type :none;
+}
 
 .top-bar {
   background-color: rgb(74, 61, 50);//brownish
@@ -74,7 +75,7 @@ a.nav-bar:hover {
    border-radius: 20rem;
  }
 
-.b.button:hover {
+.b.button:hover, .b.button:focus {
    border-radius: 20rem;
    z-index: 15;
   -webkit-transition: all 0.1s ease-in-out;
@@ -133,6 +134,10 @@ a.nav-bar:hover {
 
 .comment-box{
   height:7rem;
+}
+
+.radio-button{
+  display:none;
 }
 
 .single-card ul {

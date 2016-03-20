@@ -12,10 +12,12 @@
 //   margin-top: -1%;
 //   // margin-bottom: 2.5%;
 // }
+
+//boxes for listing search radio buttons
 .listing-options{
   border-radius: 1em;
-  border: 1px solid  rgb(172, 131, 158);
-  background-color: rgb(255, 232, 247);
+  border: 1px solid  rgb(172, 131, 158);//medium grey purple
+  background-color: rgb(255, 232, 247);//light purple
 }
 
 .single-card ul {
@@ -51,7 +53,8 @@
 }
 
  #map-index {
-   height: 25em;
+   padding-top: 10rem;
+   height: 30rem;
    width: 90%;
    margin: 0 5%;
  }
@@ -65,21 +68,27 @@
  #pagination {
    text-align: center;
  }
- div.features_cloud ul.features {
-    margin: 0 15% 0 10%;
-    list-style-type: none;
-    text-align: center;
-  }
+div.features_cloud ul.features {
+  margin: 0 15% 0 10%;
+  list-style-type: none;
+  text-align: center;
+}
 
-  div.features_cloud li {
-    background-color: white;
-    padding: 0.25rem;
-    margin: 0.25rem;
-    border-radius: 10%;
-    display: inline-block;;
-  }
+div.features_cloud li {
+  background-color: white;
+  padding: 0.25rem;
+  margin: 0.25rem;
+  border-radius: 10%;
+  display: inline-block;;
+}
 
-  div.features_cloud li.grey {
-    background-color: rgb(250, 240, 209);
-    color: rgb(117, 117, 117);
-  }
+div.features_cloud li.grey {
+  background-color: rgb(250, 240, 209);
+  color: rgb(117, 117, 117);
+}
+
+.radio-label-colour {
+  color: white;
+  border-radius: .5em;
+  background-color:rgb(152, 131, 144) ;
+}

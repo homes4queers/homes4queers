@@ -1,35 +1,48 @@
- <div class=”item”>
-<h2>Conversations</h2>
-  <% @conversations.sort_by{|c| [c.created_at, c.updated_at].max}.reverse.each do |conversation| %>
-  <% if conversation.sender_id == current_user.id ||  conversation.recipient_id == current_user.id %>
-   <% if conversation.sender_id == current_user.id %>
-     <% recipient = User.find(conversation.recipient_id) %>
-   <% else %>
-     <% recipient = User.find(conversation.sender_id) %>
-   <% end %>
-   <%= link_to "#{recipient.name} : #{conversation.subject}", conversation_messages_path(conversation), target: 'message_frame'%><br>
-  <% end %>
- <% end %>
- </div>
-</div>
-</div>
-<div class=”ui segment”>
+<div class="inbox">
 
-<h2>Message Someone</h2>
-<%= form_tag(conversations_path, method: "get") do %>
-  <%= label_tag(:search, "Search for:") %>
-  <%= text_field_tag(:search) %>
-  <%= submit_tag("Search") %>
+  <h2>Inbox</h2>
+  <div class="row">
+    <div class="large-4 columns ">
+      <h5>My conversations</h5>
+      <ul>
+        <% @conversations.sort_by{|c| [c.created_at, c.updated_at].max}.reverse.each do |conversation| %>
+          <% if conversation.sender_id == current_user.id ||  conversation.recipient_id == current_user.id %>
+            <% if conversation.sender_id == current_user.id %>
+              <% recipient = User.find(conversation.recipient_id) %>
+            <% else %>
+              <% recipient = User.find(conversation.sender_id) %>
+            <% end %>
+            <li><%= link_to "#{recipient.name} : #{conversation.subject}", conversation_messages_path(conversation),method: 'get', target: 'message_frame'%>
+          <% end %>
+        <% end %>
+    </ul>
+    </div>
 
-<% end %> <div class=”ui list”>
-  <% @users.sort_by {|u| u.name.downcase}.each do |user| %>
-   <% if user.id != current_user.id %>
-    <div class=”item”>
-  <%= user.name %> <%= link_to "‘Message me!’", conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post', target: 'message_frame'%>
-  <% end %>
-</div>
- <% end %>
+    <div class="large-4 columns">
+        <br>
+        <iframe src="" name="message_frame"></iframe>
+    </div>
 
-<div id="messages">
-  <iframe src="#{conversation_messages_path(@conversation)}" width="300px" height="300px" name="message_frame"></iframe>
+    <div class="large-4 columns">
+      <h5>Message Someone</h5>
+      <div class="input-group">
+          <%= form_tag(conversations_path, method: "get") do %>
+            <%= text_field_tag(:search,"", placeholder: "Find Someone",class:"input-group-field") %>
+            <div class="input-group-button">
+              <%= submit_tag("Search", class:"button purple") %>
+            </div>
+          <% end %>
+      </div>
+      <div class="search-users">
+        <% @users.sort_by {|u| u.name.downcase}.each do |user| %>
+          <ul>
+            <% if user.id != current_user.id %>
+             <li><%= user.name %> <%= link_to "‘Message me!’", conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post', target: 'message_frame'%></li>
+            <% end %>
+          </ul>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
 </div>

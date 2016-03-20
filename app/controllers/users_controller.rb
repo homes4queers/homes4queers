@@ -3,13 +3,16 @@
 
   def index
     @q = User.ransack(params[:q])
-
+    @tags = ActsAsTaggableOn::Tag.all.order('taggings_count desc')
     if params[:q]
-      @users = @q.result.distinct
+      @users = @q.result.distinct.page(params[:page]).per(10)
+      @q.build_condition if @q.conditions.empty?
+      @q.sorts = 'created_at desc' if @q.sorts.empty?
       # results
     else
      @users = User.order("created_at DESC").page(params[:page]).per(8)
     end
+
   end
 
   def search
@@ -72,7 +75,6 @@
       redirect_to :back, notice: "Successfully unfavourited someone (they'll never know)"
     end
   end
-
 
   private
 

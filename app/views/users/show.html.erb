@@ -20,6 +20,7 @@
       <% end %>
     <% end %>
 
+
     <div class="large-6 medium-6 columns">
       <div class="info">
         <%= link_to image_url @user.avatar do %>
@@ -36,14 +37,15 @@
       </div>
       <div class="tags">
         <h4>Tags:</h4>
-        <%= @user.tag_list %>
+        <%= render @user.tags %>
       </div>
     </div>
-<hr>
+
 
     <% if @user.listings.any? %>
     <h3><%= @user.name %>'s Listings</h3>
       <div class="row">
+        <hr>
         <% @user.listings.each do |list| %>
           <div class="small-10 small-centered ">
             <ul class=large-block-grid-4>
@@ -67,6 +69,7 @@
       </div>
     <% end %>
 
+
   </div><!--end column-->
 </div><!--end row-->
 <hr>
@@ -78,5 +81,10 @@
     <%= render 'comments' %>
 
   </div>
+
+<% if can? :manage, @user %>
+<strong>My unique invite code:</strong> <%= @user.token %> |
+<%= link_to "Delete Account", @user, method: :delete, data: {confirm: "Are you sure you want to delete your account? This cannot be undone!"} %><br>
+<% end %>
 
 </div>

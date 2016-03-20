@@ -8,6 +8,7 @@
 #   end
 # end
 
+
 class User < ActiveRecord::Base
   authenticates_with_sorcery!
   authenticates_with_sorcery! do |config|
@@ -28,7 +29,7 @@ class User < ActiveRecord::Base
   has_many :listing_comments, through: :listings, source:"comments", dependent: :destroy
   # has_many :extended_profile_attributes, dependent: :destroy
 
-  acts_as_ordered_taggable
+  acts_as_taggable_on :tags
 
   # has_secure_token
 

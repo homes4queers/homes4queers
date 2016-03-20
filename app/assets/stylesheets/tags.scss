@@ -1,0 +1,24 @@
+// Place all the styles related to the tags controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+div.tags {
+  text-align: center;
+  margin: 0 15% 0 10%;
+  list-style-type: none;
+  text-align: center;
+}
+
+div.tags_each {
+  display:inline-block;
+  background: #008CBA;
+  border-radius: 20rem;
+  color: white;
+  padding: 0.2rem 0.5rem;
+  margin: 0.25rem;
+  text-align: center;
+}
+
+div.tags_each a {
+  color: white;
+}

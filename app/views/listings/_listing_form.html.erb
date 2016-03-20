@@ -45,7 +45,15 @@
         <%= f.number_field :bedrooms %><br>
       </div>
     </div>
+      <div class="field">
+        <%= f.label :rent_date %>
+        <%= f.date_field :rent_date %>
+      </div>
+      <div class="field">
+        <%= f.label :location %>
+        <%= f.text_field :location %>
 
+      </div>
       <div class="field">
         <% f.fields_for :images do |photo| %>
         <%= render 'image_fields', f: photo %>

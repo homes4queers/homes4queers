@@ -12,6 +12,11 @@
 //   margin-top: -1%;
 //   // margin-bottom: 2.5%;
 // }
+.listing-options{
+  border-radius: 1em;
+  border: 1px solid  rgb(172, 131, 158);
+  background-color: rgb(255, 232, 247);
+}
 
 .single-card ul {
   font-size: 12px;
@@ -26,6 +31,7 @@
   text-align: center;
   overflow-y: auto;
 }
+
 .nearby-card {
   background-color: rgb(254, 244, 117);//goldenrod
   width: 13rem;

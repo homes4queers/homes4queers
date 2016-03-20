@@ -5,13 +5,13 @@
       <ul>
         <%= link_to listing_path(listing), data: { no_turbolink: true } do %>
           <li><%= image_tag listing.thumbnail, class:'thumbnail' %></li>
-          <li><h4> <%= listing.name %></h4></li>
+          <li><h5> <%= listing.name %></h5></li>
         <% end %>
           <li>$<%= listing.price %>/month</li>
           <li><%= listing.location %></li>
           <li>
             Available from:<br>
-            <%= listing.rent_date %>
+            <%= listing.rent_date.to_formatted_s(:long) %>
           </li>
           <br>
           <% unless can? :manage, listing %>

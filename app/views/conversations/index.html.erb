@@ -2,7 +2,7 @@
 
   <h2>Inbox</h2>
   <div class="row">
-    <div class="large-4 columns ">
+    <div class="large-4 medium-4 columns ">
       <h5>My conversations</h5>
       <ul>
         <% @conversations.sort_by{|c| [c.created_at, c.updated_at].max}.reverse.each do |conversation| %>
@@ -18,7 +18,7 @@
     </ul>
     </div>
 
-    <div class="large-4 columns">
+    <div class="large-4 medium-8 columns">
         <br>
         <iframe src="" name="message_frame"></iframe>
     </div>

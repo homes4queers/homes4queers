@@ -6,7 +6,7 @@ class ListingsController < ApplicationController
     if params[:q]
       @listings = @q.result.distinct.page(params[:page]).per(10)
       @q.build_condition if @q.conditions.empty?
-      @q.build_sort if @q.sorts.empty?
+      @q.sorts = 'created_at desc' if @q.sorts.empty?
       # @listings = Listing.near(params[:q])
     elsif params[:latitude] && params[:longitude]
       @listings = Listing.near([params[:latitude], params[:longitude]])
@@ -16,16 +16,16 @@ class ListingsController < ApplicationController
     end
 
 
+    def search
+      index
+      render :index
+    end
     # respond_to do |format|
     #   format.html
     #   format.js
     # end
-  end
+end
 
-  def search
-    index
-    render :index
-  end
 
   def new
     @listing = Listing.new
@@ -82,12 +82,6 @@ class ListingsController < ApplicationController
     @listing = Listing.find(params[:id])
     if Favourite.where(favourited_id: @listing.id, user_id: current_user.id).last.destroy
       redirect_to :back, notice: "Unfavourited listing"
-    end
-  end
-
-  def search_listings
-    respond_to do |format|
-      format.js
     end
   end
 

@@ -6,41 +6,105 @@
   <div class="large-4 small-10 columns" >
     <%= search_form_for @q, url: search_listings_path,
                             html: { method: :post } do |f| %>
-      <%= f.label :name_or_location_cont, "Search Listings" %>
-      <%= f.text_field :name_or_location_cont, placeholder:"any keywords" %>
+      <%= f.label :name_or_location_or_description_cont, "Search Listings" %>
+      <%= f.text_field :name_or_location_or_description_cont, placeholder:"any keywords" %>
 
+      <%= f.hidden_field :created_at_gteq, :value => "2016-01-01"%>
       <%= f.submit "Search", class: "button green" %>
       <% end %>
       <%#= button_tag 'advanced_search' %>
       <%# link_to "Advanced Search", render 'advanced_search' %>
-      <h4>Advanced Search</h4>
 
-      <%= search_form_for @q, url: search_listings_path,
-                              html: { method: :post } do |f| %>
-      <%= f.label :price_gteq, "Minimum Price" %>
-      <%= f.number_field :price_gteq, placeholder: "0" %>
-
-      <%= f.label :price_lteq, "Maximum Price" %>
-      <%= f.number_field :price_lteq, placeholder: "0" %>
-
-      <%= f.label :location_cont, "Address, Neighbourhood or City" %>
-      <%= f.text_field :location_cont, placeholder: "742 Evergreen Terrace" %>
-
-
-    <%= f.label :bedrooms_gteq, "Minimum Number of bedrooms" %>
-    <%= f.number_field :bedrooms_gteq, placeholder: "0"%>
-
-    <%=  f.hidden_field :location_cont, value: "Toronto"  %>
-
-      <%= f.submit "Search", class: 'button' %>
-    <% end %>
   </div>
+
+
 
   <div class="large-8 small-12 columns map">
     <div id="map-index" data-latitude='43.7' data-longitude='-79.4' ></div>
   </div>
 </div>
 
+<div class="large-12 large-centered ">
+  <h4>Advanced Search</h4>
+
+  <%= search_form_for @q, url: search_listings_path,
+  html: { method: :post } do |f| %>
+  <div class="large-6 small-6 columns" >
+    <%= f.label :price_gteq, "Minimum Price" %>
+    <%= f.number_field :price_gteq, placeholder: "0" %>
+
+
+    <%= f.label :rent_date_gteq, "Rent Start Date from..." %>
+    <%= f.date_field :rent_date_gteq %>
+  </div>
+  <div class="large-6 small-6 columns" >
+    <%= f.label :price_lteq, "Maximum Price" %>
+    <%= f.number_field :price_lteq, placeholder: "0" %>
+    <%= f.label :rent_date_lteq, "...to" %>
+    <%= f.date_field :rent_date_lteq %>
+  </div>
+  <%= f.label :location_cont, "Address, Neighbourhood or City" %>
+  <%= f.text_field :location_cont, placeholder: "742 Evergreen Terrace" %>
+
+
+  <%= f.label :bedrooms_gteq, "Minimum Number of bedrooms" %>
+  <%= f.number_field :bedrooms_gteq, placeholder: "0"%>
+
+
+  <%= f.radio_button :space_type_eq, "full_space" %>
+  <%= f.label :space_type_eq, "Full private space only", :value => "full_space" %>
+  <%= f.radio_button :space_type_eq, "shared_space" %>
+  <%= f.label :space_type_eq, "Room in shared space only", :value => "shared_space" %>
+
+  <%= f.radio_button :basement_false, true %>
+  <%= f.label :basement_false, "No Basements", :value => true %>
+  <%= f.radio_button :sublet_false, true %>
+  <%= f.label :sublet_false, "No Sublets", :value => true %>
+  <%= f.radio_button :utilities_included_true, true %>
+  <%= f.label :utilities_included_true, "Utilities Included", :value => true %>
+
+  <br><%= f.radio_button :furnished_false, true %>
+  <%= f.label :furnished_false, "Unfurnished", :value => true %>
+  <%= f.radio_button :furnished_false, false %>
+  <%= f.label :furnished_false, "Furnished", :value => false %>
+
+
+  <%= f.radio_button :smoking_false, true %>
+  <%= f.label :smoking_false, "Non-Smoking", :value => true %>
+  <%= f.radio_button :smoking_false, false %>
+  <%= f.label :smoking_false, "Smoking OK", :value => false %>
+
+  <br><%= f.radio_button :wheelchair_accessible_true, true %>
+  <%= f.label :wheelchair_accessible_true, "Wheelchair Accessible", :value => true %>
+  <%= f.radio_button :visually_accessible_true, true %>
+  <%= f.label :visually_accessible_true, "Accessible for the visually impaired", :value => true %>
+  <%= f.radio_button :hearing_accessible_true, true %>
+  <%= f.label :hearing_accessible_true, "Accessible for the hearing impaired", :value => true %>
+  <%= f.radio_button :assistance_animal_true, true %>
+  <%= f.label :assistance_animal_true, "Assistance Animal Friendly", :value => true %>
+
+
+  <br><%= f.radio_button :cats_true, true %>
+  <%= f.label :cats_true, "Cats OK", :value => true %>
+  <%= f.radio_button :dogs_true, true %>
+  <%= f.label :dogs_true, "Dogs OK", :value => true %>
+  <%= f.radio_button :small_pets_true, true %>
+  <%= f.label :small_pets_true, "Small Pets OK", :value => true %>
+
+  <%= f.radio_button :ac, true %>
+  <%= f.label :ac, "Central AC", :value => true %>
+  <%= f.radio_button :ensuite_laundry_or_shared_laundry_or_coinop_laundry_true, true %>
+  <%= f.label :ensuite_laundry_or_shared_laundry_or_coinop_laundry_true, "Laundry", :value => true %>
+  <%= f.radio_button :balcony_or_deck_or_yard_shared_or_yard_private_true, true %>
+  <%= f.label :balcony_or_deck_or_yard_shared_or_yard_private_true, "Outdoor Space", :value => true %>
+  <%= f.radio_button :parking_true, true %>
+  <%= f.label :parking_true, "Parking", :value => true %>
+<br>
+  <%= f.hidden_field :created_at_gteq, :value => "2016-01-01"%>
+
+  <%= f.submit "Search", class: 'button' %>
+  <% end %>
+</div>
 
 
 <p id="pagination"><small><%= page_entries_info @listings %></small></p>

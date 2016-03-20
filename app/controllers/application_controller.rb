@@ -6,4 +6,6 @@ class ApplicationController < ActionController::Base
   def not_authenticated
     redirect_to login_path, notice: "You need to be logged in to do this"
   end
+
+
 end

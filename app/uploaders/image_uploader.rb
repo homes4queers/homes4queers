@@ -5,7 +5,16 @@ class ImageUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
+  process :validate_dimensions
 
+  def validate_dimensions
+    manipulate! do |img|
+      if img.dimensions.any?{|i| i > 8000 }
+        raise CarrierWave::ProcessingError, "dimensions too large"
+      end
+      img
+    end
+  end
   # Choose what kind of storage to use for this uploader:
   storage :file
   # storage :fog

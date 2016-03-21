@@ -14,12 +14,9 @@
 // }
 
 //boxes for listing search radio buttons
-.listing-options{
-  border-radius: 1em;
-  border: 1px solid  rgb(172, 131, 158);//medium grey purple
-  background-color: rgb(255, 232, 247);//light purple
+.carrierwave-field{
+  color:purple;
 }
-
 .single-card ul {
   font-size: 12px;
   background-color: rgb(254, 244, 117);//goldenrod
@@ -68,7 +65,7 @@
  #pagination {
    text-align: center;
  }
- 
+
 div.features_cloud ul.features {
   margin: 0 15% 0 10%;
   list-style-type: none;

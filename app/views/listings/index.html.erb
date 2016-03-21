@@ -62,41 +62,41 @@
       <div class="listing-options text-center">
         Basics:
         <%= f.radio_button :space_type_eq, "full_space", class:"radio-button" %>
-        <%= f.label :space_type_eq, "Private spaces only", :value => "full_space", class: "1-radio-button-label" %>
+        <%= f.label :space_type_eq, "Private spaces only", :value => "full_space", class: "1-radio-button-label rb" %>
 
         <%= f.radio_button :space_type_eq, "shared_space", class:"radio-button"%>
-        <%= f.label :space_type_eq, "Shared spaces only", :value => "shared_space", class: "2-radio-button-label"  %>
+        <%= f.label :space_type_eq, "Shared spaces only", :value => "shared_space", class: "2-radio-button-label rb"  %>
 
         <%= f.radio_button :basement_false, true, class:"radio-button" %>
-        <%= f.label :basement_false, "No Basements", :value => true, class: "radio-button-label"  %>
+        <%= f.label :basement_false, "No Basements", :value => true, class: "radio-button-label rb"  %>
 
         <%= f.radio_button :sublet_false, true, class:"radio-button" %>
-        <%= f.label :sublet_false, "No Sublets", :value => true, class: "radio-button-label"  %>
+        <%= f.label :sublet_false, "No Sublets", :value => true, class: "radio-button-label rb"  %>
 
         <%= f.radio_button :furnished_false, true, class:"radio-button" %>
-        <%= f.label :furnished_false, "Unfurnished", :value => true, class: "3-radio-button-label"  %>
+        <%= f.label :furnished_false, "Unfurnished", :value => true, class: "3-radio-button-label rb"  %>
 
         <%= f.radio_button :furnished_false, false, class:"radio-button" %>
-        <%= f.label :furnished_false, "Furnished", :value => false, class: "4-radio-button-label"  %>
+        <%= f.label :furnished_false, "Furnished", :value => false, class: "4-radio-button-label rb"  %>
       </div>
       <br>
 <!-- amenities -->
       <div class="listing-options text-center">
         Amenities:
         <%= f.radio_button :utilities_included_true, true, class:"radio-button" %>
-        <%= f.label :utilities_included_true, "Utilities Included", :value => true, class: "radio-button-label"  %>
+        <%= f.label :utilities_included_true, "Utilities Included", :value => true, class: "radio-button-label rb"  %>
 
         <%= f.radio_button :ac, true, class:"radio-button" %>
-        <%= f.label :ac, "Central AC", :value => true, class: "radio-button-label"  %>
+        <%= f.label :ac, "Central AC", :value => true, class: "radio-button-label rb"  %>
 
         <%= f.radio_button :ensuite_laundry_or_shared_laundry_or_coinop_laundry_true, true, class:"radio-button" %>
-        <%= f.label :ensuite_laundry_or_shared_laundry_or_coinop_laundry_true, "Laundry", :value => true, class: "radio-button-label"  %>
+        <%= f.label :ensuite_laundry_or_shared_laundry_or_coinop_laundry_true, "Laundry", :value => true, class: "radio-button-label rb"  %>
 
         <%= f.radio_button :balcony_or_deck_or_yard_shared_or_yard_private_true, true, class:"radio-button" %>
-        <%= f.label :balcony_or_deck_or_yard_shared_or_yard_private_true, "Outdoor Space", :value => true, class: "radio-button-label"  %>
+        <%= f.label :balcony_or_deck_or_yard_shared_or_yard_private_true, "Outdoor Space", :value => true, class: "radio-button-label rb"  %>
 
         <%= f.radio_button :parking_true, true, class:"radio-button" %>
-        <%= f.label :parking_true, "Parking", :value => true, class: "radio-button-label"  %>
+        <%= f.label :parking_true, "Parking", :value => true, class: "radio-button-label rb"  %>
       </div>
       <br>
     </div>
@@ -105,38 +105,38 @@
     <div class="listing-options text-center">
       Accessibility:<br>
       <%= f.radio_button :wheelchair_accessible_true, true, class:"radio-button" %>
-      <%= f.label :wheelchair_accessible_true, "Wheelchair", :value => true, class: "radio-button-label"  %>
+      <%= f.label :wheelchair_accessible_true, "Wheelchair", :value => true, class: "radio-button-label rb"  %>
 
       <%= f.radio_button :visually_accessible_true, true, class:"radio-button" %>
-      <%= f.label :visually_accessible_true, "Visually Impaired", :value => true, class: "radio-button-label"  %>
+      <%= f.label :visually_accessible_true, "Visually Impaired", :value => true, class: "radio-button-label rb"  %>
 
       <%= f.radio_button :hearing_accessible_true, true, class:"radio-button" %>
-      <%= f.label :hearing_accessible_true, "Hearing Impaired ", :value => true, class: "radio-button-label"  %>
+      <%= f.label :hearing_accessible_true, "Hearing Impaired ", :value => true, class: "radio-button-label rb"  %>
 
       <%= f.radio_button :assistance_animal_true, true, class:"radio-button" %>
-      <%= f.label :assistance_animal_true, "Assistance Animal", :value => true, class: "radio-button-label"  %>
+      <%= f.label :assistance_animal_true, "Assistance Animal", :value => true, class: "radio-button-label rb"  %>
     </div>
     <br>
 <!-- pets -->
       <div class="listing-options text-center">
         Pets:<br>
         <%= f.radio_button :cats_true, true, class:"radio-button" %>
-        <%= f.label :cats_true, "Cats OK", :value => true, class: "radio-button-label"  %>
+        <%= f.label :cats_true, "Cats OK", :value => true, class: "radio-button-label rb"  %>
         <br>
         <%= f.radio_button :dogs_true, true, class:"radio-button" %>
-        <%= f.label :dogs_true, "Dogs OK", :value => true, class: "radio-button-label"  %>
+        <%= f.label :dogs_true, "Dogs OK", :value => true, class: "radio-button-label rb"  %>
         <br>
         <%= f.radio_button :small_pets_true, true, class:"radio-button" %>
-        <%= f.label :small_pets_true, "Small Pets OK", :value => true, class: "radio-button-label"  %>
+        <%= f.label :small_pets_true, "Small Pets OK", :value => true, class: "radio-button-label rb"  %>
       </div>
       <br>
 <!-- smoking -->
       <div class="listing-options text-center">
           <%= f.radio_button :smoking_false, true, class:"radio-button" %>
-          <%= f.label :smoking_false, "Non-Smoking", :value => true, class: "5-radio-button-label"  %>
+          <%= f.label :smoking_false, "Non-Smoking", :value => true, class: "5-radio-button-label rb"  %>
 
           <%= f.radio_button :smoking_false, false, class:"radio-button" %>
-          <%= f.label :smoking_false, "Smoking OK", :value => false, class: "6-radio-button-label"  %>
+          <%= f.label :smoking_false, "Smoking OK", :value => false, class: "6-radio-button-label rb"  %>
         </div>
   </div>
 </div>

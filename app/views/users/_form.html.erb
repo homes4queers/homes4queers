@@ -56,15 +56,19 @@
       <p>
         How will you be using Homes 4 Queers?
       </p>
-      <%= f.label :site_use, "I am actively looking for a new home", :value => "looking_for_home" %>
-      <%= f.radio_button :site_use, "looking_for_home" %><br>
+      <ul>
+        <li><%= f.label :site_use, "I am actively looking for a new home", :value => "looking_for_home", class: "a-radio-button-label rb" %></li>
+        <%= f.radio_button :site_use, "looking_for_home", class:"radio-button"%>
 
-      <%= f.label :site_use, "I am actively looking for (a) roommate(s) for my current home", :value => "looking_for_roommate" %>
-      <%= f.radio_button :site_use, "looking_for_roommate" %><br>
-      <%= f.label :site_use, "I am actively looking for (a) tenant(s) for my unoccupied space", :value => "looking_for_tenant" %>
-      <%= f.radio_button :site_use, "looking_for_tenant" %><br>
-      <%= f.label :site_use, "I'm not currently searching, just want to hang out", :value => "just_looking" %>
-      <%= f.radio_button :site_use, "just_looking" %>
+        <li><%= f.label :site_use, "I am actively looking for (a) roommate(s) for my current home", :value => "looking_for_roommate", class: "b-radio-button-label rb" %></li>
+        <%= f.radio_button :site_use, "looking_for_roommate", class:"radio-button" %>
+
+        <li><%= f.label :site_use, "I am actively looking for (a) tenant(s) for my unoccupied space", :value => "looking_for_tenant", class: "c-radio-button-label rb" %></li>
+        <%= f.radio_button :site_use, "looking_for_tenant", class:"radio-button" %>
+
+        <li><%= f.label :site_use, "I'm not currently searching, just want to hang out", :value => "just_looking", class: "d-radio-button-label rb" %></li>
+        <%= f.radio_button :site_use, "just_looking", class:"radio-button" %>
+      </ul>
     </div>
     <div class="field">
       <%= f.label :message_notifications, "Receive email notifications?" %>
@@ -75,10 +79,6 @@
       <%= f.file_field :avatar %><br>
     </div>
 
-    <div class="field">
-      <%= f.label :message_notifications, "Receive email notifications?" %>
-      <%= f.check_box :message_notifications %>
-    </div>
 
     <div class="action">
       <%= f.submit "Sign me up", class:'button green' %><br>

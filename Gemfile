@@ -51,6 +51,9 @@ gem 'administrate'
 
 gem 'foundation-rails'
 
+source 'https://rails-assets.org' do
+  gem 'rails-assets-slick.js'
+end
 
 
 # Use ActiveModel has_secure_password

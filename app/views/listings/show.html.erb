@@ -24,12 +24,13 @@
   <% end %>
   <div class="row">
     <div class="large-6 column">
-          <% @listing.images.each do |p|%>
-          <%= image_tag p.photo, alt: "listing picture"%>
-          <% end %>
-        </ul>
+      <div class="carousel">
+        <% @listing.images.each do |p|%>
+        <div><%= image_tag p.photo, alt: "listing picture"%></div>
+        <% end %>
       </div>
     </div>
+  </div>
 
     <div class="large-6 column text-center">
       <h3>Features and Amenities:</h3>

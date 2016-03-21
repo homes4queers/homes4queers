@@ -23,6 +23,9 @@ function worksNot(error){
 
 // $('#listing_search_fields').html("<%= escape_javascript( render :partial => 'advanced_search' %>");
 
+//image carousel
+
+
 //change radio label colours on click
 $(function() {
   $('.check-box-label').click(function() {
@@ -82,3 +85,7 @@ $(function() {
       $(".5-radio-button-label").removeClass("radio-label-colour")
   }))
 })
+
+$('.carousel').slick({
+  accessibility: true
+});

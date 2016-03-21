@@ -12,12 +12,13 @@
  *
  *= require_tree .
  *= require_self
-//= require foundation_and_overrides
-
+ *= require foundation_and_overrides
+ * = require slick.js/slick-theme.scss
  */
 @import url(https://fonts.googleapis.com/css?family=Lobster+Two:700);
 @import url(https://fonts.googleapis.com/css?family=Cabin);
 @import url(https://fonts.googleapis.com/icon?family=Material+Icons);
+
  body{
    background-color: rgb(255, 239, 173);
   // background-color: rgb(120, 71, 103);

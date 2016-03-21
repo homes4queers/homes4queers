@@ -17,7 +17,7 @@
  */
 @import url(https://fonts.googleapis.com/css?family=Lobster+Two:700);
 @import url(https://fonts.googleapis.com/css?family=Cabin);
-
+@import url(https://fonts.googleapis.com/icon?family=Material+Icons);
  body{
    background-color: rgb(255, 239, 173);
   // background-color: rgb(120, 71, 103);
@@ -30,7 +30,9 @@ a{
 a:hover, a:focus{
   color: rgb(255, 207, 0);
 }
-
+.unfave{
+  color: red
+}
  h1,h2,h3 {
    text-align: center;
    color: rgb(120, 71, 103);//title purple

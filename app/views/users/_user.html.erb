@@ -20,15 +20,23 @@
           <li><h4><%=user.name%></h4></li>
         <% end %>
            <li><%= user.tag_list %></li>
-          <% if current_user %>
-           <% unless can? :manage, user %>
-             <% unless current_user.favourite_users.exists?(user.id) %>
-              <li><%= link_to 'Add to favorites', favourite_user_path(user.id), method: :post %></li>
+           <% unless can? :manage, @user %>
+             <% if current_user %>
+               <% unless current_user.favourite_users.exists?(id: user.id) %>
+               <li class="favourite-link">
+                 <%= link_to favourite_user_path(user.id), method: :post do%>
+                   <i class="material-icons" alt="favourite button">favorite</i>
+                 <% end %>
+               </li>
              <% else %>
-               <li><%= link_to 'Remove from favorites', unfavourite_user_path(user.id), method: :delete %></li>
+               <li class="unfavourite-link">
+                 <%= link_to unfavourite_user_path(user.id), method: :delete do %>
+                   <i class="material-icons unfave" alt="unfavourite button">favorite</i>
+                 <% end %>
+               </li>
+               <% end %>
              <% end %>
            <% end %>
-         <% end %>
         </ul>
       </div>
     </ul>

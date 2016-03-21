@@ -72,7 +72,7 @@ end
   def favourite
     @listing = Listing.find(params[:id])
     if Favourite.create(favourited: @listing, user: current_user)
-      redirect_to :back, notice: "Added to favourites"
+      redirect_to :back
     else
       redirect_to :back, alert: "Something went wrong, better blame the developers"
     end
@@ -81,7 +81,7 @@ end
   def unfavourite
     @listing = Listing.find(params[:id])
     if Favourite.where(favourited_id: @listing.id, user_id: current_user.id).last.destroy
-      redirect_to :back, notice: "Unfavourited listing"
+      redirect_to :back
     end
   end
 

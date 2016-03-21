@@ -24,15 +24,18 @@
   <% end %>
   <div class="row">
     <div class="large-6 column">
-      <div class="carousel">
-        <% @listing.images.each do |p|%>
-        <div><%= image_tag p.photo, alt: "listing picture"%></div>
-        <% end %>
+      <div class="container">
+        <ul class="slides">
+          <% @listing.images.each do |p|%>
+            <input type="radio" id="cover1" name="covers" checked />
+            <li><%= image_tag p.photo, alt: "listing picture",class: 'listing-pic'%></li>
+          <% end %>
+        </ul>
       </div>
     </div>
-  </div>
 
-    <div class="large-6 column text-center">
+    <div class="large-6 column features text-center">
+
       <h3>Features and Amenities:</h3>
       $<%= @listing.price %> per month<br>
       Available from: <%= @listing.rent_date.to_formatted_s(:long_ordinal) %><br>

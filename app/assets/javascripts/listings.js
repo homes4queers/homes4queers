@@ -85,7 +85,3 @@ $(function() {
       $(".5-radio-button-label").removeClass("radio-label-colour")
   }))
 })
-
-$('.carousel').slick({
-  accessibility: true
-});

@@ -1,3 +1,6 @@
+/*borrowed from http://codepen.io/aepicos/pen/QbNeER?editors=1100*/
+/*many thanks*/
+
 /* poor man's reset */
 
 * {
@@ -6,11 +9,11 @@
   box-sizing: border-box;
 }
 /* this is just to avoid the jump when the scroll-bar appears */
-
 /*body {
   overflow-y: scroll;
 }*/
 /* for demo purposes only */
+
 
 .container {
   width: auto;

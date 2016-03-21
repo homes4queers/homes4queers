@@ -12,52 +12,51 @@
     <%= csrf_meta_tags %>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
-
-<div class="top-bar">
-  <nav class="top-bar" data-topbar role="navigation" data-options="sticky_on: large">
-    <% if current_user %>
-      Logged in as <%= link_to current_user.name, user_path(current_user), class: "nav-bar" %>
-      <%= link_to '+ Logout', :logout, method: :post, class: "nav-bar" %>
-      <% if current_user.admin? %>
-        <%= link_to '+ Admin Panel', admin_root_path, class: "nav-bar" %>
+<body>
+  <div class="top-bar">
+    <nav class="top-bar" data-topbar role="navigation" data-options="sticky_on: large">
+      <% if current_user %>
+        Logged in as <%= link_to current_user.name, user_path(current_user), class: "nav-bar" %>
+        <%= link_to '+ Logout', :logout, method: :post, class: "nav-bar" %>
+        <% if current_user.admin? %>
+          <%= link_to '+ Admin Panel', admin_root_path, class: "nav-bar" %>
+        <% end %>
+      <% else %>
+        <%= link_to 'Register', new_user_path, class: "nav-bar" %>
+        <%= link_to '+ Login', :login, class: "nav-bar" %>
+        <%= link_to '+ Login with Facebook', auth_at_provider_path(:provider => :facebook), class: "nav-bar" %>
       <% end %>
-    <% else %>
-      <%= link_to 'Register', new_user_path, class: "nav-bar" %>
-      <%= link_to '+ Login', :login, class: "nav-bar" %>
-      <%= link_to '+ Login with Facebook', auth_at_provider_path(:provider => :facebook), class: "nav-bar" %>
-    <% end %>
-  </nav>
-</div>
-
-<div class="row">
-
-  <div class="large-11 large-centered columns content">
-    <div class="large-12 large-centered header">
-     <header class="large-6 large-centered medium-8 medium-centered columns small-9 small-centered columns">
-       <%= image_tag '/H4qlogo_long.png', alt: "Homes 4 Queers welcome logo"%>
-     </header>
-
-       <div class="large-10 large-centered text-center buttons">
-         <%= link_to 'Listings', listings_path , data: { no_turbolink: true}, class:'b button purple' %>
-       <% if current_user %>
-         <%= link_to 'People', users_path, class:'b button orange' %>
-         <%= link_to 'My Favourites', user_favourites_path(current_user), class:'b button pink'%>
-         <%= link_to 'Inbox', conversations_path, class:'b button green' %>
-         <%= link_to 'Add a listing', new_listing_path, class:'b button' %>
-         <% end %>
-       </div>
-    </div>
-
-
-     <div>
-       <p id="notice"><%= flash[:notice] %></p>
-       <p id="alert"><%= flash[:alert] %></p>
-     </div>
-
-    <%= yield %>
-
+    </nav>
   </div>
-</div>
 
+  <div class="row">
+
+    <div class="large-11 large-centered columns content">
+      <div class="large-12 large-centered header">
+       <header class="large-6 large-centered medium-8 medium-centered columns small-9 small-centered columns">
+         <%= image_tag '/H4qlogo_long.png', alt: "Homes 4 Queers welcome logo"%>
+       </header>
+
+         <div class="large-10 large-centered text-center buttons">
+           <%= link_to 'Listings', listings_path , data: { no_turbolink: true}, class:'b button purple' %>
+         <% if current_user %>
+           <%= link_to 'People', users_path, class:'b button orange' %>
+           <%= link_to 'My Favourites', user_favourites_path(current_user), class:'b button pink'%>
+           <%= link_to 'Inbox', conversations_path, class:'b button green' %>
+           <%= link_to 'Add a listing', new_listing_path, class:'b button' %>
+           <% end %>
+         </div>
+       </div>
+
+
+       <div>
+         <p id="notice"><%= flash[:notice] %></p>
+         <p id="alert"><%= flash[:alert] %></p>
+       </div>
+
+      <%= yield %>
+
+    </div>
+    <footer></footer>
   </body>
 </html>

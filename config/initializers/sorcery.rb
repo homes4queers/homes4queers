@@ -76,7 +76,7 @@ Rails.application.config.sorcery.configure do |config|
   # What providers are supported by this app, i.e. [:twitter, :facebook, :github, :linkedin, :xing, :google, :liveid, :salesforce] .
   # Default: `[]`
   #
-  config.external_providers = [:facebook, :github]
+  config.external_providers = [:facebook]
 
 
   # You can change it by your local ca_file. i.e. '/etc/pki/tls/certs/ca-bundle.crt'
@@ -116,18 +116,18 @@ Rails.application.config.sorcery.configure do |config|
   #
   config.facebook.key = ENV['facebook_app_id']
   config.facebook.secret = ENV['facebook_api_secret']
-  config.facebook.callback_url = "http://0.0.0.0:3000/oauth/callback?provider=facebook"
+  config.facebook.callback_url = "http://homes4queers.herokuapp.com/oauth/callback?provider=facebook"
   config.facebook.user_info_mapping = { :email => "email", :name=> "name"}
   config.facebook.user_info_path = "me?fields=email, name"
   config.facebook.scope = "email" #etc
   config.facebook.display = "popup"
   config.facebook.api_version = "v2.5"
 
-  #
-  config.github.key = "7e3681eee39ef469c4a4"
-  config.github.secret = "3f3cc64924e668b7618a063076b467840df86bfb"
-  config.github.callback_url = "http://0.0.0.0:3000/oauth/callback?provider=github"
-  config.github.user_info_mapping = {:email => "name"}
+  # #
+  # config.github.key = ""
+  # config.github.secret =
+  # config.github.callback_url = "http://0.0.0.0:3000/oauth/callback?provider=github"
+  # config.github.user_info_mapping = {:email => "name"}
 
   # config.google.key = ""
   # config.google.secret = ""

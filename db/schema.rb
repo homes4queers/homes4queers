@@ -164,7 +164,7 @@ ActiveRecord::Schema.define(version: 20160317214317) do
   create_table "users", force: :cascade do |t|
     t.string   "name"
     t.text     "about_me"
-    t.string   "email",                           default: "---\n:null: true\n", null: false
+    t.string   "email"
     t.string   "crypted_password"
     t.string   "salt"
     t.datetime "created_at"

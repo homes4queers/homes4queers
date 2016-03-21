@@ -37,7 +37,7 @@ $(function() {
 //change radio label colours on click
 $(function() {
   $('.radio-button-label').click(function() {
-    $(this).toggleClass("radio-label-colour")
+    $(this).addClass("radio-label-colour")
   });
 });
 //toggle between private or shared space option

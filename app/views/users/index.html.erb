@@ -6,6 +6,7 @@
 
         <%= f.label :name_or_about_me_or_tags_name_cont, "Search for people by name or keyword" %>
         <%= f.search_field :name_or_about_me_or_tags_name_cont %>
+        <%= f.hidden_field :created_at_gteq, :value => "2000-01-01" %>
           Show only people looking for a:<br>
           <%= f.radio_button :site_use_eq, "looking_for_home", class:"radio-button" %>
           <%= f.label :site_use_eq, "Home", :value => "looking_for_home", class: "7-radio-button-label rb"  %>

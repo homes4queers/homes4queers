@@ -1,3 +1,7 @@
-<h4><%= pluralize(@tag.taggings_count, "person")  %> self-identified as </h4><h1><%= @tag.name %></h1>
-<%= render @tags.all %>
-<%= render @users %>
+<div class="row">
+  <div class="large-10 large-centered columns">
+    <h4><%= pluralize(@tag.taggings_count, "person")  %> self-identified as </h4><h1><%= @tag.name %></h1>
+    <%= render @tags.all %>
+    <%= render @users %>
+  </div>
+</div>

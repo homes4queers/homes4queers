@@ -43,7 +43,7 @@
            <%= link_to 'People', users_path, class:'b button orange' %>
            <%= link_to 'My Favourites', user_favourites_path(current_user), class:'b button pink'%>
            <%= link_to 'Inbox', conversations_path, class:'b button green' %>
-           <%= link_to 'Add a listing', new_listing_path, class:'b button' %>
+           <%= link_to 'Add a listing', new_listing_path, data: {no_turbolink: true}, class:'b button' %>
            <% end %>
          </div>
        </div>

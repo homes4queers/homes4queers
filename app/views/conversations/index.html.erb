@@ -1,5 +1,4 @@
 <div class="inbox">
-
   <h2>Inbox</h2>
   <div class="row">
     <div class="large-4 medium-4 columns ">
@@ -12,7 +11,7 @@
             <% else %>
               <% recipient = User.find(conversation.sender_id) %>
             <% end %>
-            <li><%= link_to "#{recipient.name} : #{conversation.subject}", conversation_messages_path(conversation) ,method: 'get', target: 'message_frame'%>
+            <li><%= link_to "#{recipient.name} :: #{conversation.subject}", conversation_messages_path(conversation) ,method: 'get', target: 'message_frame'%>
           <% end %>
         <% end %>
     </ul>

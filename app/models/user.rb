@@ -31,7 +31,7 @@ class User < ActiveRecord::Base
 
   acts_as_taggable_on :tags
 
-  # has_secure_token
+  has_secure_token
 
   mount_uploader :avatar, ImageUploader
 
@@ -50,11 +50,11 @@ class User < ActiveRecord::Base
   end
 
 
-  # def has_secure_token(attribute = :token)
-  #   require 'active_support/core_ext/securerandom'
-  #   define_method("regenerate_#{attribute}") { update! attribute => self.class.generate_unique_secure_token }
-  #   before_create { self.send("#{attribute}=", self.class.generate_unique_secure_token) unless self.send("#{attribute}?")}
-  # end
+  def has_secure_token(attribute = :token)
+    require 'active_support/core_ext/securerandom'
+    define_method("regenerate_#{attribute}") { update! attribute => self.class.generate_unique_secure_token }
+    before_create { self.send("#{attribute}=", self.class.generate_unique_secure_token) unless self.send("#{attribute}?")}
+  end
 
 
 end

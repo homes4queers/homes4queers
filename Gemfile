@@ -51,6 +51,7 @@ gem 'administrate'
 
 gem 'foundation-rails'
 
+gem "has_secure_token"
 
 
 # Use ActiveModel has_secure_password

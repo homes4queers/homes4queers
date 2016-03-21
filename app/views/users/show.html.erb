@@ -21,7 +21,6 @@
   <% if can? :manage, @user %>
   <%= link_to "Edit Profile", edit_user_path(@user), class:'button orange' %>
   <%= link_to "Delete Account", @user, method: :delete, data: {confirm: "Are you sure you want to delete your account? This cannot be undone!"}, class:"button" %><br>
-
   <% end %>
 
 <div class="row">
@@ -45,6 +44,9 @@
       <div class="tags">
         <h4>Tags:</h4>
         <%= render @user.tags %>
+        <% if can? :manage, @user %><br>
+        <strong>Unique invite code:</strong> <%= @user.token %>
+        <% end %>
       </div>
     </div>
 
@@ -88,9 +90,5 @@
     <%= render 'comments' %>
 
   </div>
-
-<% if can? :manage, @user %>
-<strong>My unique invite code:</strong> <%= @user.token %>
-<% end %>
 
 </div>

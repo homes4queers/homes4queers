@@ -1,0 +1,7 @@
+<h1>Enter Your Invite Token</h1>
+
+<%= form_for @user do |f| %>
+  <%= f.label :invite_code, "Enter your Code Here" %>
+  <%= f.text_field :invite_code %>
+  <%= f.submit %>
+<% end %>

@@ -18,7 +18,7 @@ class OauthsController < ApplicationController
           if current_user.invite_code == ""
             redirect_to tokens_path
           else
-            redirect_to edit_user_path(current_user)
+              redirect_to edit_user_path(current_user)
           end
       rescue
         redirect_to root_path, alert: "Failed to login from #{provider.titleize}"
@@ -36,4 +36,5 @@ class OauthsController < ApplicationController
     unless current_user.invite_code?
       redirect_to tokens_path
     end
+  end
 end

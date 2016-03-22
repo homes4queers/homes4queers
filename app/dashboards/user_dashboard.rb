@@ -17,6 +17,11 @@ class UserDashboard < Administrate::BaseDashboard
     messages: Field::HasMany,
     user_comments: Field::HasMany.with_options(class_name: "Comment"),
     listing_comments: Field::HasMany.with_options(class_name: "Comment"),
+    flags: Field::HasMany,
+    taggings: Field::HasMany.with_options(class_name: "::ActsAsTaggableOn::Tagging"),
+    base_tags: Field::HasMany.with_options(class_name: "::ActsAsTaggableOn::Tag"),
+    tag_taggings: Field::HasMany.with_options(class_name: "ActsAsTaggableOn::Tagging"),
+    tags: Field::HasMany.with_options(class_name: "ActsAsTaggableOn::Tag"),
     id: Field::Number,
     name: Field::String,
     about_me: Field::Text,
@@ -34,12 +39,12 @@ class UserDashboard < Administrate::BaseDashboard
     token: Field::String,
     invite_code: Field::String,
     role: Field::String,
+    site_use: Field::String,
     reset_password_token: Field::String,
     reset_password_token_expires_at: Field::DateTime,
     reset_password_email_sent_at: Field::DateTime,
     message_notifications: Field::Boolean,
-    password: PasswordField,
-    password_confirmation: PasswordField,
+    flagged: Field::Number,
   }
 
   # COLLECTION_ATTRIBUTES
@@ -48,87 +53,98 @@ class UserDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    :name,
+    :authentications,
     :listings,
-    :user_comments,
-    :listing_comments,
-    :message_notifications
+    :favourites,
+    :favourite_listings,
   ]
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-    :id,
-    :name,
-    :about_me,
-    :email,
     :authentications,
     :listings,
-    # :favourites,
-    # :favourite_listings,
-    # :favourite_users,
+    :favourites,
+    :favourite_listings,
+    :favourite_users,
     :conversations,
     :messages,
     :user_comments,
     :listing_comments,
-    # :crypted_password,
-    # :salt,
+    :flags,
+    :taggings,
+    :base_tags,
+    :tag_taggings,
+    :tags,
+    :id,
+    :name,
+    :about_me,
+    :email,
+    :crypted_password,
+    :salt,
     :created_at,
     :updated_at,
     :avatar,
-    # :remember_me_token,
-    # :remember_me_token_expires_at,
-    # :failed_logins_count,
-    # :lock_expires_at,
-    # :unlock_token,
+    :remember_me_token,
+    :remember_me_token_expires_at,
+    :failed_logins_count,
+    :lock_expires_at,
+    :unlock_token,
     :token,
     :invite_code,
     :role,
-    # :reset_password_token,
-    # :reset_password_token_expires_at,
-    # :reset_password_email_sent_at,
+    :site_use,
+    :reset_password_token,
+    :reset_password_token_expires_at,
+    :reset_password_email_sent_at,
     :message_notifications,
+    :flagged,
   ]
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    # :authentications,
-    :name,
-    :about_me,
-    :email,
-    :password,
-    :password_confirmation,
+    :authentications,
     :listings,
-    # :favourites,
-    # :favourite_listings,
-    # :favourite_users,
+    :favourites,
+    :favourite_listings,
+    :favourite_users,
     :conversations,
     :messages,
     :user_comments,
     :listing_comments,
-    # :crypted_password,
-    # :salt,
+    :flags,
+    :taggings,
+    :base_tags,
+    :tag_taggings,
+    :tags,
+    :name,
+    :about_me,
+    :email,
+    :crypted_password,
+    :salt,
     :avatar,
-    # :remember_me_token,
-    # :remember_me_token_expires_at,
-    # :failed_logins_count,
+    :remember_me_token,
+    :remember_me_token_expires_at,
+    :failed_logins_count,
     :lock_expires_at,
     :unlock_token,
     :token,
     :invite_code,
     :role,
+    :site_use,
     :reset_password_token,
     :reset_password_token_expires_at,
-    # :reset_password_email_sent_at,
+    :reset_password_email_sent_at,
     :message_notifications,
+    :flagged,
   ]
 
   # Overwrite this method to customize how users are displayed
   # across all pages of the admin dashboard.
   #
-  def display_resource(user)
-    "User #{user.name}"
-  end
+  # def display_resource(user)
+  #   "User ##{user.id}"
+  # end
 end

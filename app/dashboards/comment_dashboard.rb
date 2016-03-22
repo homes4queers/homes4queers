@@ -14,6 +14,7 @@ class CommentDashboard < Administrate::BaseDashboard
     body: Field::Text,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
+    flagged: Field::Boolean,
   }
 
   # COLLECTION_ATTRIBUTES
@@ -37,6 +38,7 @@ class CommentDashboard < Administrate::BaseDashboard
     :body,
     :created_at,
     :updated_at,
+    :flagged,
   ]
 
   # FORM_ATTRIBUTES
@@ -46,6 +48,7 @@ class CommentDashboard < Administrate::BaseDashboard
     :user,
     :commentable,
     :body,
+    :flagged,
   ]
 
   # Overwrite this method to customize how comments are displayed

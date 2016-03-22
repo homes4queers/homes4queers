@@ -1,6 +1,6 @@
 require "administrate/base_dashboard"
 
-class ConversationDashboard < Administrate::BaseDashboard
+class FlagDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -8,16 +8,11 @@ class ConversationDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    sender: Field::BelongsTo.with_options(class_name: "User"),
-    recipient: Field::BelongsTo.with_options(class_name: "User"),
-    messages: Field::HasMany,
+    user: Field::BelongsTo,
+    flagged: Field::Polymorphic,
     id: Field::Number,
-    sender_id: Field::Number,
-    recipient_id: Field::Number,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
-    subject: Field::String,
-    flagged: Field::Boolean,
   }
 
   # COLLECTION_ATTRIBUTES
@@ -26,44 +21,34 @@ class ConversationDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    :sender,
-    :recipient,
-    :messages,
+    :user,
+    :flagged,
     :id,
+    :created_at,
   ]
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-    :sender,
-    :recipient,
-    :messages,
+    :user,
+    :flagged,
     :id,
-    :sender_id,
-    :recipient_id,
     :created_at,
     :updated_at,
-    :subject,
-    :flagged,
   ]
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :sender,
-    :recipient,
-    :messages,
-    :sender_id,
-    :recipient_id,
-    :subject,
+    :user,
     :flagged,
   ]
 
-  # Overwrite this method to customize how conversations are displayed
+  # Overwrite this method to customize how favourites are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(conversation)
-  #   "Conversation ##{conversation.id}"
+  # def display_resource(favourite)
+  #   "Favourite ##{favourite.id}"
   # end
 end

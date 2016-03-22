@@ -6,10 +6,10 @@
 # you're free to overwrite the RESTful controller actions.
 module Admin
   class ApplicationController < Administrate::ApplicationController
-     before_filter :authenticate_admin
+    before_filter :authenticate_admin
 
     def authenticate_admin
-      redirect_to root_url unless current_user.try(:admin?)
+      # TODO Add authentication logic here.
     end
 
     # Override this value to specify the number of elements to display at a time
@@ -17,6 +17,5 @@ module Admin
     # def records_per_page
     #   params[:per_page] || 20
     # end
-
   end
 end

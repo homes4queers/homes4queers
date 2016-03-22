@@ -27,6 +27,8 @@ class User < ActiveRecord::Base
   has_many :messages, through: :conversations
   has_many :user_comments, as: :commentable, class_name:"Comment", dependent: :destroy
   has_many :listing_comments, through: :listings, source:"comments", dependent: :destroy
+  has_many :flags
+  has_many :flags, as: :flagged
   # has_many :extended_profile_attributes, dependent: :destroy
 
   acts_as_taggable_on :tags

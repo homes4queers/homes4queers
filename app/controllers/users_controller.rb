@@ -76,14 +76,20 @@
     end
   end
 
-  private
-
-  def user_params
-
-    params.require(:user).permit(:name, :email, :password, :password_confirmation, :about_me, :avatar, :tag_list, :invite_code, :message_notifications, :site_use, authentication_attributes: [:user_id, :provider, :uid])
-
+  def flag
+    @flagged_user = User.find(params[:id])
+    if Flag.create(flagged: @flagged_user, user: current_user)
+      redirect_to :back, notice: "Flagged this person"
+    else
+      redirect_to :back, notice: "Flagging didn't work"
+    end
   end
 
 
+  private
+
+  def user_params
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :about_me, :avatar, :tag_list, :invite_code, :message_notifications, :site_use, authentication_attributes: [:user_id, :provider, :uid])
+  end
 
 end

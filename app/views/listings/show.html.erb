@@ -116,8 +116,7 @@
         </ul>
       </div><!-- end features cloud -->
 
-      <hr>
-
+<br>
       <div class="posted_by">
         This listing was made by
           <%= link_to @listing.user do %>
@@ -126,8 +125,14 @@
           <% end %>
       </div>
     </div><!-- end 6-column features and amenities -->
+    <div class="flagbox">
+      <%= link_to flag_listing_path(@listing.id), method: :post do%>
+      Flag as offensive
+      <i class="material-icons flag" alt="flag this listing">error</i>
+      <% end %>
+    </div>
   </div><!-- end row -->
-
+<br>
   <div id="map-show" data-latitude='<%= @listing.latitude %>' data-longitude='<%= @listing.longitude %>'></div>
 
   <h3>Nearby Listings</h3>

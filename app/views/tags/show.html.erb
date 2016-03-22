@@ -2,6 +2,12 @@
   <div class="large-10 large-centered columns">
     <h4><%= pluralize(@tag.taggings_count, "person")  %> self-identified as </h4><h1><%= @tag.name %></h1>
     <%= render @tags.all %>
+    <div class="flagbox">
+      <%= link_to flag_tag_path(@tag.id), method: :post do%>
+      Flag as inappropriate
+      <i class="material-icons flag" alt="flag this tag">error</i>
+      <% end %>
+    </div>
     <%= render @users %>
   </div>
 </div>

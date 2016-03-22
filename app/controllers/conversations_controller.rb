@@ -26,6 +26,16 @@ class ConversationsController < ApplicationController
       redirect_back_or_to conversation_messages_path(@conversation)
     end
   end
+
+  def flag
+    @flagged_conversation = Conversation.find(params[:id])
+    if Flag.create(flagged: @flagged_conversation, user: current_user)
+      redirect_to :back, notice: "Flagged Conversation"
+    else
+      redirect_to :back, notice: "Flagging didn't work"
+    end
+  end
+
   private
   def conversation_params
     params.require(:conversation).permit(:sender_id, :recipient_id, :subject)

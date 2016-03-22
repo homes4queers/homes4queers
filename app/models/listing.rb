@@ -1,6 +1,7 @@
 class Listing < ActiveRecord::Base
   belongs_to :user
   has_many :comments, as: :commentable
+  has_many :flags, as: :flagged
   has_many :images
   geocoded_by :location
   after_validation :geocode, if: :location_changed?
@@ -24,7 +25,7 @@ class Listing < ActiveRecord::Base
       images.first.photo.thumb.url
     end
   end
-  
+
   def nearbys_if_geocoded
     if latitude && longitude
       self.nearbys(0.8, unit: :km)

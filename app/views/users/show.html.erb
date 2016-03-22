@@ -5,9 +5,9 @@
       <li class="favourite-link">
         <%= link_to favourite_user_path(@user.id), method: :post do%>
           <i class="material-icons fave" alt="favourite button">favorite</i>
-        <% end %>
+          <% end %>
       </li>
-    <% else %>
+      <% else %>
       <li class="unfavourite-link">
         <%= link_to unfavourite_user_path(@user.id), method: :delete do %>
           <i class="material-icons unfave" alt="unfavourite button">favorite</i>
@@ -16,7 +16,6 @@
       <% end %>
     <% end %>
   <% end %>
-
 
   <% if can? :manage, @user %>
   <%= link_to "Edit Profile", edit_user_path(@user), class:'button orange' %>
@@ -36,29 +35,27 @@
 
     <div class="large-6 medium-6 columns">
 
-
-<% if can? :manage, @user %>
-<strong>My unique invite code:</strong> <%= @user.token %>
-<%= link_to "Delete Account", @user, method: :delete, data: {confirm: "Are you sure you want to delete your account? This cannot be undone!"} %><br>
-<% end %>
-<% unless can? :manage, @user %>
-<%= link_to "Flag this user", @user.flagged == true, data: {confirm: "Are you sure you want to flag this user? This will alert the admin!"} %><br>
-<% end %>
-</div>
-
-      <h1><%= @user.name %></h1>
+  <h1><%= @user.name %></h1>
 
 
-      <div class="description">
-        <%= @user.about_me %><br>
+        <div class="description">
+          <%= @user.about_me %><br>
+        </div>
+        <div class="tags">
+          <h4>Tags:</h4>
+          <%= render @user.tags %>
+          <% if can? :manage, @user %><br>
+          <strong>Unique invite code:</strong> <%= @user.token %>
+          <% end %>
+        </div>
       </div>
-      <div class="tags">
-        <h4>Tags:</h4>
-        <%= render @user.tags %>
-        <% if can? :manage, @user %><br>
-        <strong>Unique invite code:</strong> <%= @user.token %>
+      <div class="flagbox">
+        <%= link_to flag_user_path(@user.id), method: :post do%>
+        Flag as offensive
+        <i class="material-icons flag" alt="flag this person">error</i>
         <% end %>
       </div>
+
 
     </div>
 
@@ -89,8 +86,36 @@
       </div>
     <% end %>
 
+      <% if @user.listings.any? %>
+        <div class="row">
+          <hr>
+          <h3><%= @user.name %>'s Listings</h3>
+          <% @user.listings.each do |list| %>
+            <div class="small-10 small-centered ">
+              <ul class=large-block-grid-4>
+                <div class="single-card">
+                  <ul>
+                    <%= link_to listing_path(list) do %>
+                    <li><%= image_tag list.thumbnail, class:'thumbnail' %></li>
+                    <li><h4><%= list.name %></h4></li>
+                    <% end %>
+                    <li><%= list.price %></li>
+                    <li><%= list.location %></li>
+                    <li>
+                      Available from:<br>
+                      <%= list.rent_date %>
+                    </li>
+                  </ul>
+                </div>
+              </ul>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+
 
   </div><!--end column-->
+
 </div><!--end row-->
 <hr>
   <div class="row">

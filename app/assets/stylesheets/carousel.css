@@ -25,7 +25,7 @@
    we are using fixed sizes for this demo */
 
 .listing-pic {
-  max-width: auto;
+  max-width: 30rem;
   max-height: 30rem;
 }
 @media(max-width){

@@ -12,262 +12,234 @@
  *
  *= require_tree .
  *= require_self
+ *= require foundation_and_overrides
  */
+@import url(https://fonts.googleapis.com/css?family=Lobster+Two:700);
+@import url(https://fonts.googleapis.com/css?family=Cabin);
+@import url(https://fonts.googleapis.com/icon?family=Material+Icons);
 
-  @import url(https://fonts.googleapis.com/css?family=Lobster+Two:700);
-  @import url(https://fonts.googleapis.com/css?family=Cabin);
+ body{
+   background-color: rgb(255, 239, 173);
+  // background-color: rgb(120, 71, 103);
+   font-family: 'Cabin', sans-serif;
+   color: rgb(56, 48, 57);//dark dark purple
+ }
+a{
+  color: rgb(120, 71, 103);
+}
+a:hover, a:focus{
+  color: rgb(255, 207, 0);
+}
+.unfave{
+  color: red
+}
+ h1,h2,h3 {
+   text-align: center;
+   color: rgb(120, 71, 103);//title purple
+   font-family: 'Lobster Two', cursive, serif;
+   text-shadow: 2px 2px rgb(232, 223, 238);
+ }
+ h4,h5 {
+   text-align: center;
+   color: rgb(120,71,103);//title purple
+   font-family: 'Lobster Two'
+ }
 
-//  @font-face {
-//      font-family: "lobster_tworegular";
-//      src: url('fonts/lobstertwo-regular-webfont.eot');
-//      src: url('fonts/lobstertwo-regular-webfont.eot?#iefix') format('embedded-opentype'),
-//           url('fonts/lobstertwo-regular-webfont.woff2') format('woff2'),
-//           url('fonts/lobstertwo-regular-webfont.woff') format('woff'),
-//           url('fonts/lobstertwo-regular-webfont.ttf') format('truetype'),
-//           url('fonts/lobstertwo-regular-webfont.svg#lobster_tworegular') format('svg');
-//      font-weight: normal;
-//      font-style: normal;
-//  }
-//
-//  @font-face {
-//     font-family: cabinbold;
-//     src: url('fonts/cabin-bold-webfont.eot');
-//     src: url('fonts/cabin-bold-webfont.eot?#iefix') format('embedded-opentype'),
-//          url('fonts/cabin-bold-webfont.woff2') format('woff2'),
-//          url('fonts/cabin-bold-webfont.woff') format('woff'),
-//          url('fonts/cabin-bold-webfont.ttf') format('truetype'),
-//          url('fonts/cabin-bold-webfont.svg#cabinbold') format('svg');
-//     font-weight: normal;
-//     font-style: normal;
-//
+ header { //holds logo
+  background-color: rgb(255, 246, 161);//lighter goldenrod
+  // rgb(254, 244, 117);//goldenrod
+  border-bottom-left-radius: 3rem;
+  border-bottom-right-radius: 3rem;
+}
+
+label {
+  color: rgb(56, 48, 57);//dark dark purple
+}
+li{
+  list-style-type :none;
+}
+
+.top-bar {
+  background-color: rgb(74, 61, 50);//brownish
+  color: white;
+  max-height:3rem;
+}
+
+footer {
+    background-color: rgb(74, 61, 50);//brownish
+    color: white;
+    height: 20px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+// footer {
+//   width: 100%;
+//   margin: 0;
+//   position: absolute;
 // }
-//
-// @font-face {
-//     font-family: cabinregular;
-//     src: url('fonts/cabin-regular-webfont.eot');
-//     src: url('fonts/cabin-regular-webfont.eot?#iefix') format('embedded-opentype'),
-//          url('fonts/cabin-regular-webfont.woff2') format('woff2'),
-//          url('fonts/cabin-regular-webfont.woff') format('woff'),
-//          url('fonts/cabin-regular-webfont.ttf') format('truetype'),
-//          url('fonts/cabin-regular-webfont.svg#cabinregular') format('svg');
-//     font-weight: normal;
-//     font-style: normal;
-//
-// }
-
-html {
-  background-color: rgb(250, 240, 209);
-  color: rgb(141, 87, 148);
-  box-sizing: border-box;
-  font-family: 'Cabin', sans-serif;
-  font-size: .75rem;
-  line-height: 1.35;
-  height: 100%;
-  width: 100%;
+a.nav-bar {
+  color: rgb(255, 233, 88);//title purple
 }
 
-
-.navcontainer ul {
-margin: 0;
-padding: 0;
-list-style-type: none;
-display: inline-block;
+a.nav-bar:hover {
+  color: rgb(154, 120, 142);//title purple
 }
 
-.navcontainer .top-right-menu {
-float: right;
+//buttons
+.button {
+   border-radius: 20rem;
+ }
+
+.mini-buttons {
+  display: none;
 }
 
-.navcontainer ul li {
-  display: inline;
+.b.button:hover, .b.button:focus {
+   border-radius: 20rem;
+   z-index: 15;
+  -webkit-transition: all 0.1s ease-in-out;
+  -moz-transition: all 0.1s ease-in-out;
+  -o-transition: all 0.1s ease-in-out;
+   transition: all 0.1s ease-in-out;
+   margin-top: -2px;
+}
+.button.pink {
+ background-color: rgb(237,3,69); //pink
+}
+.button.pink:hover, .button.pink:focus{
+ background-color: rgb(184, 18, 41); //pink
 }
 
-.site-header img {
-  width: 100%;
+.button.green {
+ background-color: rgb(3,195,131);//green
+}
+.button.green:hover, .button.green:focus{
+ background-color: rgb(12, 138, 96);//green
+ }
+
+.button.purple {
+   background-color: rgb(113,1,98);//purple
+}
+.button.purple:hover, .button.purple:focus{
+ background-color: rgb(73, 7, 64);//purple
 }
 
-.profile {
-  text-align: center;
+.button.orange {
+   background-color: rgb(239,106,50);//orange
 }
-.single-card {
-  margin: 0 5%;
+.button.orange:hover, .button.orange:focus{
+ background-color: rgb(180, 84, 44);//orange
+}
+
+.content {
+  background-color:rgb(255, 252, 240) ;
+  border-left: solid 2px rgb(74, 61, 50);//brownish
+  border-right: solid 2px rgb(74, 61, 50);//brownish
+}
+
+.header {
+  background-image: url('/toronto2.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  height: 16rem;
+  border-bottom-left-radius: 4.5rem;
+  border-bottom-right-radius: 4.5rem;
+  box-shadow: 0px 5px 10px 0px rgb(120, 71, 103);
+}
+.checkboxes ul{
+  list-style-type: none;
+}
+.check-box{
+  display:none;
+}
+
+.check-label-colour {
+  color: white;
+  border-radius: .5em;
+  background-color:rgb(152, 131, 144) ;
+}
+.text-box{
+  height:7rem;
+}
+
+.listing-options{
+  border-radius: 1em;
+  border: 1px solid  rgb(172, 131, 158);//medium grey purple
+  background-color: rgb(255, 232, 247);//light purple
+  padding: .41rem;
+}
+
+.radio-button{
+  display:none;
+}
+
+.rb:hover, .rb:focus{
+  background-color: rgb(120, 71, 103);//title purple
+  color:white;
+  border-radius: .5rem;
+}
+
+.radio-label-colour {
+  color: white;
+  border-radius: .5em;
+  background-color:rgb(152, 131, 144) ;
 }
 
 .single-card ul {
-  // position:
-  display: inline-grid;;
-  // font-size: -.75rem;
-  border-radius: 10px;
+  font-size: 12px;
+  background-color: rgb(255, 246, 161);//lighter goldenrod
+  border-radius: 2rem;
   margin: .5rem .5rem;
-  padding: 1rem;
-  // padding-bottom: auto;
-  border: 5px;
-  background-color: white;
-  height: 300px;
-  width: 150px;
+  padding: .5rem;
+  height: 18rem;
+  width: 13rem;
   float: left;
   list-style-type: none;
   text-align: center;
   overflow-y: auto;
 }
 
-.single-card ul li {
-  margin: 5%;
-  text-overflow: ellipsis;
+@media (max-width: 500px){
+  .top-bar {
+    font-size: 12px;
+  }
 
-  /* Required for text-overflow to do anything */
-  white-space: nowrap;
-  overflow: hidden;
-}
+  .header {
+    background-image: url('/homes_gradient_2.png');
+    height: 10em;
+    border-bottom-left-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+  }
 
-.index-cards {
-  margin: 0 5%;
-  width: 90%;
-  text-align: center;
+  header { //holds logo
+   background-color: rgb(255, 246, 161);//goldenrod
+   border-bottom-left-radius: 1rem;
+   border-bottom-right-radius: 1rem;
+ }
 
-}
+ //buttons
+ .buttons {
+    display: none;
+  }
 
-div.search-listings {
-  text-align: center;
-}
+  .mini-buttons {
+    display: block;
+  }
 
-div.single-card ul li:hover {
-  z-index: 15;
-  -webkit-transition: all 0.1s ease-in-out;
-  -moz-transition: all 0.1s ease-in-out;
-  -o-transition: all 0.1s ease-in-out;
-  transition: all 0.1s ease-in-out;
-  margin-top: -1%;
-  // margin-bottom: 2.5%;
-}
-
-div.features_cloud ul {
-  margin: 0 15% 0 10%;
-  list-style-type: none;
-  text-align: center;
-}
-
-div.features_cloud ul li {
-  background-color: white;
-  padding: 0.25rem;
-  margin: 0.25rem;
-  border-radius: 10%;
-  display: inline-block;;
-}
-
-div.features_cloud ul li.grey {
-  background-color: rgb(250, 240, 209);
-  color: rgb(117, 117, 117);
-}
-
-
-a {
-  color: rgba(1,84,90,1);
-    text-decoration: none;
-}
-
-h1 {
-  font-family: 'Lobster Two', cursive;
-  font-size: 2.5rem;
-  // font-family: lobster_tworegular, "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
-//
-// div.search-listings{
-//   float: right;
-// }
-
-#map-index {
-  height: 250px;
-  width: 90%;
-  margin: 0 5%;
-}
-
-#map-show {
-  height: 250px;
-  width: 90%;
-  margin: 0 5%;
-}
-
-
-input, select, textarea {
-  background-color: white;
-}
-
-@media (min-width: 700px) {
-  .site-header {
-    width: 500px;
-    margin: 0 25%;
+.button-logo {
+  height: 50px;
   }
 }
 
-@media only screen and (max-width: 500px) {
-.single-card ul {
+@media (max-width: 375px){
+  .header {
+    height: 8em;
+  }
 
-  width: 85%;
-  margin: .5rem 5%;
+  .button-logo {
+    height: 40px;
+  }
 }
-}
-
-// .navcontainer input,
-// .navcontainer label {
-//   display: none;
-//   width: 40px;
-//   height: 40px;
-//   color: #fff;
-//   text-align: center;
-//   line-height: 40px;
-//   font-size: 1.6rem;
-//   border-radius: 5px;
-// }
-// .navcontainer label {
-//   position: absolute;
-//   top: 22px;
-//   right: 20px;
-//   background: #000;
-// }
-// .navcontainer label:hover {
-//   cursor: pointer;
-//   transition: background .2s;
-//   background: crimson;
-// }
-// .navcontainer label:before {
-//   font-family: FontAwesome;
-//   font-size: 24px;
-//   content: "\f0c9";
-//   text-align: center;
-// }
-// .navcontainer input[type="checkbox"]:checked + .top-right-menu + label:hover:before {
-//   content: "\f00d";
-// }
-//   @media only screen and (max-width: 768px) {
-//
-//
-//   	  .navcontainer:before, .navcontainer:after {display:none;}
-//
-//   		.navcontainer ul {
-//   				display: block;
-//   				padding: 18px 0 0 0;
-//   		}
-//   		.top-right-menu {
-//   				transition: all .3s;
-//   				position: absolute;
-//   				z-index: 1000;
-//   				top: 0;
-//   				min-height: 100vh;
-//   				left: 100%;
-//   				background: #fff;
-//   		}
-//   		.top-right-menu li {
-//   				flex: none;
-//   			width:100%;
-//   		}
-//   		.navcontainer input[type="checkbox"]:checked + .main-menu {
-//   				transform:translate(-100%);
-//   				min-width: 50%;
-//   		}
-//   		.navcontainer label {
-//   				display: block;
-//   				z-index: 2000;
-//   				transition: .2s;
-//   		}
-//     }

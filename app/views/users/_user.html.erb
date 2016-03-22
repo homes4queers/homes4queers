@@ -1,33 +1,43 @@
-<div class='single-card'>
-    <ul>
-      <%= link_to user_path(user) do %>
-      <% if user.site_use == "looking_for_home" %>
-        <p class=home_seeker>
-          Looking for a home!
-        </p>
-      <% elsif user.site_use == "looking_for_roommate" %>
-      <p class=roommate_seeker>
-        Looking for a roommate!
-      </p>
-      <% elsif user.site_use == "looking_for_tenant" %>
-      <p class=tenant_seeker>
-        Looking for a tenant!
-      </p>
-      <% end %>
-     <li><%= image_tag user.avatar.thumb %></li>
-      <li><%=user.name%></li>
-       <% end %>
-       <div class="tag-list">
-         <%= user.tag_list %>
-       </div>
-        <% if current_user %>
-         <% unless can? :manage, user %>
-           <% unless current_user.favourite_users.exists?(user.id) %>
-            <li><%= link_to 'Add to favorites', favourite_user_path(user.id), method: :post %></li>
-           <% else %>
-             <li><%= link_to 'Remove from favorites', unfavourite_user_path(user.id), method: :delete %></li>
+<div class="large-11 large-centered">
+  <ul class="large-block-grid-4 ">
+    <div class='single-card'>
+      <ul>
+        <%= link_to user_path(user) do %>
+          <% if user.site_use == "looking_for_home" %>
+            <p class=home_seeker>
+              Looking for a home!
+            </p>
+          <% elsif user.site_use == "looking_for_roommate" %>
+            <p class=roommate_seeker>
+              Looking for a roommate!
+            </p>
+          <% elsif user.site_use == "looking_for_tenant" %>
+            <p class=tenant_seeker>
+              Looking for a tenant!
+            </p>
+          <% end %>
+          <li><%= image_tag user.avatar.thumb, class:'thumbnail' %></li>
+          <li><h4><%=user.name%></h4></li>
+        <% end %>
+           <li><%= user.tag_list %></li>
+           <% unless can? :manage, @user %>
+             <% if current_user %>
+               <% unless current_user.favourite_users.exists?(id: user.id) %>
+               <li class="favourite-link">
+                 <%= link_to favourite_user_path(user.id), method: :post do%>
+                   <i class="material-icons" alt="favourite button">favorite</i>
+                 <% end %>
+               </li>
+             <% else %>
+               <li class="unfavourite-link">
+                 <%= link_to unfavourite_user_path(user.id), method: :delete do %>
+                   <i class="material-icons unfave" alt="unfavourite button">favorite</i>
+                 <% end %>
+               </li>
+               <% end %>
+             <% end %>
            <% end %>
-         <% end %>
-         <% end %>
-      </ul>
-  </div>
+        </ul>
+      </div>
+    </ul>
+</div>

@@ -1,12 +1,13 @@
-# class CheckForInvite < ActiveModel::Validator
-#   def validate(record)
-#     @inviter = User.find_by_token(record.invite_code)
-#     if @inviter.nil?
-#       record.errors[:invite_code] << "- Must provide a valid invite code!"
-#       return false
-#     end
-#   end
-# end
+class CheckForInvite < ActiveModel::Validator
+  def validate(record)
+    @inviter = User.find_by_token(record.invite_code)
+    if @inviter.nil?
+      record.errors[:invite_code] << "- Must provide a valid invite code!"
+      return false
+    end
+  end
+end
+
 
 class User < ActiveRecord::Base
   authenticates_with_sorcery!
@@ -28,9 +29,9 @@ class User < ActiveRecord::Base
   has_many :listing_comments, through: :listings, source:"comments", dependent: :destroy
   # has_many :extended_profile_attributes, dependent: :destroy
 
-  acts_as_ordered_taggable
+  acts_as_taggable_on :tags
 
-  # has_secure_token
+  has_secure_token
 
   mount_uploader :avatar, ImageUploader
 
@@ -40,7 +41,7 @@ class User < ActiveRecord::Base
   validates :email, uniqueness: true
   validates_presence_of :message_notifications, :if => 'message_notifications.nil?'
 
-  # validates_with CheckForInvite
+  validates_with CheckForInvite
 
   Roles = [:admin, :default]
 
@@ -49,11 +50,11 @@ class User < ActiveRecord::Base
   end
 
 
-  # def has_secure_token(attribute = :token)
-  #   require 'active_support/core_ext/securerandom'
-  #   define_method("regenerate_#{attribute}") { update! attribute => self.class.generate_unique_secure_token }
-  #   before_create { self.send("#{attribute}=", self.class.generate_unique_secure_token) unless self.send("#{attribute}?")}
-  # end
+  def has_secure_token(attribute = :token)
+    require 'active_support/core_ext/securerandom'
+    define_method("regenerate_#{attribute}") { update! attribute => self.class.generate_unique_secure_token }
+    before_create { self.send("#{attribute}=", self.class.generate_unique_secure_token) unless self.send("#{attribute}?")}
+  end
 
 
 end

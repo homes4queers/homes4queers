@@ -1,130 +1,153 @@
-<div class="profile">
-
+<div class="listings">
+  <% if current_user %>
   <% unless can? :manage, @listing %>
     <% unless current_user.favourite_listings.exists?(id: @listing.id) %>
-    <%= link_to 'Add to favorites', favourite_listing_path(listing_id: @listing), method: :post %>
+      <li class="favourite-link">
+        <%= link_to favourite_listing_path(@listing.id), method: :post do%>
+          <i class="material-icons">favorite</i>
+        <% end %>
+      </li>
     <% else %>
-    <%= link_to 'Remove from favorites', unfavourite_listing_path(@listing), method: :delete %>
-    <% end %>
+      <li class="unfavourite-link">
+        <%= link_to unfavourite_listing_path(@listing.id), method: :delete do %>
+          <i class="material-icons unfave">favorite</i>
+        <% end %>
+      </li>
+    <% end %><!--end unless current user.favourite-->
   <% end %>
+<% end %>
 
-  <h1><%= @listing.name %></h1>
+<h1><%= @listing.name %></h1>
+
+  <%= link_to "Edit", edit_listing_path(@listing), class: 'button right' %>
   <% if can? :manage, @listing %>
-  <%= link_to "Edit", edit_listing_path(@listing) %>
   <% end %>
+  <div class="row">
+    <div class="large-6 column media-object stack-for-small">
+      <div class="container">
+        <ul class="slides">
+          <% @listing.images.each do |p|%>
+            <input type="radio" id="cover1" name="covers" checked />
+            <li><%= image_tag p.photo, alt: "listing picture",class: 'listing-pic'%></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
 
-  <div class="info">
-    $<%= @listing.price %> per month<br>
-    Available from: <%= @listing.rent_date.to_formatted_s(:long_ordinal) %><br>
-    <% @listing.images.each do |p|%>
-      <%= image_tag p.photo, alt: "listing picture"%><br>
-    <% end %>
-    <%= pluralize(@listing.bedrooms, "Bedroom") %><br>
-    <%= @listing.location %><br>
-  </div>
+    <div class="large-6 column features text-center">
 
-  <div class="description">
-    <%= @listing.description %>
-  </div>
+      <h3>Features and Amenities:</h3>
+      $<%= @listing.price %> per month<br>
+      Available from: <%= @listing.rent_date.to_formatted_s(:long_ordinal) %><br>
+      <%= pluralize(@listing.bedrooms, "Bedroom") %><br>
+      <%= @listing.location %><br>
 
-<div class="features_cloud">
-<h3>Features and Amenities:</h3>
+      <div class="description">
+        <%= @listing.description %>
+      </div>
+      <br>
+      <div class="features_cloud">
+        <ul class='features'>
+        <% if @listing.wheelchair_accessible? %><li>Wheelchair Accessible</li><% end %>
+        <% if @listing.visually_accessible? %><li>Accessible for the Visually Impaired</li><% end %>
+        <% if @listing.hearing_accessible? %><li>Accessible for the hearing impaired</li><% end %>
+        <% if @listing.assistance_animal? %><li>Assistance Animal Friendly</li><% end %>
 
-<ul>
-<% if @listing.wheelchair_accessible? %><li>Wheelchair Accessible</li><% end %>
-<% if @listing.visually_accessible? %><li>Accessible for the Visually Impaired</li><% end %>
-<% if @listing.hearing_accessible? %><li>Accessible for the hearing impaired</li><% end %>
-<% if @listing.assistance_animal? %><li>Assistance Animal Friendly</li><% end %>
+        <% unless @listing.wheelchair_accessible? || @listing.visually_accessible? || @listing.hearing_accessible? || @listing.assistance_animal? %>
+        <li class=grey>No Accessibility</li><% end %>
 
-<% unless @listing.wheelchair_accessible? || @listing.visually_accessible? || @listing.hearing_accessible? || @listing.assistance_animal? %>
-<li class=grey>No Accessibility</li><% end %>
+        <% if @listing.furnished? %><li>Furnished</li>
+        <% else %><li>Unfurnished</li><% end %>
 
-<% if @listing.furnished? %><li>Furnished</li>
-<% else %><li>Unfurnished</li><% end %>
+        <% if @listing.fridge? %><li>Fridge</li><% end %>
+        <% if @listing.stove? %><li>Stove</li><% end %>
+        <% if @listing.dishwasher? %><li>Dishwasher</li><% end %>
+        <% if @listing.microwave? %><li>Microwave</li><% end %>
 
-<% if @listing.fridge? %><li>Fridge</li><% end %>
-<% if @listing.stove? %><li>Stove</li><% end %>
-<% if @listing.dishwasher? %><li>Dishwasher</li><% end %>
-<% if @listing.microwave? %><li>Microwave</li><% end %>
+        <% unless @listing.fridge? || @listing.stove? || @listing.dishwasher? || @listing.microwave? %>
+        <li class=grey>No Appliances Included</li><% end %>
 
-<% unless @listing.fridge? || @listing.stove? || @listing.dishwasher? || @listing.microwave? %>
-<li class=grey>No Appliances Included</li><% end %>
+        <% if @listing.bathtub? %><li>Bathtub</li><% end %>
+        <% if @listing.fireplace? %><li>Fireplace</li><% end %>
 
-<% if @listing.bathtub? %><li>Bathtub</li><% end %>
-<% if @listing.fireplace? %><li>Fireplace</li><% end %>
+        <% if @listing.ac? %><li>Central AC</li>
+        <% else %><li class=grey>No AC</li><% end %>
 
-<% if @listing.ac? %><li>Central AC</li>
-<% else %><li class=grey>No AC</li><% end %>
+        <% if @listing.electric_heat? %><li>Electric heating</li><% end %>
+        <% if @listing.forced_air_heat? %><li>Forced air heating</li><% end %>
+        <% if @listing.boiler_system? %><li>Boiler system heating</li><% end %>
 
-<% if @listing.electric_heat? %><li>Electric heating</li><% end %>
-<% if @listing.forced_air_heat? %><li>Forced air heating</li><% end %>
-<% if @listing.boiler_system? %><li>Boiler system heating</li><% end %>
+        <% unless @listing.electric_heat? || @listing.forced_air_heat? || @listing.boiler_system? %>
+        <li class=grey>No Heating</li><% end %>
 
-<% unless @listing.electric_heat? || @listing.forced_air_heat? || @listing.boiler_system? %>
-<li class=grey>No Heating</li><% end %>
+        <% if @listing.cats? %><li>Cats OK</li><% end %>
+        <% if @listing.dogs? %><li>Dogs OK</li><% end %>
+        <% if @listing.small_pets? %><li>Small pets OK</li><% end %>
 
-<% if @listing.cats? %><li>Cats OK</li><% end %>
-<% if @listing.dogs? %><li>Dogs OK</li><% end %>
-<% if @listing.small_pets? %><li>Small pets OK</li><% end %>
+        <% unless @listing.cats? || @listing.dogs? || @listing.small_pets? %>
+        <li class=grey>No Pets</li><% end %>
 
-<% unless @listing.cats? || @listing.dogs? || @listing.small_pets? %>
-<li class=grey>No Pets</li><% end %>
+        <% if @listing.ensuite_laundry? %><li>Ensuite laundry</li><% end %>
+        <% if @listing.shared_laundry? %><li>Shared laundry</li><% end %>
+        <% if @listing.coinop_laundry? %><li>Coin-operated laundry</li><% end %>
 
-<% if @listing.ensuite_laundry? %><li>Ensuite laundry</li><% end %>
-<% if @listing.shared_laundry? %><li>Shared laundry</li><% end %>
-<% if @listing.coinop_laundry? %><li>Coin-operated laundry</li><% end %>
+        <% unless @listing.ensuite_laundry? || @listing.shared_laundry? || @listing.coinop_laundry? %>
+        <li class=grey>No Laundry Included</li><% end %>
 
-<% unless @listing.ensuite_laundry? || @listing.shared_laundry? || @listing.coinop_laundry? %>
-<li class=grey>No Laundry Included</li><% end %>
+        <% if @listing.balcony? %><li>Balcony</li><% end %>
+        <% if @listing.deck? %><li>Deck</li><% end %>
+        <% if @listing.yard_shared? %><li>Shared Yard</li><% end %>
+        <% if @listing.yard_private? %><li>Private Yard</li><% end %>
 
-<% if @listing.balcony? %><li>Balcony</li><% end %>
-<% if @listing.deck? %><li>Deck</li><% end %>
-<% if @listing.yard_shared? %><li>Shared Yard</li><% end %>
-<% if @listing.yard_private? %><li>Private Yard</li><% end %>
+        <% unless @listing.balcony? || @listing.deck? || @listing.yard_shared? || @listing.yard_private? %>
+        <li class=grey>No Outdoor Space</li><% end %>
 
-<% unless @listing.balcony? || @listing.deck? || @listing.yard_shared? || @listing.yard_private? %>
-<li class=grey>No Outdoor Space</li><% end %>
+        <% if @listing.pool? %><li>Pool</li><% end %>
+        <% if @listing.exercise_room? %><li>Exercise Room</li><% end %>
+        <% if @listing.party_room? %><li>Party Room</li><% end %>
 
-<% if @listing.pool? %><li>Pool</li><% end %>
-<% if @listing.exercise_room? %><li>Exercise Room</li><% end %>
-<% if @listing.party_room? %><li>Party Room</li><% end %>
+        <% if @listing.parking? %><li>Parking</li><% end %>
+        <% if @listing.on_street_parking? %><li>On-street Parking</li><% end %>
+        <% unless @listing.parking? || @listing.on_street_parking? %>
+        <li class=grey>No Parking Available</li><% end %>
 
-<% if @listing.parking? %><li>Parking</li><% end %>
-<% if @listing.on_street_parking? %><li>On-street Parking</li><% end %>
-<% unless @listing.parking? || @listing.on_street_parking? %>
-<li class=grey>No Parking Available</li><% end %>
+        <% if @listing.smoking == "smoking" %><li>Smoking OK</li>
+        <% else %><li>Non-Smoking</li><% end %>
+        </ul>
+      </div><!-- end features cloud -->
 
-<% if @listing.smoking == "smoking" %><li>Smoking OK</li>
-<% else %><li>Non-Smoking</li><% end %>
-</ul>
-</div>
+      <hr>
 
-  <div class="posted_by">
-    This listing was made by <%= link_to @listing.user.name, @listing.user %>
-  </div>
-</div>
-<hr>
-<div id="map-show" data-latitude='<%= @listing.latitude %>' data-longitude='<%= @listing.longitude %>'></div>
+      <div class="posted_by">
+        This listing was made by
+          <%= link_to @listing.user do %>
+          <%= @listing.user.name %><br>
+          <%= image_tag @listing.user.avatar.thumb, class:'thumbnail' %>
+          <% end %>
+      </div>
+    </div><!-- end 6-column features and amenities -->
+  </div><!-- end row -->
 
+  <div id="map-show" data-latitude='<%= @listing.latitude %>' data-longitude='<%= @listing.longitude %>'></div>
+
+  <h3>Nearby Listings</h3>
+  <div class="row">
+      <%= render @nearby_listings %>
+  </div> <!-- end row -->
+
+
+  <%= javascript_tag do %>
+  window.nearby = <%=raw @nearby_listings.map {|n| {lat: n.latitude, lng: n.longitude, name: n.name, desc: n.description, price: n.price, bedrooms: n.bedrooms, photo: n.thumb_url, date: n.rent_date, id: n.id}}.to_json %>;
+  <% end %>
 
   <hr>
 
-<div class="nearby">
-  <h2>Nearby Listings</h2>
-  <% @nearby_listings.each do |list| %>
-    <%= link_to listing_path(list) do %>
-    <br><strong><%= list.name %></strong>
-    <br><%= image_tag list.thumbnail, alt: 'listing thumbnail' %>
-    <% end %>
-    <br><%= list.display_distance_in_meters(@listing) %> meters away
-  <% end %>
+  <h4>Testimonials</h4>
+  <div class="row">
+    <%= render 'comments' %>
+  </div>
+
 </div>
 
-<%= javascript_tag do %>
-window.nearby = <%=raw @nearby_listings.map {|n| {lat: n.latitude, lng: n.longitude, name: n.name, desc: n.description, price: n.price, bedrooms: n.bedrooms, photo: n.images.first.photo.thumb.url, date: n.rent_date, id: n.id}}.to_json %>;
-<% end %>
-
-<hr>
-<h4>User Comments</h4>
-<%= render 'comments' %>
+<%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=AIzaSyC49SZwfsHvdzEkLGZJClMzXunKm4kZ5YQ" %>
 <%= javascript_include_tag 'map' %>

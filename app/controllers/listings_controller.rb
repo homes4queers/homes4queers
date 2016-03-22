@@ -1,31 +1,31 @@
 class ListingsController < ApplicationController
   before_action :require_login, except: [:index]
-
+  skip_before_action :check_for_token, only: [:index]
   def index
     @q = Listing.ransack(params[:q])
     if params[:q]
-      @listings = @q.result.distinct.page(params[:page]).per(10)
+      @listings = @q.result.distinct.page(params[:page]).per(8)
       @q.build_condition if @q.conditions.empty?
-      @q.build_sort if @q.sorts.empty?
+      @q.sorts = 'created_at desc' if @q.sorts.empty?
       # @listings = Listing.near(params[:q])
     elsif params[:latitude] && params[:longitude]
       @listings = Listing.near([params[:latitude], params[:longitude]])
     else
-      @listings = Listing.order("created_at DESC").page(params[:page]).per(10)
+      @listings = Listing.order("created_at DESC").page(params[:page]).per(8)
     #  @listings = Listing.order("created_at DESC").page(params[:page])
     end
 
 
+    def search
+      index
+      render :index
+    end
     # respond_to do |format|
     #   format.html
     #   format.js
     # end
-  end
+end
 
-  def search
-    index
-    render :index
-  end
 
   def new
     @listing = Listing.new
@@ -57,7 +57,7 @@ class ListingsController < ApplicationController
     @listing = Listing.find(params[:id])
 
     if @listing.update_attributes(listing_params)
-      redirect_back_or_to listing_path(@listing)
+      redirect_to listing_path(@listing)
     else
       render :edit
     end
@@ -72,7 +72,7 @@ class ListingsController < ApplicationController
   def favourite
     @listing = Listing.find(params[:id])
     if Favourite.create(favourited: @listing, user: current_user)
-      redirect_to :back, notice: "Added to favourites"
+      redirect_to :back
     else
       redirect_to :back, alert: "Something went wrong, better blame the developers"
     end
@@ -81,13 +81,7 @@ class ListingsController < ApplicationController
   def unfavourite
     @listing = Listing.find(params[:id])
     if Favourite.where(favourited_id: @listing.id, user_id: current_user.id).last.destroy
-      redirect_to :back, notice: "Unfavourited listing"
-    end
-  end
-
-  def search_listings
-    respond_to do |format|
-      format.js
+      redirect_to :back
     end
   end
 

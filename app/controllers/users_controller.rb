@@ -1,15 +1,18 @@
   class UsersController < ApplicationController
   before_action :require_login, only: [:index, :edit, :update, :destroy]
-
+  skip_before_action :check_for_token, only: [:new, :create, :edit, :update]
   def index
     @q = User.ransack(params[:q])
-
+    @tags = ActsAsTaggableOn::Tag.all.order('taggings_count desc')
     if params[:q]
-      @users = @q.result.distinct
+      @users = @q.result.distinct.page(params[:page]).per(10)
+      @q.build_condition if @q.conditions.empty?
+      @q.sorts = 'created_at desc' if @q.sorts.empty?
       # results
     else
-     @users = User.all
+     @users = User.order("created_at DESC").page(params[:page]).per(8)
     end
+
   end
 
   def search
@@ -35,7 +38,7 @@
 
       if @user.save
         auto_login(@user)
-        redirect_back_or_to user_path(@user)
+        redirect_to user_path(@user)
       else
         render :new
       end
@@ -72,7 +75,6 @@
       redirect_to :back, notice: "Successfully unfavourited someone (they'll never know)"
     end
   end
-
 
   private
 

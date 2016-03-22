@@ -12,8 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+//= require foundation
 //= require cocoon
 //= require_tree
 //= stub 'conversations'
 //= stub 'map'
+
+$(function(){ $(document).foundation(); });

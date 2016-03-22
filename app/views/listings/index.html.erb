@@ -1,44 +1,176 @@
-<%= link_to 'Login with Facebook', auth_at_provider_path(:provider => :facebook) %>
 
 
-  <div class="search-listings">
-    <h1>Listings</h1>
+<h1>Listings</h1>
+<div class="row">
+  <div class="large-7 large-centered medium-7 medium-centered small-10 small-centered columns">
+    <div class="row">
+      <%= search_form_for @q, url: search_listings_path,
+                              html: { method: :post } do |f| %>
+        <div class="small-9 columns">
+          <%= f.label :name_or_location_or_description_cont, "Search Listings" %>
+          <%= f.text_field :name_or_location_or_description_cont, placeholder:"any keywords" %>
 
-    <%= button_tag 'Listings Near Me', id: 'search-nearby' %>
+          <%= f.hidden_field :created_at_gteq, :value => "2016-01-01"%>
+        </div>
+        <div class="small-3 columns">
+          <br>
+          <%= f.submit "Search", class:"button postfix" %>
+        </div>
+      <% end %>
+        <%#= button_tag 'advanced_search' %>
+        <%# link_to "Advanced Search", render 'advanced_search' %>
+    </div>
+  </div>
+</div>
 
-    <%= search_form_for @q, url: search_listings_path,
-                            html: { method: :post } do |f| %>
-    <%= f.label :price_gteq, "Minimum Price" %>
-    <%= f.number_field :price_gteq, placeholder: "0" %>
+<div class="row">
+  <div class="large-4 small-10 columns" >
 
-    <%= f.label :price_lteq, "Maximum Price" %>
-    <%= f.number_field :price_lteq, placeholder: "0" %>
-  <br>
+  <h4>Advanced Search</h4>
+
+  <%= search_form_for @q, url: search_listings_path,
+  html: { method: :post } do |f| %>
+
+  <div class="row">
+    <div class="large-6 small-6 columns">
+      <%= f.label :price_gteq, "Minimum Price" %>
+      <%= f.number_field :price_gteq, placeholder: "0" %>
+    </div>
+    <div class="large-6 small-6 columns">
+      <%= f.label :price_lteq, "Maximum Price" %>
+      <%= f.number_field :price_lteq, placeholder: "0" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-6 small-6 columns">
+      <%= f.label :bedrooms_gteq, "Minimum Bedrooms" %>
+      <%= f.number_field :bedrooms_gteq, placeholder: "0"%>
+    </div>
+    <div class="large-6 small-6 columns">
+      <%= f.label :rent_date_gteq, "Move in Date" %>
+      <%= f.date_field :rent_date_gteq %>
+    </div>
+  </div>
+
     <%= f.label :location_cont, "Address, Neighbourhood or City" %>
     <%= f.text_field :location_cont, placeholder: "742 Evergreen Terrace" %>
 
-    <%= f.label :bedrooms_gteq, "Minimum Number of bedrooms" %>
-    <%= f.number_field :bedrooms_gteq, placeholder: "0"%>
 
-    <%=  f.hidden_field :location_cont, value: "Toronto"  %>
 
-    <%= f.submit %>
-  <% end %>
+  <div class="row">
+    <div class="large-6 medium-5 small-6 columns">
+      <div class="listing-options text-center">
+        Basics:
+        <%= f.radio_button :space_type_cont, "full_space", class:"radio-button" %>
+        <%= f.label :space_type_cont, "Private spaces only", :value => "full_space", class: "1-radio-button-label rb" %>
 
+        <%= f.radio_button :space_type_cont, "shared_space", class:"radio-button"%>
+        <%= f.label :space_type_cont, "Shared spaces only", :value => "shared_space", class: "2-radio-button-label rb" %>
+
+        <%= f.radio_button :basement_false, true, class:"radio-button" %>
+        <%= f.label :basement_false, "No Basements", :value => true, class: "radio-button-label rb"  %>
+
+        <%= f.radio_button :sublet_false, true, class:"radio-button" %>
+        <%= f.label :sublet_false, "No Sublets", :value => true, class: "radio-button-label rb"  %>
+
+        <%= f.radio_button :furnished_false, true, class:"radio-button" %>
+        <%= f.label :furnished_false, "Unfurnished", :value => true, class: "3-radio-button-label rb"  %>
+
+        <%= f.radio_button :furnished_false, false, class:"radio-button" %>
+        <%= f.label :furnished_false, "Furnished", :value => false, class: "4-radio-button-label rb"  %>
+      </div>
+      <br>
+<!-- amenities -->
+      <div class="listing-options text-center">
+        Amenities:
+        <%= f.radio_button :utilities_included_true, true, class:"radio-button" %>
+        <%= f.label :utilities_included_true, "Utilities Included", :value => true, class: "radio-button-label rb"  %>
+
+        <%= f.radio_button :ac, true, class:"radio-button" %>
+        <%= f.label :ac, "Central AC", :value => true, class: "radio-button-label rb"  %>
+
+        <%= f.radio_button :ensuite_laundry_or_shared_laundry_or_coinop_laundry_true, true, class:"radio-button" %>
+        <%= f.label :ensuite_laundry_or_shared_laundry_or_coinop_laundry_true, "Laundry", :value => true, class: "radio-button-label rb"  %>
+
+        <%= f.radio_button :balcony_or_deck_or_yard_shared_or_yard_private_true, true, class:"radio-button" %>
+        <%= f.label :balcony_or_deck_or_yard_shared_or_yard_private_true, "Outdoor Space", :value => true, class: "radio-button-label rb"  %>
+
+        <%= f.radio_button :parking_true, true, class:"radio-button" %>
+        <%= f.label :parking_true, "Parking", :value => true, class: "radio-button-label rb"  %>
+      </div>
+      <br>
+    </div>
+    <div class="large-6 medium-5  small-6 columns">
+<!-- accessibility -->
+    <div class="listing-options text-center">
+      Accessibility:<br>
+      <%= f.radio_button :wheelchair_accessible_true, true, class:"radio-button" %>
+      <%= f.label :wheelchair_accessible_true, "Wheelchair", :value => true, class: "radio-button-label rb"  %>
+
+      <%= f.radio_button :visually_accessible_true, true, class:"radio-button" %>
+      <%= f.label :visually_accessible_true, "Visually Impaired", :value => true, class: "radio-button-label rb"  %>
+
+      <%= f.radio_button :hearing_accessible_true, true, class:"radio-button" %>
+      <%= f.label :hearing_accessible_true, "Hearing Impaired ", :value => true, class: "radio-button-label rb"  %>
+
+      <%= f.radio_button :assistance_animal_true, true, class:"radio-button" %>
+      <%= f.label :assistance_animal_true, "Assistance Animal", :value => true, class: "radio-button-label rb"  %>
+    </div>
+    <br>
+<!-- pets -->
+      <div class="listing-options text-center">
+        Pets:<br>
+        <%= f.radio_button :cats_true, true, class:"radio-button" %>
+        <%= f.label :cats_true, "Cats OK", :value => true, class: "radio-button-label rb"  %>
+        <br>
+        <%= f.radio_button :dogs_true, true, class:"radio-button" %>
+        <%= f.label :dogs_true, "Dogs OK", :value => true, class: "radio-button-label rb"  %>
+        <br>
+        <%= f.radio_button :small_pets_true, true, class:"radio-button" %>
+        <%= f.label :small_pets_true, "Small Pets OK", :value => true, class: "radio-button-label rb"  %>
+      </div>
+      <br>
+<!-- smoking -->
+      <div class="listing-options text-center">
+          <%= f.radio_button :smoking_false, true, class:"radio-button" %>
+          <%= f.label :smoking_false, "Non-Smoking", :value => true, class: "5-radio-button-label rb"  %>
+
+          <%= f.radio_button :smoking_false, false, class:"radio-button" %>
+          <%= f.label :smoking_false, "Smoking OK", :value => false, class: "6-radio-button-label rb"  %>
+        </div>
+  </div>
 </div>
 
-<div id="map-index" data-latitude='43.7' data-longitude='-79.4' ></div>
+      <%= f.hidden_field :created_at_gteq, :value => "2016-01-01"%>
 
-  <div class="index-cards">
+<br>
+    <%= f.submit "Search", class: 'button' %>
+    <% end %>
+  </div>
 
-    <small><%= page_entries_info @listings %></small>
-  <%= render @listings %>
+  <div class="large-8 small-12 columns map">
+    <br>
+    <div id="map-index" data-latitude='43.7' data-longitude='-79.4' ></div>
+  </div>
+</div>
+
+
+<p id="pagination"><small><%= page_entries_info @listings %></small></p>
+<div class="row">
+  <div class="large-12 large-centered columns ">
+    <div class="index-cards">
+        <%= render @listings %>
+    </div>
+  </div>
+</div>
+<p><%= paginate @listings %></p>
+
+
 
 
 <%= javascript_tag do %>
-window.nearby = <%=raw @listings.map {|n| {lat: n.latitude, lng: n.longitude, name: n.name, desc: n.description, price: n.price, bedrooms: n.bedrooms, photo: n.images.first.photo.thumb.url, date: n.rent_date, id: n.id}}.to_json %>;
+window.nearby = <%=raw @listings.map {|n| {lat: n.latitude, lng: n.longitude, name: n.name, desc: n.description, price: n.price, bedrooms: n.bedrooms, photo: n.thumb_url, date: n.rent_date, id: n.id}}.to_json %>;
 <% end %>
 
-<%= paginate @listings %>
-</div>
+<%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=AIzaSyC49SZwfsHvdzEkLGZJClMzXunKm4kZ5YQ" %>
 <%= javascript_include_tag 'map' %>

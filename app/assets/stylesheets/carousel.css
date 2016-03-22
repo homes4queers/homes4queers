@@ -1,0 +1,165 @@
+/*borrowed from http://codepen.io/aepicos/pen/QbNeER?editors=1100*/
+/*many thanks*/
+
+/* poor man's reset */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/* this is just to avoid the jump when the scroll-bar appears */
+/*body {
+  overflow-y: scroll;
+}*/
+/* for demo purposes only */
+
+
+.container {
+  width: auto;
+  min-height:24rem ;
+  padding-top: 25px;
+  text-align: left;
+}
+/* basic dimensions of img
+   we are using fixed sizes for this demo */
+
+.listing-pic {
+  max-width: auto;
+  max-height: 30rem;
+}
+@media(max-width){
+
+}
+/* this is the actual container
+   position relative so we can position within it
+   auto margin to center it */
+
+.slides {
+  width: auto;
+  height: auto;
+  position: relative;
+  margin-left: 2em;
+  margin-right: auto;
+  /*z-index: 100;*/
+  list-style: none;
+}
+/* the image containers */
+
+.slides > li {
+  /* absolute sizes the same as the images
+     (and the container ul)
+  width:400px;
+  height:400px;
+
+  /* make sure they all sit neatly on top of each other */
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  /* make them rotate around a distant axis (for effect) */
+  -webkit-transform-origin: 1200px 200px;
+  -ms-transform-origin: 1200px 200px;
+  transform-origin: 1200px 200px;
+  /* by default all image containers are rotated below the start position
+     they will then move up when selected
+     and move further up when the next one is selected */
+  -webkit-transform: rotate( 20deg);
+  -ms-transform: rotate( 20deg);
+  transform: rotate( 20deg);
+  -webkit-transition: 300ms;
+  transition: 300ms;
+  /* make sure that the mouse/finger ignores them */
+  pointer-events: none;
+}
+/* THIS IS WHERE THE MAGIC HAPPENS!!! */
+/* basic styling of input pseudo elements
+   simply creating some arrows that cover the inputs */
+
+.slides > input[ type="radio"]::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  margin-top: -13px;
+  margin-left: -8px;
+  border-width: 20px 20px 20px 0;
+  border-style: solid;
+  border-color: transparent #ccc;
+  -webkit-transition: 200ms;
+  transition: 200ms;
+}
+
+.slides > input[ type="radio"]:hover::after {
+  border-color: transparent #00b6de;
+}
+/* by default all inputs are positioned left of the images
+   they function as the 'previous' links */
+
+.slides > input[ type="radio"] {
+  position: absolute;
+  left: -27px;
+  top: 200px;
+}
+/* hiding the radio button that is selected
+   so it doesn't block the 'previous link'
+   and the ones AFTER the current ones
+   (but don't worry, just read on) */
+
+.slides > input[ type="radio"]:checked,
+.slides > input[ type="radio"]:checked ~ input[ type="radio"] {
+  display: none;
+}
+/* unhide the one IMMEDIATELY after the selected one
+   becoming the 'next' link
+   (the other radio buttons had to be hidden as otherwise the stacking order would make
+   the subsequent radio button hide this one) */
+@media (max-width: 450px){
+  .slides > input[ type="radio"]:checked + li + input[ type="radio"] {
+    display: inline;
+    left: 19rem;
+  }
+}
+@media(min-width:451px){
+  .slides > input[ type="radio"]:checked + li + input[ type="radio"] {
+    display: inline;
+    left: 30rem;
+  }
+}
+
+/* this in effect just mirrors the arrow to point right (next)
+   and adjusts the position */
+
+.slides > input[ type="radio"]:checked + li + input[ type="radio"]::after {
+  margin-left: 0;
+  border-width: 20px 0 20px 20px;
+}
+/* slides are by default hidden under the current slide
+   so the slide after the selected radio button (the selected slide)
+   will have to be rotate into view and made visible */
+
+.slides > input[ type="radio"]:checked + li {
+  /* make it visible (d'oh!) */
+  opacity: 1;
+  /* rotate it into view */
+  -webkit-transform: rotate( 0deg);
+  -ms-transform: rotate( 0deg);
+  transform: rotate( 0deg);
+  /* make it accept mouse/finger inputs again */
+  pointer-events: auto;
+}
+/* then for added effect we will slide the image after the selected one
+   (the previosly selected image)
+   up by the same amount as the one coming in */
+
+.slides > input[ type="radio"]:checked + li + input[ type="radio"] + li {
+  opacity: 0;
+  -webkit-transform: rotate( -20deg);
+  -ms-transform: rotate( -20deg);
+  transform: rotate( -20deg);
+}
+
+.features{
+  postiion:relative;
+  overflow: hidden;
+}

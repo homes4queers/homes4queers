@@ -1,3 +1,95 @@
 // Place all the styles related to the Listings controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+// div.single-card :hover {
+//   z-index: 4;
+//   -webkit-transition: all 0.1s ease-in-out;
+//   -moz-transition: all 0.1s ease-in-out;
+//   -o-transition: all 0.1s ease-in-out;
+//   transition: all 0.1s ease-in-out;
+//   margin-top: -1%;
+//   // margin-bottom: 2.5%;
+// }
+
+//boxes for listing search radio buttons
+.carrierwave-field{
+  color:purple;
+}
+.single-card ul {
+  font-size: 12px;
+  background-color: rgb(255, 246, 161);//lighter goldenrod
+  border-radius: 2rem;
+  margin: .5rem .5rem;
+  padding: .5rem;
+  height: 20rem;
+  width: 13rem;
+  float: left;
+  list-style-type: none;
+  text-align: center;
+  overflow-y: auto;
+}
+
+.nearby-card {
+  background-color: rgb(255, 246, 161);//lighter goldenrod
+  width: 13rem;
+  height: 15rem;
+  border-radius: 2rem;
+  margin: 5% 5%;
+  padding: .5rem;
+  overflow-y:auto;
+  float:right;
+}
+
+.thumbnail:hover, .thumbnail:focus {
+  box-shadow: 0px 5px 10px 0px rgb(120, 71, 103);
+}
+.thumbnail{
+  border-radius: 10%;
+}
+
+ #map-index {
+   padding-top: 10rem;
+   height: 30rem;
+   width: 90%;
+   margin: 0 5%;
+ }
+
+ #map-show {
+   height: 15em;
+   width: 90%;
+   margin: 0 5%;
+ }
+
+ #pagination {
+   text-align: center;
+ }
+
+div.features_cloud ul.features {
+  margin: 0 15% 0 10%;
+  list-style-type: none;
+  text-align: center;
+}
+
+div.features_cloud li {
+  background-color: white;
+  padding: 0.25rem;
+  margin: 0.25rem;
+  border-radius: 10%;
+  display: inline-block;;
+}
+
+div.features_cloud ul li {
+  background-color: rgb(113,1,98);
+  margin: 0.25rem;
+  border-radius: 20rem;
+  color: white;
+  padding: 0.2rem 0.5rem;
+  display: inline-block;;
+}
+
+div.features_cloud li.grey {
+  background-color: rgb(250, 240, 209);
+  color: rgb(117, 117, 117);
+}

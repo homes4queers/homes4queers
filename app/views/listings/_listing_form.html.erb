@@ -12,223 +12,188 @@
   </div>
 <% end %>
 
-<div id="listing-form">
-  <%= form_for @listing do |f| %>
-
-    <div class="radio_buttons">
-      <p>
-        This listing is for:
-      </p>
+<div class="row">
+  <div id="listing-form">
+    <%= form_for @listing do |f| %>
+    <div class="large-6 columns">
+      <div class="radio_buttons">
+        <p>
+          This listing is for:
+        </p>
+        <div class="field">
+          <%= f.radio_button :space_type, "shared_space", class: "radio-button" %>
+          <%= f.label :space_type, "A room in a shared space", :value => "shared_space",class: "1-radio-button-label rb" %>
+          <%= f.radio_button :space_type, "full_space", class: "radio-button"  %>
+          <%= f.label :space_type, "A full private space", :value => "full_space", class: "2-radio-button-label rb" %>
+        </div>
+      </div>
       <div class="field">
-        <%= f.radio_button :space_type, "shared_space" %>
-        <%= f.label :space_type, "A room in a shared space", :value => "shared_space" %>
-        <%= f.radio_button :space_type, "full_space" %>
-        <%= f.label :space_type, "A full private space", :value => "full_space" %>
+        <%= f.label :name, "Title" %>
+        <%= f.text_field :name %><br>
+      </div>
+      <div class="field">
+        <%= f.label :description, "Information" %>
+        <%= f.text_area :description %><br>
+      </div>
+    <div class="row">
+      <div class="large-6 medium-6 columns field">
+        <%= f.label :price, "Price per month" %>
+        <%= f.number_field :price %><br>
+      </div>
+      <div class="large-6 medium-6 columns field">
+        <%= f.label :bedrooms, 'How many available bedrooms?'%>
+        <%= f.number_field :bedrooms %><br>
+      </div>
+    </div>
+      <div class="field">
+        <%= f.label :rent_date %>
+        <%= f.date_field :rent_date %>
+      </div>
+      <div class="field">
+        <%= f.label :location %>
+        <%= f.text_field :location %>
+
+      </div>
+      <div class="field">
+        <% f.fields_for :images do |photo| %>
+        <%= render 'image_fields', f: photo %>
+        <% end %>
+        <%= link_to_add_association "Add a Photo", f, :images, class: "button orange" %>
       </div>
     </div>
 
     <br>
 
-    <div class="field">
-      <% f.fields_for :images do |photo| %>
-      <%= render 'image_fields', f: photo %>
-      <% end %>
-      <%= link_to_add_association "Add a Photo", f, :images %>
-    </div>
-
-    <br>
-
-    <div class="field">
-      <%= f.label :name, "Title" %><br>
-      <%= f.text_field :name %><br>
-    </div>
-
-    <div class="field">
-      <%= f.label :price, "Price per month" %><br>
-      <%= f.number_field :price %><br>
-    </div>
-
-    <div class="field">
-      <%= f.check_box :utilities_included %>
-      <%= f.label :utilities_included, "includes utilities" %>
-    </div>
-
-    <div class="field">
-      <%= f.label :description, "Information" %><br>
-      <%= f.text_area :description %><br>
-    </div>
-
-    <div class="field">
-      <%= f.label :bedrooms, 'How many available bedrooms?'%><br>
-      <%= f.number_field :bedrooms %><br>
-    </div>
-
-    <div class="field">
-      <%= f.label :location, "Address (or area)" %><br>
-      <%= f.text_field :location %><br>
-    </div>
-
-    <div class="field">
-      <%= f.label :rent_date, "Available From" %><br>
-      <%= f.date_field :rent_date %><br>
-    </div>
-
-    <div class="field">
-      <%= f.check_box :basement %>
-      <%= f.label :basement, 'Is this a basement apartment?' %><br>
-    </div>
-
-    <div class="field">
-      <%= f.check_box :sublet %>
-      <%= f.label :sublet, "Are you subletting?" %><br>
-    </div>
-
-
     <p>
-      Features and Amenities (check all that apply):
+      Features and Amenities (click all that apply):
     </p>
 
-<div class="checkboxes">
-  <div class="field">
-    <%= f.check_box :wheelchair_accessible %>
-    <%= f.label "Wheelchair Accessible" %>
+<div class="large-6 columns">
+
+  <div class="checkboxes">
+
+    <ul>
+    <div class="row">
+      <div class="large-6 medium-6 columns">
+        <li><%= f.check_box :wheelchair_accessible, class: "check-box" %>
+        <%= f.label "Wheelchair Accessible", class:'check-box-label rb' %></li>
+
+        <li><%= f.check_box :visually_accessible, class: "check-box" %>
+        <%= f.label "Visually Impaired Accessbile", class:'check-box-label rb'  %></li>
+
+        <li><%= f.check_box :hearing_accessible, class: "check-box" %>
+        <%= f.label "Hearing Impaired Accessible", class:'check-box-label rb'  %></li>
+
+        <li><%= f.check_box :assistance_animal, class: "check-box" %>
+        <%= f.label "Assistance Animal Friendly", class:'check-box-label rb'  %></li>
+
+        <li><%= f.check_box :furnished, class: "check-box" %>
+        <%= f.label "Furnished", class:'check-box-label rb'  %></li>
+      </div>
+      <div class="large-6 medium-6 columns">
+        <li><%= f.check_box :fridge, class: "check-box" %>
+        <%= f.label "Fridge", class:'check-box-label rb'  %></li>
+
+        <li><%= f.check_box :stove, class: "check-box" %>
+        <%= f.label "Stove", class:'check-box-label rb'  %></li>
+
+        <li><%= f.check_box :dishwasher, class: "check-box" %>
+        <%= f.label "Dishwasher", class:'check-box-label rb'  %></li>
+
+        <li><%= f.check_box :microwave, class: "check-box" %>
+        <%= f.label "Microwave", class:'check-box-label rb'  %></li>
+
+        <li><%= f.check_box :bathtub, class: "check-box" %>
+        <%= f.label "Bathtub", class:'check-box-label rb'  %></li>
+      </div>
+    </div>
+    <div class="row">
+      <div class="large-6 medium-6 columns">
+        <li><%= f.check_box :fireplace, class: "check-box" %>
+        <%= f.label "Fireplace", class:'check-box-label rb'  %></li>
+
+        <li><%= f.check_box :ac, class: "check-box" %>
+        <%= f.label "Central AC", class:'check-box-label rb'  %></li>
+
+        <li><%= f.check_box :electric_heat, class: "check-box" %>
+        <%= f.label "Electric heating", class:'check-box-label rb'  %></li>
+
+        <li><%= f.check_box :forced_air_heat, class: "check-box" %>
+        <%= f.label "Forced Air heating", class:'check-box-label rb'  %></li>
+
+        <li><%= f.check_box :boiler_system, class: "check-box" %>
+        <%= f.label "Boiler System heating", class:'check-box-label rb'  %></li>
+      </div>
+      <div class="large-6 medium-6 columns">
+        <li><%= f.check_box :cats, class: "check-box" %>
+        <%= f.label "Cats OK", class:'check-box-label rb'  %></li>
+
+        <li><%= f.check_box :dogs, class: "check-box" %>
+        <%= f.label "Dogs OK", class:'check-box-label rb'  %></li>
+
+        <li><%= f.check_box :small_pets, class: "check-box" %>
+        <%= f.label "Small pets OK", class:'check-box-label rb'  %></li>
+
+        <li><%= f.check_box :ensuite_laundry, class: "check-box" %>
+        <%= f.label "Ensuite laundry", class:'check-box-label rb'  %></li>
+
+        <li><%= f.check_box :shared_laundry, class: "check-box" %>
+        <%= f.label "Shared laundry", class:'check-box-label rb'  %></li>
+      </div>
+    </div>
+    <div class="row">
+      <div class="large-6 medium-6 columns">
+        <li><%= f.check_box :coinop_laundry, class: "check-box" %>
+        <%= f.label "Coin-operated laundry", class:'check-box-label rb'  %></li>
+
+        <li><%= f.check_box :balcony, class: "check-box" %>
+        <%= f.label "Balcony", class:'check-box-label rb'  %></li>
+
+        <li><%= f.check_box :deck, class: "check-box" %>
+        <%= f.label "Deck", class:'check-box-label rb'  %></li>
+
+        <li><%= f.check_box :yard_shared, class: "check-box" %>
+        <%= f.label "Shared yard", class:'check-box-label rb'  %></li>
+
+        <li><%= f.check_box :yard_private, class: "check-box" %>
+        <%= f.label "Private yard", class:'check-box-label rb'  %></li>
+      </div>
+      <div class="large-6 medium-6 columns">
+        <li><%= f.check_box :pool, class: "check-box" %>
+        <%= f.label "Pool", class:'check-box-label rb'  %></li>
+
+        <li><%= f.check_box :exercise_room, class: "check-box" %>
+        <%= f.label "Exercise room", class:'check-box-label rb'  %></li>
+
+        <li><%= f.check_box :party_room, class: "check-box" %>
+        <%= f.label "Party room", class:'check-box-label rb'  %></li>
+
+        <li><%= f.check_box :parking, class: "check-box" %>
+        <%= f.label "Parking avaialble", class:'check-box-label rb'  %></li>
+
+        <li><%= f.check_box :on_street_parking, class: "check-box" %>
+        <%= f.label "On-street Parking available", class:'check-box-label rb'  %></li>
+      </div>
   </div>
-  <div class="field">
-    <%= f.check_box :visually_accessible %>
-    <%= f.label "Accessible for the visually impaired" %>
-  </div>
-  <div class="field">
-    <%= f.check_box :hearing_accessible %>
-    <%= f.label "Accessible for the hearing impaired" %>
-  </div>
-  <div class="field">
-    <%= f.check_box :assistance_animal %>
-    <%= f.label "Assistance Animal Friendly" %>
-  </div>
-  <br>
-  <div class="field">
-    <%= f.check_box :furnished %>
-    <%= f.label "Furnished" %>
-  </div>
-  <div class="field">
-    <%= f.check_box :fridge %>
-    <%= f.label "Fridge" %>
-  </div>
-  <div class="field">
-    <%= f.check_box :stove %>
-    <%= f.label "Stove" %>
-  </div>
-  <div class="field">
-    <%= f.check_box :dishwasher %>
-    <%= f.label "Dishwasher" %>
-  </div>
-  <div class="field">
-    <%= f.check_box :microwave %>
-    <%= f.label "Microwave" %>
-  </div>
-  <div class="field">
-    <%= f.check_box :bathtub %>
-    <%= f.label "Bathtub" %>
-  </div>
-  <div class="field">
-    <%= f.check_box :fireplace %>
-    <%= f.label "Fireplace" %>
-  </div>
-  <br>
-  <div class="field">
-    <%= f.check_box :ac %>
-    <%= f.label "Central A/C" %>
-  </div>
-  <div class="field">
-    <%= f.check_box :electric_heat %>
-    <%= f.label "Electric heating" %>
-  </div>
-  <div class="field">
-    <%= f.check_box :forced_air_heat %>
-    <%= f.label "Forced Air heating" %>
-  </div>
-  <div class="field">
-    <%= f.check_box :boiler_system %>
-    <%= f.label "Boiler System heating" %>
-  </div>
-  <br>
-  <div class="field">
-    <%= f.check_box :cats %>
-    <%= f.label "Cats OK" %>
-  </div>
-  <div class="field">
-    <%= f.check_box :dogs %>
-    <%= f.label "Dogs OK" %>
-  </div>
-  <div class="field">
-    <%= f.check_box :small_pets %>
-    <%= f.label "Small pets OK" %>
-  </div>
-  <br>
-  <div class="field">
-    <%= f.check_box :ensuite_laundry %>
-    <%= f.label "Ensuite laundry" %>
-  </div>
-  <div class="field">
-    <%= f.check_box :shared_laundry %>
-    <%= f.label "Shared laundry" %>
-  </div>
-  <div class="field">
-    <%= f.check_box :coinop_laundry %>
-    <%= f.label "Coin-operated laundry" %>
-  </div>
-  <br>
-  <div class="field">
-    <%= f.check_box :balcony %>
-    <%= f.label "Balcony" %>
-  </div>
-  <div class="field">
-    <%= f.check_box :deck %>
-    <%= f.label "Deck" %>
-  </div>
-  <div class="field">
-    <%= f.check_box :yard_shared %>
-    <%= f.label "Shared yard" %>
-  </div>
-  <div class="field">
-    <%= f.check_box :yard_private %>
-    <%= f.label "Private yard" %>
-  </div>
-  <br>
-  <div class="field">
-    <%= f.check_box :pool %>
-    <%= f.label "Pool" %>
-  </div>
-  <div class="field">
-    <%= f.check_box :exercise_room %>
-    <%= f.label "Exercise room" %>
-  </div>
-  <div class="field">
-    <%= f.check_box :party_room %>
-    <%= f.label "Party room" %>
-  </div>
-  <br>
-  <div class="field">
-    <%= f.check_box :parking %>
-    <%= f.label "Parking avaialble" %>
-  </div>
-  <div class="field">
-    <%= f.check_box :on_street_parking %>
-    <%= f.label "On-street Parking available" %>
-  </div>
-  <br>
+  </ul>
+</div>
+
   <div class="radio_buttons">
     <div class="field">
-      <%= f.radio_button :smoking, "smoking" %>
-      <%= f.label :smoking, "Smoking OK", :value => "smoking" %>
-      <%= f.radio_button :smoking, "nonsmoking" %>
-      <%= f.label :smoking, "Non-Smoking", :value => "nonsmoking" %>
+      <%= f.radio_button :smoking, "smoking", class: "check-box"  %>
+      <%= f.label :smoking, "Smoking OK", :value => "smoking", class: "5-radio-button-label rb"   %>
+      <%= f.radio_button :smoking, "nonsmoking", class: "check-box" %>
+      <%= f.label :smoking, "Non-Smoking", :value => "nonsmoking", class: "6-radio-button-label rb"   %>
     </div>
+  </div>
+  <br>
+  <div class="action">
+    <%= f.submit "Submit Listing", class:"button pink" %>
   </div>
 </div>
 
-    <div class="action">
-      <%= f.submit "Submit Listing" %>
-    </div>
-.  <% end %>
+
+  </div>
+ <% end %>
+</div>
 </div>

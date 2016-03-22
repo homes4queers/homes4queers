@@ -1,0 +1,22 @@
+// Place all the styles related to the tags controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.tag {
+  color: white;
+  border-radius: .5rem;
+  background-color: rgb(152, 131, 144);//greyish purple
+  padding: .3rem;
+  border: solid 1px rgb(152, 131, 144);
+  margin: 5px;
+  line-height: 2rem;
+}
+.tag:hover, .tag:focus{
+  background-color: rgb(120, 71, 103);//title pruple
+  color: white;
+  border: solid 1px rgb(120, 71, 103);//title purple
+}
+.tags-cloud{
+  margin:2px;
+  padding:10px;
+}

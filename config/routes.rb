@@ -1,29 +1,30 @@
 Rails.application.routes.draw do
+  root 'listings#index'
+
   namespace :admin do
     resources :authentications
-resources :comments
-resources :conversations
-resources :favourites
-resources :images
-resources :listings
-resources :messages
-resources :users
+    resources :comments
+    resources :conversations
+    resources :favourites
+    resources :images
+    resources :listings
+    resources :messages
+    resources :users
 
     root to: "authentications#index"
   end
 
-  root 'listings#index'
 
   resources :users do
+    collection do
+      match 'search'=> 'users#search', via: [:get, :post], as: :search
+    end
     member do
       post 'favourite'
       delete 'unfavourite'
     end
     resources :comments
     resources :favourites, only: [:index]
-      collection do
-        match 'search'=> 'user#search', via: [:get, :post], as: :search
-      end
   end
 
 
@@ -48,8 +49,9 @@ resources :users
   get "oauth/callback" => "oauths#callback" # for use with Github, Facebook
   get "oauth/:provider" => "oauths#oauth", :as => :auth_at_provider
 
-
   resources :conversations do
     resources :messages
   end
+
+  resources :tags, only: [:index, :show]
 end

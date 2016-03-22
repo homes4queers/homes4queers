@@ -1,41 +1,77 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>H4q</title>
-  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-</head>
+    <title>Homes4Queers</title>
+
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= csrf_meta_tags %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
 <body>
+  <div class="top-bar">
+    <nav class="top-bar" data-topbar role="navigation" data-options="sticky_on: large">
+      <% if current_user %>
+        Logged in as <%= link_to current_user.name, user_path(current_user), class: "nav-bar" %>
+        <%= link_to '+ Logout', :logout, method: :post, class: "nav-bar" %>
+        <% if current_user.admin? %>
+          <%= link_to '+ Admin Panel', admin_root_path, class: "nav-bar" %>
+        <% end %>
+      <% else %>
+        <%= link_to 'Register', new_user_path, class: "nav-bar" %>
+        <%= link_to '+ Login', :login, class: "nav-bar" %>
+        <%= link_to '+ Login with Facebook', auth_at_provider_path(:provider => :facebook), class: "nav-bar" %>
+      <% end %>
+    </nav>
+  </div>
 
-<div class="user_nav">
-  <% if current_user %>
-    Logged in as <%= link_to current_user.name, user_path(current_user) %>
-    <%= link_to 'Logout', :logout, method: :post %>
-    <% if current_user.admin? %>
-      <%= link_to 'Admin Panel', admin_root_path %>
-    <% end %>
-    <br><br>
-    <%= link_to 'Add a listing', new_listing_path  %>
-    <%= link_to 'My Favourites', user_favourites_path(current_user) %>
-    <%= link_to 'Inbox', conversations_path %>
-  <% else %>
-    <%= link_to 'Register', new_user_path %>
-    <%= link_to 'Login', :login %>
-  <% end %>
+  <div class="row">
+
+    <div class="large-11 large-centered columns content">
+      <div class="large-12 large-centered header">
+       <header class="large-6 large-centered medium-8 medium-centered columns small-9 small-centered columns">
+          <%= link_to image_tag('/H4qlogo_long.png', alt: "Homes 4 Queers welcome logo", :class => "h4qlogo"), root_path %>
+       </header>
+
+         <div class="large-10 large-centered text-center buttons">
+           <%= link_to 'Listings', listings_path , data: { no_turbolink: true}, class:'b button purple' %>
+         <% if current_user %>
+           <%= link_to 'People', users_path, class:'b button orange' %>
+           <%= link_to 'My Favourites', user_favourites_path(current_user), class:'b button pink'%>
+           <%= link_to 'Inbox', conversations_path, class:'b button green' %>
+           <%= link_to 'Add a listing', new_listing_path, data: {no_turbolink: true}, class:'b button' %>
+           <% end %>
+         </div>
+
+         <div class="large-10 large-centered text-center mini-buttons">
+           <%= link_to image_tag('/Listings.png', alt: "Listings", :class => "button-logo"), listings_path, data: { no_turbolink: true} %>
+         <% if current_user %>
+           <%= link_to image_tag('/People.png', alt: "People", :class => "button-logo"), users_path, data: { no_turbolink: true} %>
+           <%= link_to image_tag('/Favourites.png', alt: "My Favourites", :class => "button-logo"), user_favourites_path(current_user) %>
+           <%= link_to image_tag('/Inbox.png', alt: "Inbox", :class => "button-logo"), conversations_path %>
+           <%= link_to image_tag('/AddListing.png', alt: "Listings", :class => "button-logo"), new_listing_path, data: { no_turbolink: true} %>
+           <% end %>
+         </div>
+       </div>
+
+
+       <div>
+         <p id="notice"><%= flash[:notice] %></p>
+         <p id="alert"><%= flash[:alert] %></p>
+       </div>
+
+      <%= yield %>
+<div class="row">
+  <footer class="nav-down">
+    <!-- <nav class="footer-bar" data-topbar role="navigation" data-options="sticky_on: large"> -->
+    FAQ / Contact Us
+    <!-- </nav> -->
+  </footer>
 </div>
- <div class="nav">
-   <%= link_to 'Listings', listings_path , data: { no_turbolink: true}%>
-   <%= link_to 'People', users_path  %>
- </div>
-
- <div>
-   <p id="notice"><%= flash[:notice] %></p>
-   <p id="alert"><%= flash[:alert] %></p>
- </div>
-<%= yield %>
-
-<%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=AIzaSyC49SZwfsHvdzEkLGZJClMzXunKm4kZ5YQ" %>
-</body>
+    </div>
+  </body>
 </html>

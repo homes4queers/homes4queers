@@ -1,16 +1,35 @@
+<div class="row">
+  <h1>Everyone</h1>
+  <div class="large-7 medium-7 small-10 columns">
+      <%= search_form_for @q, url: search_users_path,
+                              html: { method: :post } do |f| %>
 
-  <div class="search-listings">
-    <h1>Everyone</h1>
-
-    <%= render 'random' %><br>
-  <%= search_form_for @q do |f| %>
-    <%= f.label :name_or_tags_name_cont, "Search for people by name or tags" %><br>
-    <%= f.search_field :name_or_tags_name_cont %>
-
-    <%= f.submit %>
-  <% end %>
+        <%= f.label :name_or_about_me_or_tags_name_cont, "Search for people by name or keyword" %>
+        <%= f.search_field :name_or_about_me_or_tags_name_cont %>
+        <%= f.hidden_field :created_at_gteq, :value => "2000-01-01" %>
+          Show only people looking for a:<br>
+          <%= f.radio_button :site_use_eq, "looking_for_home", class:"radio-button" %>
+          <%= f.label :site_use_eq, "Home", :value => "looking_for_home", class: "7-radio-button-label rb"  %>
+          <%= f.radio_button :site_use_eq, "looking_for_roommate", class:"radio-button" %>
+          <%= f.label :site_use_eq, "Roommate", :value => "looking_for_roommate", class: "8-radio-button-label rb"  %>
+          <%= f.radio_button :site_use_eq, "looking_for_tenant", class:"radio-button"  %>
+          <%= f.label :site_use_eq, "Tenant", :value => "looking_for_tenant", class: "9-radio-button-label rb"  %>
+          <br>
+          <%= f.submit "Search", class: 'button green' %>
+      <% end %>
+        <%= render 'random' %><br>
+  </div>
+  <div class="large-5 medium-5 columns">
+    <div class="tags-cloud">
+      Popular tags:
+      <%= render @tags %>
+    </div>
+  </div>
 </div>
-<br>
-  <div class="index-cards">
-    <%= render @users %>
+<p id="pagination"><small><%= page_entries_info @users %></small></p>
+
+  <div class="row">
+    <div class="large-12 large-centered columns">
+      <%= render @users %>
+    </div>
   </div>

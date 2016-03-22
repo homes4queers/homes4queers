@@ -36,7 +36,18 @@
 
     <div class="large-6 medium-6 columns">
 
+
+<% if can? :manage, @user %>
+<strong>My unique invite code:</strong> <%= @user.token %>
+<%= link_to "Delete Account", @user, method: :delete, data: {confirm: "Are you sure you want to delete your account? This cannot be undone!"} %><br>
+<% end %>
+<% unless can? :manage, @user %>
+<%= link_to "Flag this user", @user.flagged == true, data: {confirm: "Are you sure you want to flag this user? This will alert the admin!"} %><br>
+<% end %>
+</div>
+
       <h1><%= @user.name %></h1>
+
 
       <div class="description">
         <%= @user.about_me %><br>

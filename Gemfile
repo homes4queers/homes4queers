@@ -53,6 +53,8 @@ gem 'foundation-rails'
 
 gem "has_secure_token"
 
+gem "cloudinary"
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

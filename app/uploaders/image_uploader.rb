@@ -1,6 +1,7 @@
 # encoding: utf-8
 
 class ImageUploader < CarrierWave::Uploader::Base
+  include Cloudinary::CarrierWave
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
@@ -35,7 +36,7 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   # Process files as they are uploaded:
   # process :scale => [200, 300]
-  process resize_to_fit: [500,500]
+  # process resize_to_fit: [500,500]
   #
   # def scale(width, height)
   #   # do something
@@ -43,11 +44,18 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   # Create different versions of your uploaded files:
   version :thumb do
-    process :resize_to_fit => [100, 100]
+    process :eager => true
+    process :resize_to_fit => [100, 100, :north]
   end
 
+  version :standard do
+    process :eager => true
+    process :resize_to_fill => [500, 500, :north]
+   end
+
   version :tiny_thumb do
-    process :resize_to_fit => [20,20]
+    process :eager => true
+    process :resize_to_fit => [20,20, :north]
   end
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:

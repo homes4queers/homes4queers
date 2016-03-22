@@ -31,7 +31,7 @@ class User < ActiveRecord::Base
 
   acts_as_taggable_on :tags
 
-  # has_secure_token
+  has_secure_token
 
   mount_uploader :avatar, ImageUploader
 

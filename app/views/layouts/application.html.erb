@@ -46,6 +46,16 @@
            <%= link_to 'Add a listing', new_listing_path, data: {no_turbolink: true}, class:'b button' %>
            <% end %>
          </div>
+
+         <div class="large-10 large-centered text-center mini-buttons">
+           <%= link_to image_tag('/Listings.png', alt: "Listings", :class => "button-logo"), listings_path, data: { no_turbolink: true} %>
+         <% if current_user %>
+           <%= link_to image_tag('/People.png', alt: "People", :class => "button-logo"), users_path, data: { no_turbolink: true} %>
+           <%= link_to image_tag('/Favourites.png', alt: "My Favourites", :class => "button-logo"), user_favourites_path(current_user) %>
+           <%= link_to image_tag('/Inbox.png', alt: "Inbox", :class => "button-logo"), conversations_path %>
+           <%= link_to image_tag('/AddListing.png', alt: "Listings", :class => "button-logo"), new_listing_path, data: { no_turbolink: true} %>
+           <% end %>
+         </div>
        </div>
 
 

@@ -1,11 +1,11 @@
 # encoding: utf-8
 
 class ImageUploader < CarrierWave::Uploader::Base
-  include Cloudinary::CarrierWave
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
+  include Cloudinary::CarrierWave
   # process :validate_dimensions
 
   # def validate_dimensions

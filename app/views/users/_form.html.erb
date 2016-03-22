@@ -57,17 +57,18 @@
         How will you be using Homes 4 Queers?
       </p>
       <ul>
-        <li><%= f.label :site_use, "I am actively looking for a new home", :value => "looking_for_home", class: "a-radio-button-label rb" %></li>
-        <%= f.radio_button :site_use, "looking_for_home", class:"radio-button"%>
+        <li><%= f.radio_button :site_use, "looking_for_home", class:"radio-button"%>
+          <%= f.label :site_use, "I am actively looking for a new home", :value => "looking_for_home", class: "a-radio-button-label rb" %></li>
 
-        <li><%= f.label :site_use, "I am actively looking for (a) roommate(s) for my current home", :value => "looking_for_roommate", class: "b-radio-button-label rb" %></li>
-        <%= f.radio_button :site_use, "looking_for_roommate", class:"radio-button" %>
 
-        <li><%= f.label :site_use, "I am actively looking for (a) tenant(s) for my unoccupied space", :value => "looking_for_tenant", class: "c-radio-button-label rb" %></li>
-        <%= f.radio_button :site_use, "looking_for_tenant", class:"radio-button" %>
+        <li><%= f.radio_button :site_use, "looking_for_roommate", class:"radio-button" %>
+        <%= f.label :site_use, "I am actively looking for (a) roommate(s)", :value => "looking_for_roommate", class: "b-radio-button-label rb" %></li>
 
-        <li><%= f.label :site_use, "I'm not currently searching, just want to hang out", :value => "just_looking", class: "d-radio-button-label rb" %></li>
-        <%= f.radio_button :site_use, "just_looking", class:"radio-button" %>
+        <li><%= f.radio_button :site_use, "looking_for_tenant", class:"radio-button" %><%= f.label :site_use, "I am actively looking for (a) tenant(s)", :value => "looking_for_tenant", class: "c-radio-button-label rb" %></li>
+
+
+        <li><%= f.radio_button :site_use, "just_looking", class:"radio-button" %>
+        <%= f.label :site_use, "I'm not currently searching, just want to hang out", :value => "just_looking", class: "d-radio-button-label rb" %></li>
       </ul>
     </div>
     <div class="field">

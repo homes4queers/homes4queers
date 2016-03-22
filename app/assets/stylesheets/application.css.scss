@@ -46,9 +46,10 @@ a:hover, a:focus{
  }
 
  header { //holds logo
-  background-color: rgb(254, 244, 117);//goldenrod
-  border-bottom-left-radius: 5rem;
-  border-bottom-right-radius: 5rem;
+  background-color: rgb(255, 246, 161);//lighter goldenrod
+  // rgb(254, 244, 117);//goldenrod
+  border-bottom-left-radius: 3rem;
+  border-bottom-right-radius: 3rem;
 }
 
 label {
@@ -63,6 +64,21 @@ li{
   color: white;
   max-height:3rem;
 }
+
+footer {
+    background-color: rgb(74, 61, 50);//brownish
+    color: white;
+    height: 20px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+// footer {
+//   width: 100%;
+//   margin: 0;
+//   position: absolute;
+// }
 a.nav-bar {
   color: rgb(255, 233, 88);//title purple
 }
@@ -75,6 +91,10 @@ a.nav-bar:hover {
 .button {
    border-radius: 20rem;
  }
+
+.mini-buttons {
+  display: none;
+}
 
 .b.button:hover, .b.button:focus {
    border-radius: 20rem;
@@ -120,13 +140,13 @@ a.nav-bar:hover {
 }
 
 .header {
-  background-image: url('/toronto3.png');
+  background-image: url('/homes_gradient_2.png');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
-  height: 17rem;
-  border-bottom-left-radius: 8rem;
-  border-bottom-right-radius: 8rem;
+  height: 16rem;
+  border-bottom-left-radius: 4.5rem;
+  border-bottom-right-radius: 4.5rem;
   box-shadow: 0px 5px 10px 0px rgb(120, 71, 103);
 }
 .checkboxes ul{
@@ -170,7 +190,7 @@ a.nav-bar:hover {
 
 .single-card ul {
   font-size: 12px;
-  background-color: rgb(254, 244, 117);//goldenrod
+  background-color: rgb(255, 246, 161);//lighter goldenrod
   border-radius: 2rem;
   margin: .5rem .5rem;
   padding: .5rem;
@@ -180,4 +200,46 @@ a.nav-bar:hover {
   list-style-type: none;
   text-align: center;
   overflow-y: auto;
+}
+
+@media (max-width: 500px){
+  .top-bar {
+    font-size: 12px;
+  }
+
+  .header {
+    height: 10em;
+    border-bottom-left-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+  }
+
+  header { //holds logo
+
+   background-color: rgb(255, 246, 161);//goldenrod
+   border-bottom-left-radius: 1rem;
+   border-bottom-right-radius: 1rem;
+ }
+
+ //buttons
+ .buttons {
+    display: none;
+  }
+
+  .mini-buttons {
+    display: block;
+  }
+
+.button-logo {
+  height: 50px;
+  }
+}
+
+@media (max-width: 375px){
+  .header {
+    height: 8em;
+  }
+
+  .button-logo {
+    height: 40px;
+  }
 }

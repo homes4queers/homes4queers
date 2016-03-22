@@ -12,7 +12,7 @@ private
 
   def check_for_token
     unless current_user.invite_code?
-      redirect_to tokens_path
+      redirect_to edit_user_path(current_user)
     end
   end
 end

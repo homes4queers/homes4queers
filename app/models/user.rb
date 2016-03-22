@@ -1,12 +1,12 @@
-# class CheckForInvite < ActiveModel::Validator
-#   def validate(record)
-#     @inviter = User.find_by_token(record.invite_code)
-#     if @inviter.nil?
-#       record.errors[:invite_code] << "- Must provide a valid invite code!"
-#       return false
-#     end
-#   end
-# end
+class CheckForInvite < ActiveModel::Validator
+  def validate(record)
+    @inviter = User.find_by_token(record.invite_code)
+    if @inviter.nil?
+      record.errors[:invite_code] << "- Must provide a valid invite code!"
+      return false
+    end
+  end
+end
 
 
 class User < ActiveRecord::Base
@@ -41,7 +41,7 @@ class User < ActiveRecord::Base
   validates :email, uniqueness: true
   validates_presence_of :message_notifications, :if => 'message_notifications.nil?'
 
-  # validates_with CheckForInvite
+  validates_with CheckForInvite
 
   Roles = [:admin, :default]
 

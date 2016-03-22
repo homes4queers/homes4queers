@@ -52,9 +52,9 @@
 
 
     <% if @user.listings.any? %>
-    <h3><%= @user.name %>'s Listings</h3>
       <div class="row">
         <hr>
+        <h3><%= @user.name %>'s Listings</h3>
         <% @user.listings.each do |list| %>
           <div class="small-10 small-centered ">
             <ul class=large-block-grid-4>

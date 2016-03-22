@@ -4,8 +4,11 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
-  include CarrierWave::MiniMagick
   include Cloudinary::CarrierWave
+  include CarrierWave::MiniMagick
+
+  # process :convert => 'png'
+
   # process :validate_dimensions
 
   # def validate_dimensions
@@ -16,12 +19,14 @@ class ImageUploader < CarrierWave::Uploader::Base
   #     img
   #   end
   # end
+
   # Choose what kind of storage to use for this uploader:
   # storage :file
   # storage :fog
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
+
   # def store_dir
   #   "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   # end
@@ -44,17 +49,17 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   # Create different versions of your uploaded files:
   version :thumb do
-    process :eager => true
+    # process :eager => true
     process :resize_to_fit => [100, 100, :north]
   end
 
   version :standard do
-    process :eager => true
+    # process :eager => true
     process :resize_to_fill => [500, 500, :north]
    end
 
   version :tiny_thumb do
-    process :eager => true
+    # process :eager => true
     process :resize_to_fit => [20,20, :north]
   end
   # Add a white list of extensions which are allowed to be uploaded.

@@ -1,6 +1,6 @@
   class UsersController < ApplicationController
   before_action :require_login, only: [:index, :edit, :update, :destroy]
-
+  skip_before_action :check_for_token, only: [:new, :create, :edit, :update]
   def index
     @q = User.ransack(params[:q])
     @tags = ActsAsTaggableOn::Tag.all.order('taggings_count desc')

@@ -1,18 +1,19 @@
 Rails.application.routes.draw do
+  root 'listings#index'
+
   namespace :admin do
     resources :authentications
-resources :comments
-resources :conversations
-resources :favourites
-resources :images
-resources :listings
-resources :messages
-resources :users
+    resources :comments
+    resources :conversations
+    resources :favourites
+    resources :images
+    resources :listings
+    resources :messages
+    resources :users
 
     root to: "authentications#index"
   end
 
-  root 'listings#index'
 
   resources :users do
     collection do
@@ -48,6 +49,9 @@ resources :users
   get "oauth/callback" => "oauths#callback" # for use with Github, Facebook
   get "oauth/:provider" => "oauths#oauth", :as => :auth_at_provider
 
+  resources :tokens, only: [:index, :update]
+
+  post "/tokens" => "users#update", as: :update
 
   resources :conversations do
     resources :messages

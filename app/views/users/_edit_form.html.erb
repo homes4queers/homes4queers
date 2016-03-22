@@ -19,8 +19,13 @@
   <div class="large-6 columns">
 
       <div class="field">
+<<<<<<< HEAD
         <%= f.label :invite_code, "Please enter your invite code" %>
         <%= f.text_field :invite_code %>
+=======
+        <%= f.label :invite_code, "Please enter your invite code", class:"invite_code" unless @user.invite_code?%>
+        <%= f.text_field :invite_code unless @user.invite_code?%>
+>>>>>>> 98935c2deb79ad025223b8e78957ab1d926b95ab
       </div>
 
       <div class="field">

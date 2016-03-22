@@ -1,5 +1,5 @@
 class ListingsController < ApplicationController
-  before_action :require_login, except: [:index]
+  before_action :require_login, except: [:index, :search]
   skip_before_action :check_for_token, only: [:index]
   def index
     @q = Listing.ransack(params[:q])

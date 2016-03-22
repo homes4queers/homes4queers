@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   root 'listings#index'
 
   namespace :admin do
@@ -22,8 +23,14 @@ Rails.application.routes.draw do
     member do
       post 'favourite'
       delete 'unfavourite'
+      post 'flag'
     end
-    resources :comments
+    resources :comments do
+      member do
+        post 'flag'
+      end
+    end
+
     resources :favourites, only: [:index]
   end
 
@@ -35,8 +42,13 @@ Rails.application.routes.draw do
     member do
       post 'favourite'
       delete 'unfavourite'
+      post 'flag'
     end
-    resources :comments
+    resources :comments do
+      member do
+        post 'flag'
+      end
+    end
   end
 
   resources :user_sessions, only: [:new, :create, :destroy]
@@ -50,8 +62,15 @@ Rails.application.routes.draw do
   get "oauth/:provider" => "oauths#oauth", :as => :auth_at_provider
 
   resources :conversations do
+    member do
+      post "flag"
+    end
     resources :messages
   end
 
-  resources :tags, only: [:index, :show]
+  resources :tags, only: [:index, :show] do
+    member do
+      post 'flag'
+    end
+  end
 end

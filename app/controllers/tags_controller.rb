@@ -8,6 +8,15 @@ class TagsController < ApplicationController
     @users = User.tagged_with(@tag.name)
     @tags = ActsAsTaggableOn::Tag.all.order('taggings_count desc')
   end
+
+  def flag
+    @flagged_tag = Tag.find(params[:id])
+    if Flag.create(flagged: @flagged_tag, user: current_user)
+      redirect_to :back, notice: "Flagged this Tag"
+    else
+      redirect_to :back, notice: "Flagging didn't work"
+    end
+  end
 end
 
 # @q =  ActsAsTaggableOn::Tag.ransack(params[:q])

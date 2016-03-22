@@ -16,15 +16,15 @@ class ListingsController < ApplicationController
     end
 
 
-    def search
-      index
-      render :index
+  def search
+    index
+    render :index
     end
     # respond_to do |format|
     #   format.html
     #   format.js
     # end
-end
+  end
 
 
   def new
@@ -82,6 +82,15 @@ end
     @listing = Listing.find(params[:id])
     if Favourite.where(favourited_id: @listing.id, user_id: current_user.id).last.destroy
       redirect_to :back
+    end
+  end
+
+  def flag
+    @flagged_listing = Listing.find(params[:id])
+    if Flag.create(flagged: @flagged_listing, user: current_user)
+      redirect_to :back, notice: "Flagged this listing"
+    else
+      redirect_to :back, notice: "Flagging didn't work"
     end
   end
 

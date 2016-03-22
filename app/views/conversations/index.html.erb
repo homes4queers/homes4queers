@@ -12,10 +12,13 @@
               <% recipient = User.find(conversation.sender_id) %>
             <% end %>
             <li><%= link_to "#{recipient.name} :: #{conversation.subject}", conversation_messages_path(conversation) ,method: 'get', target: 'message_frame'%>
+              <%= link_to flag_conversation_path(conversation.id), method: :post do%>
+              <i class="material-icons flag convoflag" alt="flag this conversation" aria-label="flag">error</i>
+              <% end %>
           <% end %>
         <% end %>
     </ul>
-    </div>
+  </div>
 
     <div class="large-4 medium-8 columns">
         <br>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160321170820) do
+ActiveRecord::Schema.define(version: 20160322190111) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,10 +30,10 @@ ActiveRecord::Schema.define(version: 20160321170820) do
     t.text     "body"
     t.integer  "commentable_id"
     t.string   "commentable_type"
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
     t.integer  "user_id"
-    t.integer  "flagged",          default: 0
+    t.boolean  "flagged"
   end
 
   add_index "comments", ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id", using: :btree
@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 20160321170820) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "subject"
-    t.integer  "flagged",      default: 0
+    t.boolean  "flagged"
   end
 
   create_table "extended_profile_attributes", force: :cascade do |t|
@@ -69,6 +69,17 @@ ActiveRecord::Schema.define(version: 20160321170820) do
   add_index "favourites", ["favourited_type", "favourited_id"], name: "index_favourites_on_favourited_type_and_favourited_id", using: :btree
   add_index "favourites", ["user_id"], name: "index_favourites_on_user_id", using: :btree
 
+  create_table "flags", force: :cascade do |t|
+    t.integer  "flagged_id"
+    t.string   "flagged_type"
+    t.integer  "user_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "flags", ["flagged_type", "flagged_id"], name: "index_flags_on_flagged_type_and_flagged_id", using: :btree
+  add_index "flags", ["user_id"], name: "index_flags_on_user_id", using: :btree
+
   create_table "images", force: :cascade do |t|
     t.string   "photo"
     t.datetime "created_at", null: false
@@ -81,8 +92,8 @@ ActiveRecord::Schema.define(version: 20160321170820) do
     t.text     "description"
     t.string   "location"
     t.integer  "user_id"
-    t.datetime "created_at",                        null: false
-    t.datetime "updated_at",                        null: false
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
     t.float    "latitude"
     t.float    "longitude"
     t.integer  "bedrooms"
@@ -124,7 +135,7 @@ ActiveRecord::Schema.define(version: 20160321170820) do
     t.boolean  "parking"
     t.boolean  "on_street_parking"
     t.boolean  "smoking"
-    t.integer  "flagged",               default: 0
+    t.boolean  "flagged"
   end
 
   add_index "listings", ["user_id"], name: "index_listings_on_user_id", using: :btree
@@ -140,10 +151,6 @@ ActiveRecord::Schema.define(version: 20160321170820) do
 
   add_index "messages", ["conversation_id"], name: "index_messages_on_conversation_id", using: :btree
   add_index "messages", ["user_id"], name: "index_messages_on_user_id", using: :btree
-
-  create_table "notifications", force: :cascade do |t|
-    t.boolean "messages"
-  end
 
   create_table "taggings", force: :cascade do |t|
     t.integer  "tag_id"
@@ -168,7 +175,7 @@ ActiveRecord::Schema.define(version: 20160321170820) do
   create_table "users", force: :cascade do |t|
     t.string   "name"
     t.text     "about_me"
-    t.string   "email",                           default: "---\n:null: true\n", null: false
+    t.string   "email"
     t.string   "crypted_password"
     t.string   "salt"
     t.datetime "created_at"
@@ -187,7 +194,7 @@ ActiveRecord::Schema.define(version: 20160321170820) do
     t.datetime "reset_password_token_expires_at"
     t.datetime "reset_password_email_sent_at"
     t.boolean  "message_notifications"
-    t.integer  "flagged",                         default: 0
+    t.integer  "flagged"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

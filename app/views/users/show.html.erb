@@ -56,6 +56,36 @@
         <% end %>
       </div>
 
+
+    </div>
+
+    <% if @user.listings.any? %>
+      <div class="row">
+        <hr>
+        <h3><%= @user.name %>'s Listings</h3>
+        <% @user.listings.each do |list| %>
+          <div class="small-10 small-centered ">
+            <ul class=large-block-grid-4>
+              <div class="single-card">
+                <ul>
+                  <%= link_to listing_path(list) do %>
+                  <li><%= image_tag list.thumbnail, class:'thumbnail' %></li>
+                  <li><h4><%= list.name %></h4></li>
+                  <% end %>
+                  <li><%= list.price %></li>
+                  <li><%= list.location %></li>
+                  <li>
+                    Available from:<br>
+                    <%= list.rent_date %>
+                  </li>
+                </ul>
+              </div>
+            </ul>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+
       <% if @user.listings.any? %>
         <div class="row">
           <hr>

@@ -121,7 +121,6 @@
         <li><%= f.check_box :forced_air_heat, class: "check-box" %>
         <%= f.label :forced_air_heat, "Forced Air heating", class:'check-box-label rb'  %></li>
 
-        <li><%= f.check_box :boiler_system, class: "check-box" %>
         <%= f.label :boiler_system, "Boiler System heating", class:'check-box-label rb'  %></li>
       </div>
       <div class="large-6 medium-6 columns">
@@ -173,6 +172,9 @@
 
         <li><%= f.check_box :on_street_parking, class: "check-box" %>
         <%= f.label :on_street_parking, "On-street Parking available", class:'check-box-label rb'  %></li>
+
+        <li><%= f.check_box :basement, class: "check-box" %>
+        <%= f.label :basement, "Is a Basement", class:'check-box-label rb'  %></li>
       </div>
   </div>
   </ul>

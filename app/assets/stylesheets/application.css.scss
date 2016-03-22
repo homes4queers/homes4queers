@@ -203,6 +203,10 @@ a.nav-bar:hover {
 }
 
 @media (max-width: 500px){
+  .top-bar {
+    font-size: 12px;
+  }
+
   .header {
     height: 10em;
     border-bottom-left-radius: 2rem;

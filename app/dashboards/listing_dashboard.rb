@@ -79,7 +79,7 @@ class ListingDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = [
     :user,
     :comments,
-    :flags,
+    # :flags,
     :images,
     :id,
     :name,

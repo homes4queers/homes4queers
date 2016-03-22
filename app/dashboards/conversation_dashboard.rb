@@ -11,13 +11,14 @@ class ConversationDashboard < Administrate::BaseDashboard
     sender: Field::BelongsTo.with_options(class_name: "User"),
     recipient: Field::BelongsTo.with_options(class_name: "User"),
     messages: Field::HasMany,
+    flags: Field::HasMany,
     id: Field::Number,
     sender_id: Field::Number,
     recipient_id: Field::Number,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
     subject: Field::String,
-    flagged: Field::Boolean,
+    # flagged: Field::Boolean,
   }
 
   # COLLECTION_ATTRIBUTES
@@ -30,6 +31,7 @@ class ConversationDashboard < Administrate::BaseDashboard
     :recipient,
     :messages,
     :id,
+    :flags
   ]
 
   # SHOW_PAGE_ATTRIBUTES
@@ -44,7 +46,7 @@ class ConversationDashboard < Administrate::BaseDashboard
     :created_at,
     :updated_at,
     :subject,
-    :flagged,
+    # :flagged,
   ]
 
   # FORM_ATTRIBUTES
@@ -57,7 +59,7 @@ class ConversationDashboard < Administrate::BaseDashboard
     :sender_id,
     :recipient_id,
     :subject,
-    :flagged,
+    # :flagged,
   ]
 
   # Overwrite this method to customize how conversations are displayed

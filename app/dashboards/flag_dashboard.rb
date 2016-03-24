@@ -1,6 +1,6 @@
 require "administrate/base_dashboard"
 
-class CommentDashboard < Administrate::BaseDashboard
+class FlagDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -9,12 +9,10 @@ class CommentDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     user: Field::BelongsTo,
-    commentable: Field::Polymorphic,
+    flagged: Field::Polymorphic,
     id: Field::Number,
-    body: Field::Text,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
-    flagged: Field::Boolean,
   }
 
   # COLLECTION_ATTRIBUTES
@@ -24,21 +22,19 @@ class CommentDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
     :user,
-    :commentable,
+    :flagged,
     :id,
-    :body,
+    :created_at,
   ]
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
     :user,
-    :commentable,
+    :flagged,
     :id,
-    :body,
     :created_at,
     :updated_at,
-    :flagged,
   ]
 
   # FORM_ATTRIBUTES
@@ -46,15 +42,13 @@ class CommentDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :user,
-    :commentable,
-    :body,
     :flagged,
   ]
 
-  # Overwrite this method to customize how comments are displayed
+  # Overwrite this method to customize how favourites are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(comment)
-  #   "Comment ##{comment.id}"
+  # def display_resource(favourite)
+  #   "Favourite ##{favourite.id}"
   # end
 end

@@ -1,3 +1,4 @@
+
 require "administrate/base_dashboard"
 
 class UserDashboard < Administrate::BaseDashboard
@@ -10,6 +11,7 @@ class UserDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     authentications: Field::HasMany,
     listings: Field::HasMany,
+    flags: Field::HasMany,
     favourites: Field::HasMany,
     favourite_listings: Field::HasMany.with_options(class_name: "Listing"),
     favourite_users: Field::HasMany.with_options(class_name: "User"),
@@ -50,9 +52,7 @@ class UserDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = [
     :name,
     :listings,
-    :user_comments,
-    :listing_comments,
-    :message_notifications
+    :flags
   ]
 
   # SHOW_PAGE_ATTRIBUTES
@@ -64,6 +64,7 @@ class UserDashboard < Administrate::BaseDashboard
     :email,
     :authentications,
     :listings,
+    # :flags,
     # :favourites,
     # :favourite_listings,
     # :favourite_users,

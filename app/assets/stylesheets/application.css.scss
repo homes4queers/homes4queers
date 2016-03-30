@@ -14,12 +14,15 @@
  *= require_self
  *= require foundation_and_overrides
  */
-@import url(https://fonts.googleapis.com/css?family=Lobster+Two:700);
+// @import url(https://fonts.googleapis.com/css?family=Lobster+Two:700);
 @import url(https://fonts.googleapis.com/css?family=Cabin);
+@import url(https://fonts.googleapis.com/css?family=Pacifico);
+@import url(https://fonts.googleapis.com/css?family=Arimo);
+
 @import url(https://fonts.googleapis.com/icon?family=Material+Icons);
 
  body{
-   background-color: rgb(255, 239, 173);
+   background-color: rgb(245, 206, 165);
   // background-color: rgb(120, 71, 103);
    font-family: 'Cabin', sans-serif;
    color: rgb(56, 48, 57);//dark dark purple
@@ -36,17 +39,17 @@ a:hover, a:focus{
  h1,h2,h3 {
    text-align: center;
    color: rgb(120, 71, 103);//title purple
-   font-family: 'Lobster Two', cursive, serif;
+   font-family: 'Pacifico', cursive, serif;
    text-shadow: 2px 2px rgb(232, 223, 238);
  }
  h4,h5 {
    text-align: center;
    color: rgb(120,71,103);//title purple
-   font-family: 'Lobster Two'
+   font-family: 'Cabin'
  }
 
  header { //holds logo
-  background-color: rgb(255, 246, 161);//lighter goldenrod
+  background-color: rgb(245, 206, 165);//lighter goldenrod
   // rgb(254, 244, 117);//goldenrod
   border-bottom-left-radius: 3rem;
   border-bottom-right-radius: 3rem;
@@ -198,19 +201,22 @@ a.nav-bar:hover {
   border-radius: .5em;
   background-color:rgb(152, 131, 144) ;
 }
+// .single-card {
+//   margin:
+// }
 
 .single-card ul {
   font-size: 12px;
   background-color: rgb(255, 246, 161);//lighter goldenrod
-  border-radius: 2rem;
-  margin: .5rem .5rem;
+  border-radius: 1.5rem;
+  margin: 1rem 0rem;
   padding: .5rem;
-  height: 18rem;
-  width: 13rem;
+  height: 12rem;
+  width: 100%;
   float: left;
   list-style-type: none;
   text-align: center;
-  overflow-y: auto;
+  overflow: hidden;
 }
 
 @media (max-width: 500px){

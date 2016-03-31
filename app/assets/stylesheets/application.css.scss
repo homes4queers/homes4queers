@@ -210,14 +210,29 @@ a.nav-bar:hover {
   background-color: rgb(255, 246, 161);//lighter goldenrod
   border-radius: 1.5rem;
   margin: 1rem 0rem;
-  padding: .5rem;
+  // padding: .5rem;
   height: 12rem;
-  width: 100%;
+  // width: 100%;
   float: left;
   list-style-type: none;
   text-align: center;
   overflow: hidden;
 }
+
+.singke-card card-text {
+  text-align: center;
+  padding-right: 1rem;
+}
+// .card-thumbnail {
+//
+//   margin: 0;
+//   padding: 0;
+//   border-top-left-radius: 1.5rem;
+//   border-bottom-left-radius: 1.5rem;
+//   width: auto;
+//   height: 12rem;
+//   overflow: hidden;
+// }
 
 @media (max-width: 500px){
   .top-bar {

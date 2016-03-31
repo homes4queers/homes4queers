@@ -3,12 +3,16 @@
       <div class="single-card">
         <ul>
           <div class="row">
-            <div class="small-4 columns thumb">
+
+
+            <div class="small-5 columns">
 
           <%= link_to listing_path(listing), data: { no_turbolink: true } do %>
-            <li><%= image_tag listing.thumbnail, class:'thumbnail' %></li>
+            <li><%=
+            # image_tag listing.thumbnail
+            image_tag '/toronto2.png', class:'card-thumbnail' %></li>
           </div>
-          <div class="small-8 columns">
+          <div class="small-7 columns card-text">
 
             <li><h5> <%= listing.name %></h5></li>
           <% end %>
@@ -36,6 +40,7 @@
                 <% end %><!--end unless current user.favourite-->
               <% end %><!--end if current user-->
             <% end %><!--end unless can? -->
+
           </div>
           </div>
         </ul>

@@ -61,24 +61,36 @@
   end
 
   def favourite
-    sleep 2
     @user = User.find(params[:id])
      Favourite.create(favourited: @user, user: current_user)
       # redirect_to :back, notice: "Added to favourites"
     # else
       # redirect_to :back, alert: "Something went wrong, better blame the developers"
       respond_to do |format|
-        format.html {redirect_to :back}
         format.js {render 'favourite.js.erb' }
+        format.html {redirect_to :back}
       end
+      # if request.xhr?
+      #   head :ok
+      # else
+      #   redirect_to :back
+      # end
     # end
   end
 
   def unfavourite
     @user = User.find(params[:id])
-    if Favourite.where(favourited_id: @user.id, user_id: current_user.id).first.destroy
-      redirect_to :back, notice: "Successfully unfavourited someone (they'll never know)"
+    Favourite.where(favourited_id: @user.id, user_id: current_user.id).first.delete
+    respond_to do |format|
+      format.js {render 'favourite.js.erb'}
+      format.html {redirect_to :back}
     end
+    #
+    # if request.xhr?
+    #   head :ok
+    # else
+    #   redirect_to :back
+    # end
   end
 
   def flag

@@ -17,7 +17,9 @@
             <li><h5> <%= listing.name %></h5></li>
           <% end %>
             <li>$<%= listing.price %>/month</li>
+            <br>
             <li><%= listing.location %></li>
+            <br>
             <li>
               Available from:<br>
               <%= listing.rent_date.to_formatted_s(:long) %>

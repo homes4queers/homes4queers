@@ -43,6 +43,8 @@ a:hover, a:focus{
    text-shadow: 2px 2px rgb(232, 223, 238);
  }
  h4,h5 {
+   font-size: 14px;
+   font-weight: bolder;
    text-align: center;
    color: rgb(120,71,103);//title purple
    font-family: 'Cabin'
@@ -199,7 +201,7 @@ a.nav-bar:hover {
 .radio-label-colour {
   color: white;
   border-radius: .5em;
-  background-color:rgb(152, 131, 144) ;
+  background-color: rgb(152, 131, 144);
 }
 // .single-card {
 //   margin:
@@ -207,27 +209,30 @@ a.nav-bar:hover {
 
 .single-card ul {
   font-size: 12px;
+  line-height: 12px;
   background-color: rgb(255, 246, 161);//lighter goldenrod
   border-radius: 1.5rem;
   margin: 1rem 0rem;
   // padding: .5rem;
   height: 12rem;
-  // width: 100%;
+  width: 100%;
   float: left;
   list-style-type: none;
   text-align: center;
   overflow: hidden;
-}
+  }
 
-.singke-card card-text {
+.single-card .card-text {
   text-align: center;
-  padding-right: 1rem;
+  padding-right: 3rem;
+  padding-top: 2rem;
+  // padding: auto;
 }
 // .card-thumbnail {
 //
 //   margin: 0;
 //   padding: 0;
-//   border-top-left-radius: 1.5rem;
+  // border-top-left-radius: 1.5rem;
 //   border-bottom-left-radius: 1.5rem;
 //   width: auto;
 //   height: 12rem;

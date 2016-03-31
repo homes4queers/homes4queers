@@ -1,1 +1,1 @@
-$(".favourites").html('<%= j favourite_button(@user) %>');
+$("#favourites-<%= @user.id %>").html('<%= j favourite_button(@user) %>');

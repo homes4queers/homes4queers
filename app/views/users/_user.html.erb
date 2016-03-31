@@ -20,23 +20,9 @@
           <li><h4><%=user.name%></h4></li>
         <% end %>
            <li><%= user.tag_list %></li>
-           <% unless can? :manage, @user %>
-             <% if current_user %>
-               <% unless current_user.favourite_users.exists?(id: user.id) %>
-               <li class="favourite-link">
-                 <%= link_to favourite_user_path(user.id), method: :post do%>
-                   <i class="material-icons" alt="favourite button">favorite</i>
-                 <% end %>
-               </li>
-             <% else %>
-               <li class="unfavourite-link">
-                 <%= link_to unfavourite_user_path(user.id), method: :delete do %>
-                   <i class="material-icons unfave" alt="unfavourite button">favorite</i>
-                 <% end %>
-               </li>
-               <% end %>
-             <% end %>
-           <% end %>
+           <div id="favourites-<%= user.id %>">
+             <%= favourite_button(user) %>
+           </div>
         </ul>
       </div>
     </ul>

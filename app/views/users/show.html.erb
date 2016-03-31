@@ -1,24 +1,8 @@
 <div class="profile">
-  <% unless can? :manage, @user %>
-    <% if current_user %>
-      <% unless current_user.favourite_users.exists?(id: @user.id) %>
-      <li class="favourite-link">
-        <%= link_to favourite_user_path(@user.id), remote: true, method: :post, data: {disable_with: "blaaaah"} do%>
-          <i class="material-icons fave" alt="favourite button">favorite</i>
-          <% end %>
-      </li>
-      <% else %>
-      <li class="unfavourite-link">
-        <%= link_to unfavourite_user_path(@user.id), method: :delete do %>
-          <i class="material-icons unfave" alt="unfavourite button">favorite</i>
-        <% end %>
-      </li>
-      <% end %>
-    <% end %>
-  <% end %>
-<div class="favourites">
-<%= favourite_button(@user) %>
-</div>
+
+  <div id="favourites-<%= @user.id %>">
+    <%= favourite_button(@user) %>
+  </div>
 
   <% if can? :manage, @user %>
   <%= link_to "Edit Profile", edit_user_path(@user), class:'button orange' %>

@@ -1,6 +1,6 @@
 module ListingsHelper
 
-  def favourite_button(listing)
+  def listing_favourite_button(listing)
     unless current_user.id == listing.user_id
     listing = listing.id
       unless current_user.favourite_listings.exists?(listing)

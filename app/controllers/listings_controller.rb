@@ -71,17 +71,19 @@ class ListingsController < ApplicationController
 
   def favourite
     @listing = Listing.find(params[:id])
-    if Favourite.create(favourited: @listing, user: current_user)
-      redirect_to :back
-    else
-      redirect_to :back, alert: "Something went wrong, better blame the developers"
+    Favourite.create(favourited: @listing, user: current_user)
+    respond_to do |format|
+      format.js {render 'favourite.js.erb' }
+      format.html {redirect_to :back}
     end
   end
 
   def unfavourite
     @listing = Listing.find(params[:id])
-    if Favourite.where(favourited_id: @listing.id, user_id: current_user.id).last.destroy
-      redirect_to :back
+    Favourite.where(favourited_id: @listing.id, user_id: current_user.id).last.destroy
+    respond_to do |format|
+      format.js {render 'favourite.js.erb' }
+      format.html {redirect_to :back}
     end
   end
 

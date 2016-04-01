@@ -1,21 +1,8 @@
 <div class="listings">
-  <% if current_user %>
-  <% unless can? :manage, @listing %>
-    <% unless current_user.favourite_listings.exists?(id: @listing.id) %>
-      <li class="favourite-link">
-        <%= link_to favourite_listing_path(@listing.id), method: :post do%>
-          <i class="material-icons">favorite</i>
-        <% end %>
-      </li>
-    <% else %>
-      <li class="unfavourite-link">
-        <%= link_to unfavourite_listing_path(@listing.id), method: :delete do %>
-          <i class="material-icons unfave">favorite</i>
-        <% end %>
-      </li>
-    <% end %><!--end unless current user.favourite-->
-  <% end %>
-<% end %>
+
+  <div id="favourites-<%= @listing.id %>">
+    <%= favourite_button(@listing ) %>
+  </div>
 
 <h1><%= @listing.name %></h1>
 

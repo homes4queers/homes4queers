@@ -13,23 +13,9 @@
               <%= listing.rent_date.to_formatted_s(:long) %>
             </li>
             <br>
-            <% unless can? :manage, listing %>
-              <% if current_user %>
-                <% unless current_user.favourite_listings.exists?(listing.id) %>
-                  <li class="favourite-link">
-                    <%= link_to favourite_listing_path(listing.id), method: :post do%>
-                      <i class="material-icons">favorite</i>
-                    <% end %>
-                  </li>
-                <% else %>
-                  <li class="unfavourite-link">
-                    <%= link_to unfavourite_listing_path(listing.id), method: :delete do %>
-                      <i class="material-icons unfave">favorite</i>
-                    <% end %>
-                  </li>
-                <% end %><!--end unless current user.favourite-->
-              <% end %><!--end if current user-->
-            <% end %><!--end unless can? -->
+            <div id="favourites-<%= listing.id %>">
+              <%= favourite_button(listing) %>
+            </div>
           </ul>
       </div><!--end single-card-->
   </ul><!-- end large-block grid -->

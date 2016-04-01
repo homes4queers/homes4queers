@@ -62,20 +62,11 @@
 
   def favourite
     @user = User.find(params[:id])
-     Favourite.create(favourited: @user, user: current_user)
-      # redirect_to :back, notice: "Added to favourites"
-    # else
-      # redirect_to :back, alert: "Something went wrong, better blame the developers"
-      respond_to do |format|
-        format.js {render 'favourite.js.erb' }
-        format.html {redirect_to :back}
-      end
-      # if request.xhr?
-      #   head :ok
-      # else
-      #   redirect_to :back
-      # end
-    # end
+    Favourite.create(favourited: @user, user: current_user)
+    respond_to do |format|
+      format.js {render 'favourite.js.erb' }
+      format.html {redirect_to :back}
+    end
   end
 
   def unfavourite
@@ -85,12 +76,6 @@
       format.js {render 'favourite.js.erb'}
       format.html {redirect_to :back}
     end
-    #
-    # if request.xhr?
-    #   head :ok
-    # else
-    #   redirect_to :back
-    # end
   end
 
   def flag

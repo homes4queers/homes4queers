@@ -35,6 +35,10 @@
   text-align: center;
   overflow-y: auto;
 }
+#listing-info{
+  max-width:9rem;
+  max-height:9rem;
+}
 
 .nearby-card {
   background-color: rgb(255, 246, 161);//lighter goldenrod

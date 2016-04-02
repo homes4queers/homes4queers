@@ -1,0 +1,11 @@
+
+<div class="large-11 large-centered columns">
+  <% commentable.comments.each do |c| %>
+    <div class="show-comment">
+      <%= c.created_at.to_formatted_s(:long) %>
+      <b><%= link_to c.user.name, user_path(c.user_id) %> says: </b><br>
+      <blockquote><%= c.body %><br></blockquote>
+      <hr>
+    </div>
+  <% end %>
+</div>

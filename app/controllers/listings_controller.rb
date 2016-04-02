@@ -32,8 +32,8 @@ class ListingsController < ApplicationController
   end
 
   def show
-    @commentable = Listing.find(params[:id])
     @listing = Listing.find(params[:id])
+    @commentable = @listing
     @nearby_listings = @listing.nearbys_if_geocoded
 
   end

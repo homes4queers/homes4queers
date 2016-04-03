@@ -4,7 +4,7 @@
     <%= render @tags.all %>
     <div class="flagbox">
       <%= link_to flag_tag_path(@tag.id), method: :post do%>
-      Flag as inappropriate
+      Flag as offensive
       <i class="material-icons flag" alt="flag this tag">error</i>
       <% end %>
     </div>

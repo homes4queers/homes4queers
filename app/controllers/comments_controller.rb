@@ -1,10 +1,5 @@
 class CommentsController < ApplicationController
   before_action :require_login, only: [:create, :destroy]
-  # before_action :set_commentable
-def index
-  # @commentable = find_commentable
-  # @comments = @commentable.comments
-end
 
   def show
     @comment = Comment.find(params[:id])
@@ -18,7 +13,7 @@ end
     if @comment.save
       respond_to do |format|
         format.html {redirect_to :back}
-        format.js {}
+        format.js { }
       end
     else
       render :new

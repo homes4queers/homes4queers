@@ -78,13 +78,15 @@
 
 </div><!--end row-->
 <hr>
-  <div class="row">
-    <h4>Testimonials</h4>
-    <p class='text-center'>
-      Have you lived with this person?  Know any good stories about them? Do they bake amazing cookies?
-    </p>
-    <%= render 'comments' %>
-
+<h4>Testimonials</h4>
+<div class="row">
+  <div class="new comment">
+      <%= render :partial => 'comments/comment_form'%>
   </div>
+
+  <div id="comments">
+    <%= render :partial => 'comments/comments', locals: {commentable: @user} %>
+  </div>
+</div>
 
 </div>

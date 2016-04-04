@@ -1,5 +1,5 @@
 
-<div class="large-11 large-centered columns">
+<div class="large-11 large-centered columns" id="the-comments">
   <% @commentable.comments.order("created_at desc").each do |c| %>
     <div class="show-comment">
       <%= c.created_at.to_formatted_s(:long) %>

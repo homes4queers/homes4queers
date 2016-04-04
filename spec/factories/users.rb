@@ -9,7 +9,6 @@ FactoryGirl.define do
     password_confirmation 'password'
     message_notifications false
     to_create {|instance| instance.save(validate: false) }
-
   end
   # factory :user do
     # id { sequence }

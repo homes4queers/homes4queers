@@ -2,7 +2,7 @@ require "rails_helper"
 
 feature "comments load on listing show page" do
   setup do
-    @listing = FactoryGirl.create(:listing)
+    @listing = FactoryGirl.create(:listing, :id => 1)
     @user = FactoryGirl.create(:test_user)
   end
 

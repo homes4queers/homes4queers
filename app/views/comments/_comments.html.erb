@@ -1,7 +1,7 @@
 
 <div class="large-11 large-centered columns" id="the-comments">
   <% @commentable.comments.order("created_at desc").each do |c| %>
-    <div class="show-comment">
+    <div id="show-comment">
       <%= c.created_at.to_formatted_s(:long) %>
       <b><%= link_to c.user.name, user_path(c.user_id) %> says: </b><br>
       <blockquote><%= c.body %><br></blockquote>

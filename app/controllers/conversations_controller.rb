@@ -23,7 +23,7 @@ class ConversationsController < ApplicationController
   def update
     @conversation = Conversation.find(params[:id])
     if @conversation.update_attributes(conversation_params)
-      redirect_back_or_to conversation_messages_path(@conversation)
+      redirect_to conversation_messages_path(@conversation)
     end
   end
 

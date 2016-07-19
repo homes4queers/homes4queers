@@ -1,17 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <%= stylesheet_link_tag 'application' %>
+  <title>Document</title>
+</head>
 <div class="messages">
+  <body>
   <% user = User.find(@conversation.recipient_id) %>
   <h4>Conversation with <%= user.name %></h4>
-
-  <% unless @conversation.subject != nil %>
-    <%= form_for @conversation do |f| %>
-      <%= f.label :subject %>
-      <%= f.text_field :subject %>
-      <%= f.submit "Add Subject" %>
-    <% end %>
-  <% else %>
-    <h5>Subject: <%= @conversation.subject%></h5>
-  <% end %>
-
   <div id="messages-all">
     <% @messages.each do |message| %>
       <% if message.body %>
@@ -33,79 +30,15 @@
       </div>
       <%= f.text_field :user_id, value: current_user.id, type: "hidden" %>
       <div class="field">
-        <%= f.submit "Send", class:'btn' %>
+        <%= f.submit "Send", class:'button' %>
       </div>
     <% end %>
   </div>
 
-<style>
 
-@import url(https://fonts.googleapis.com/css?family=Cabin);
-body{
-  font-family: "Cabin", sans-serif;
-  color: rgb(56, 48, 57);//dark dark purple
-}
-
-a {
-  color: rgb(120, 71, 103);
-  text-decoration: none;
-}
-a:hover, a:focus{
-  color: rgb(255, 207, 0);
-  text-decoration: none;
-}
-
-h4,h5 {
-  text-align: center;
-  color: rgb(120,71,103);//title purple
-  font-family: 'Lobster Two', cursive;
-}
-.btn {
-  -webkit-border-radius: 28;
-  -moz-border-radius: 28;
-  border-radius: 20px;
-  border: 1px blue;
-  font-family: 'Cabin', sans-serif;;
-  color: white;
-  font-size: 16px;
-  background: rgb(3,195,131);
-  padding: 10px;
-  text-decoration: none;
-  margin: 5px;
-}
-
-.btn:hover {
-  background-color: rgb(12, 138, 96); //pink
-  text-decoration: none;
-}
-
-.msg-title{
-  z-index: 10;
-  background-color: rgb(255, 239, 173);
-  padding: 5px;
-  margin: 5px;
-  border-bottom-right-radius: 50px;
-  border-top-right-radius:50px;
-  border-top: solid rgb(152, 131, 144);
-}
-.messages{
-  border-left: solid 2px rgb(217, 191, 207);
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
-
-}
-.message-body{
-  padding: 5px;
-  margin: 5px 5px 5px 5px;
-}
-.message-box{
-  margin: 5px
-
-}
-
-
-</style>
 
 <script>
   document.getElementById("message_body").focus();
 </script>
+</body>
+</html>

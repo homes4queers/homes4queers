@@ -15,7 +15,6 @@
 //= require foundation
 //= require cocoon
 //= require_tree
-//= stub 'conversations'
 //= stub 'map'
 
 $(function(){ $(document).foundation(); });

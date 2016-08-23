@@ -16,5 +16,3 @@
 //= require cocoon
 //= require_tree
 //= stub 'map'
-
-$(function(){ $(document).foundation(); });

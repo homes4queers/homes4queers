@@ -2,27 +2,36 @@
 @import url(https://fonts.googleapis.com/css?family=Cabin);
 @import url(https://fonts.googleapis.com/icon?family=Material+Icons);
 
- body{
-   background-color: rgb(255, 239, 173);
-  // background-color: rgb(120, 71, 103);
-   font-family: 'Cabin', sans-serif;
-   color: rgb(56, 48, 57);//dark dark purple
- }
-a{
-  color: rgb(120, 71, 103);
+
+$title-purple: rgb(120, 71, 103);
+$goldenrod: rgb(255, 246, 161)
+body{
+ background-color: rgb(255, 239, 173);
+ font-family: 'Cabin', sans-serif;
+ color: rgb(56, 48, 57);//dark dark purple
 }
+
+a {
+  color: $title-purple;
+
+}
+
 a:hover, a:focus{
   color: rgb(255, 207, 0);
 }
-.fave{
-  color: rgb(120, 71, 103);
+
+//favourites button
+.fave {
+  color: $title-purple;
 }
+
 .unfave{
   color: red
 }
+
  h1,h2,h3 {
    text-align: center;
-   color: rgb(120, 71, 103);//title purple
+   color: $title-purple;//title purple
    font-family: 'Lobster Two', cursive, serif;
    text-shadow: 2px 2px rgb(232, 223, 238);
  }
@@ -34,7 +43,6 @@ a:hover, a:focus{
 
  header { //holds logo
   background-color: rgb(255, 246, 161);//lighter goldenrod
-  // rgb(254, 244, 117);//goldenrod
   border-bottom-left-radius: 3rem;
   border-bottom-right-radius: 3rem;
 }
@@ -127,14 +135,14 @@ a.nav-bar:hover {
 }
 
 .header {
-  background-image: url('/toronto2.png');
+  background-image: url('toronto2.png');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
   height: 16rem;
   border-bottom-left-radius: 5.5rem;
   border-bottom-right-radius: 5.5rem;
-  box-shadow: 0px 5px 10px 0px rgb(120, 71, 103);
+  box-shadow: 0px 5px 10px 0px $title-purple;
 }
 .checkboxes ul{
   list-style-type: none;
@@ -175,7 +183,7 @@ a.nav-bar:hover {
 // }
 
 .rb:hover, .rb:focus{
-  background-color: rgb(120, 71, 103);//title purple
+  background-color: $title-purple;//title purple
   color:white;
   border-radius: .5rem;
 }
@@ -206,7 +214,7 @@ a.nav-bar:hover {
   }
 
   .header {
-    background-image: url('/homes_gradient_2.png');
+    background-image: url('homes_gradient_2.png');
     height: 10em;
     border-bottom-left-radius: 2rem;
     border-bottom-right-radius: 2rem;

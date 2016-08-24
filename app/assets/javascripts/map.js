@@ -45,8 +45,6 @@ $(document).on('ready page:load', function(){
         content: listingInfo
       });
       mapMarker.addListener('click',function(){
-        console.log("clicky mappy");
-        console.log(listing.name);
         infoWindow.open(map, mapMarker);
 
       });

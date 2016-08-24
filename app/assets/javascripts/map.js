@@ -46,7 +46,6 @@ $(document).on('ready page:load', function(){
       });
       mapMarker.addListener('click',function(){
         infoWindow.open(map, mapMarker);
-
       });
 
       latlngbounds.extend(mapMarker.position);

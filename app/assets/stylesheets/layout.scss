@@ -4,11 +4,15 @@
 
 
 $title-purple: rgb(120, 71, 103);
-$goldenrod: rgb(255, 246, 161)
-body{
+$dark-purple: rgb(56, 48, 57);
+$goldenrod: rgb(255, 246, 161);
+$dark-goldenrod: rgb(255, 207, 0);
+
+
+body {
  background-color: rgb(255, 239, 173);
  font-family: 'Cabin', sans-serif;
- color: rgb(56, 48, 57);//dark dark purple
+ color: $dark-purple;//dark dark purple
 }
 
 a {
@@ -17,7 +21,7 @@ a {
 }
 
 a:hover, a:focus{
-  color: rgb(255, 207, 0);
+  color: $dark-goldenrod;
 }
 
 //favourites button
@@ -31,24 +35,24 @@ a:hover, a:focus{
 
  h1,h2,h3 {
    text-align: center;
-   color: $title-purple;//title purple
+   color: $title-purple;
    font-family: 'Lobster Two', cursive, serif;
-   text-shadow: 2px 2px rgb(232, 223, 238);
+   text-shadow: 2px 2px rgb(232, 223, 238);//light purple
  }
  h4,h5,h6 {
    text-align: center;
-   color: rgb(120,71,103);//title purple
+   color: $title-purple;
    font-family: 'Lobster Two'
  }
 
  header { //holds logo
-  background-color: rgb(255, 246, 161);//lighter goldenrod
+  background-color: $goldenrod;//lighter goldenrod
   border-bottom-left-radius: 3rem;
   border-bottom-right-radius: 3rem;
 }
 
 label {
-  color: rgb(56, 48, 57);//dark dark purple
+  color: $dark-purple;//dark dark purple
 }
 li{
   list-style-type :none;
@@ -196,7 +200,7 @@ a.nav-bar:hover {
 
 .single-card ul {
   font-size: 12px;
-  background-color: rgb(255, 246, 161);//lighter goldenrod
+  background-color: $goldenrod;
   border-radius: 2rem;
   margin: .5rem .5rem;
   padding: .5rem;
@@ -221,7 +225,7 @@ a.nav-bar:hover {
   }
 
   header { //holds logo
-   background-color: rgb(255, 246, 161);//goldenrod
+   background-color: $goldenrod;//goldenrod
    border-bottom-left-radius: 1rem;
    border-bottom-right-radius: 1rem;
  }

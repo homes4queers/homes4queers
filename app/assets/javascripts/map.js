@@ -15,8 +15,8 @@ $(document).on('ready page:load', function(){
 
     });
 
-    var manyIcon = ('/pride_flag.gif')
-    var singleIcon = ('/google_pin.png')
+    var manyIcon = ('/images/pride_flag.gif')
+    var singleIcon = ('google_pin.png')
 
   // var latLngBounds = new google.maps.LatLngBounds();
   if (window.nearby) {
